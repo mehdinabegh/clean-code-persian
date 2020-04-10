@@ -1,6 +1,6 @@
 # Introduction
 
-| `![test](clean code 1.png =192x102)` |
+| `<img src="a.png" width="640" height=360 />` |
 | :--- |
 
 
