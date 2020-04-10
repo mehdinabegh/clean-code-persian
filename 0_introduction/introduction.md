@@ -1,6 +1,6 @@
 # Introduction
 
-| `<img src="a.png" width="640" height=360 />` |
+| \`\` |
 | :--- |
 
 
