@@ -10,8 +10,8 @@
 
 همزمان با ترجمه کتاب میتونید کتاب رو مطالعه کنید. از طریق لینک زیر ترجمه رو توی گیت بوک بخونید.
 
-<blockquote class="embedly-card"><h4><a href="https://noa01001000.gitbook.io/kd-tmyz/">Clean Code Persian</a></h4><p>null</p></blockquote>
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+<blockquote class="embedly-card"><h4><a href="https://noa01001000.gitbook.io/kd-tmyz/">Clean Code Persian</a></h4><p>null</p></blockquote>
 
 ### میخوای کمک کنی؟
 
