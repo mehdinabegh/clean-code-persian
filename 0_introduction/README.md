@@ -26,19 +26,3 @@
 برای کمک بیشتر در رابطه با این روابط ما مرجعی در پایان کتاب قرار داده ایم که شماره صفحه هر ارجاع را نمایش میدهد. میتوانید از آن برای دیدن مکانی که هر اکتشاف ظاهر شده استفاده کنید.
 
 اگر فصل اول و سوم را بخوانید و از بخش های اموزشی صرف نظر کنید پس بهتر است یک کتاب تفریحی در باره نوشتن نرم افزار خوب بخوانید.اما اگر برای بخش های اموزشی در فصل دوم وقت بگذارید, هر قدم کوچک را دنبال کنید, هر تصمیم لحظه ای، اگر خودت را جای من قرار دهی, و خودت را به همان مسیری که ما میرویم هدایت کنی, درک بیشتری از اصول و الگوها بدست خواهی اورد. آنها دیگر دانش تفریحی نخواهند بود. آنها به دل و روده, انگشتان و قلبتان راه پیدا کرده اند. آنها به بخشی از خودتان تبدیل خواهند شد همان طور که وقتی دوچرخه سواری یاد میگیرید به بخشی از وجودتان تبدیل میشود.  Go
-
-* © 2020 GitHub, Inc.
-* [Terms](https://github.com/site/terms)
-* [Privacy](https://github.com/site/privacy)
-* [Security](https://github.com/security)
-* [Status](https://githubstatus.com/)
-* [Help](https://help.github.com)
-* [Contact GitHub](https://github.com/contact)
-* [Pricing](https://github.com/pricing)
-* [API](https://developer.github.com)
-* [Training](https://training.github.com)
-* [Blog](https://github.blog)
-* [About](https://github.com/about)
-
- You can’t perform that action at this time.You signed in with another tab or window. [Reload]() to refresh your session. You signed out in another tab or window. [Reload]() to refresh your session. 
-
