@@ -1,7 +1,7 @@
 # Introduction
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/Noah1001000/clean-code-persian/blob/master/.gitbook/assets/clean-code-1.png">
+  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/.gitbook/assets/clean-code-1.png">
 </p>
 
 
