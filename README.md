@@ -7,15 +7,6 @@
 
 هدف مارو میشه تو یک جمله خلاصه کرد. کمک به پیشرفت جامعه برنامه نویسی و گسترش فعالیت های گروهی
 
-### خواندن کتاب
-
-همزمان با ترجمه کتاب میتونید کتاب رو مطالعه کنید. از طریق لینک زیر ترجمه رو توی گیت بوک بخونید.
-
-
-[![clean code](https://i-cdn.embed.ly/1/display/crop?height=300&key=fd92ebbc52fc43fb98f69e50e7893c13&url=https%3A%2F%2Fapp.gitbook.com%2Fshare%2Fspace%2Fthumbnail%2F-M4Sx7gjQhjCQ3ss1M5N.png&width=636
-)](https://app.gitbook.com/@noa01001000/s/kd-tmyz/~/drafts/-M4XdXSSEzjDj747nTGA/)
-
-*[خواندن کتاب](https://app.gitbook.com/@noa01001000/s/kd-tmyz/)*
 
 ### میخوای کمک کنی؟
 
