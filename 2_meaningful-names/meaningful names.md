@@ -328,14 +328,16 @@ Complex FulcrumPoint = new Complex(23.0);
 
 ## بخش های ترجمه نشده\(برای ترجمه متن انگلیسی را با ترجمه در گیتهاب جایگزین کنید: [https://github.com/Noah1001000/clean-code-persian](https://github.com/Noah1001000/clean-code-persian)\)
 
-### Add Meaningful Context
-
- There are a few names which are meaningful in and of themselves—most are not. Instead, you need to place names in context for your reader by enclosing them in well-named classes, functions, or namespaces. When all else fails, then prefixing the name may be nec- essary as a last resort.Imagine that you have variables named firstName , lastName , street , houseNumber , city , state , and zipcode . Taken together it’s pretty clear that they form an address. But what if you just saw the state variable being used alone in a method? Would you automatically infer that it was part of an address? You can add context by using prefixes: addrFirstName , addrLastName , addrState , and so on. At least readers will understand that these variables are part of a larger structure. Of course, a better solution is to create a class named Address . Then, even the compiler knows that the variables belong to a bigger concept. Consider the method in Listing 2-1. Do the variables need a more meaningful con- text? The function name provides only part of the context; the algorithm provides the rest. Once you read through the function, you see that the three variables, number , verb , and pluralModifier , are part of the “guess statistics” message. Unfortunately, the context must be inferred. When you first look at the method, the meanings of the variables are opaque.
+### Add Meaningful 
+ 
+متن با معنی اضافه کنید
+تنها چند نام وجود دارند که به خودی خود معنی دارند و اکثر نام ها به خودی خود بی معنی اند. درعوض، باید با قرار دادن آنها در کلاسها ، توابع یا مکانهای نامگذاری شده، خوانندتان را در جریان متن قرار دهید. وقتی همه موارد دیگر شکست بخورد ، ممکن است استفاده از پیشوند برای نام به عنوان آخرین راه حل اساسی مورد استفاده قرار گیرد.
+تصور کنید که متغیرهایی با اسامی firstName، lastName ، street ، houseNumber ، city ، state و zipcode دارید. آنها به طور واضح در کنار هم یک آدرس را تشکیل می دهند. اما اگر متغیر state را به تنهایی در یک تابع دیدید چه؟ آیا به طور خودکار استنباط می کنید که این متغیر بخشی از یک آدرس است؟
+می توانید پیشوندهایی را به متن اضافه کنید: addrFirstName ، addrLastName ، addrState و غیره. حداقل خوانندگان خواهند فهمید که این متغیرها بخشی از یک ساختار بزرگتر هستند. البته یک راه حل بهتر ایجاد کلاس با نام Address است. سپس، حتی کامپایلر هم می داند که متغیرها متعلق به یک مفهوم بزرگتر هستند.
+متد موجود در Listing 2-1 را در نظر بگیرید. آیا متغیرها به یک متن معنی دار تر نیاز دارند؟ نام تابع تنها بخشی از متن و الگوریتم بقیه را ارائه میدهد. پس از خواندن این تابع ، می بینید که سه متغیر ، number، verb و pluralModifier بخشی از پیام "guess statistics" هستند. متأسفانه، متن باید حدس زده شود. وقتی برای اولین بار به متد نگاه می کنید ، معنی متغیرها مبهم است.
 
 Listing 2-1 
-
 Variables with unclear context. 
-
 
 ```c
 private void printGuessStatistics(char candidate, int count)
@@ -365,11 +367,9 @@ private void printGuessStatistics(char candidate, int count)
 	print(guessMessage); 
 }
 ```
-
+این تابع کمی طولانی است و از متغیرها در کل آن استفاده می شود. برای تقسیم تابع به قطعات کوچکتر باید یک کلاس GuessStatisticsMessage ایجاد کنیم و سه فیلد متغیر این کلاس را بسازیم. بدین ترتیب یک متن واضح را برای سه متغیر فراهم می کنیم. آنها به طور قطع بخشی از GuessStatisticsMessage هستند. بهبود زمینه همچنین به الگوریتم اجازه می دهد تا با شکستن شدن به توابع کوچکتر، بسیار تمیزتر شود. 
 
 The function is a bit too long and the variables are used throughout. To split the func- tion into smaller pieces we need to create a GuessStatisticsMessage class and make the three variables fields of this class. This provides a clear context for the three variables. They are definitively part of the GuessStatisticsMessage . The improvement of context also allows the algorithm to be made much cleaner by breaking it into many smaller functions. \(See Listing 2-2.\)
-
-
 
 Listing 2-2 
 
