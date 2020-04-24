@@ -419,21 +419,15 @@ public class GuessStatisticsMessage
 	} 
 }
 ```
+ 
+### متن بیخود اضافه نکنید 
+در یک برنامه فرضی به نام “Gas Station Deluxe” ، این که هر کلاس با پیشوند GSD شروع شود ایده بدی است. صادقانه بگویم، شما با این کار در برابر ابزارهای خود می ایستید. G را تایپ می کنید و کلید تکمیل را فشار می دهید و با یک لیست بلند بالا از تمام کلاس های سیستم مواجه می شوید. این عاقلانه است؟ چرا راه کمک را برای IDE دشوار میکنید؟
+به همین ترتیب ، بیایید بگوییم که شما یک کلاس به نام MailingAddress را در ماژول حسابداری GSD نوشته اید و نام آن را GSDAccountAddress گذاشتید. بعداً ، برای تماس با مشتری خود به یک آدرس پستی نیاز دارید. آیا از GSDAccountAddress استفاده می کنید؟ آیا این نام مناسب به نظر می رسد؟ 10 تا از 17 کاراکتر زائد یا بی ربط هستند.
+معمولا تا زمانی که نامهای کوتاهتر واضح باشند، از نامهای طولانی تر بهتر هستند. هیچ متنی بیشتر از آن چیزی که لازم است، به یک نام اضافه نکنید.
+نام های accountAddress و customerAddress نام های خوبی برای نمونه های کلاس Address هستند اما برای نام کلاس ها مناسب هستند. Address یک نام خوب برای یک کلاس است. اگر نیاز به تفکیک بین آدرس های MAC ، آدرس پورت ها و آدرس های وب داشته باشم ، ممکن است PostalAddress ، MAC و URI را در نظر بگیرم. نامهای به دست آمده دقیق تر هستند، و این، هدف همه نامگذاری ها است.
 
+### سخن پایانی
 
-### Don’t Add Gratuitous Context
-
- In an imaginary application called “Gas Station Deluxe,” it is a bad idea to prefix every class with GSD . Frankly, you are working against your tools. You type G and press the com- pletion key and are rewarded with a mile-long list of every class in the system. Is that wise? Why make it hard for the IDE to help you? Likewise, say you invented a MailingAddress class in GSD ’s accounting module, and you named it GSDAccountAddress . Later, you need a mailing address for your customer con- tact application. Do you use GSDAccountAddress ? Does it sound like the right name? Ten of 17 characters are redundant or irrelevant.Shorter names are generally better than longer ones, so long as they are clear. Add no more context to a name than is necessary. The names accountAddress and customerAddress are fine names for instances of the class Address but could be poor names for classes. Address is a fine name for a class. If I need to differentiate between MAC addresses, port addresses, and Web addresses, I might consider PostalAddress , MAC , and URI . The resulting names are more precise, which is the point of all naming.
-
-### Final Words 
-
-The hardest thing about choosing good names is that it requires good descriptive skills and a shared cultural background. This is a teaching issue rather than a technical, business, or management issue. As a result many people in this field don’t learn to do it very well. People are also afraid of renaming things for fear that some other developers will object. We do not share that fear and find that we are actually grateful when names change \(for the better\). Most of the time we don’t really memorize the names of classes and meth- ods. We use the modern tools to deal with details like that so we can focus on whether the code reads like paragraphs and sentences, or at least like tables and data structure \(a sen- tence isn’t always the best way to display data\). You will probably end up surprising some- one when you rename, just like you might with any other code improvement. Don’t let it stop you in your tracks. Follow some of these rules and see whether you don’t improve the readability of your code. If you are maintaining someone else’s code, use refactoring tools to help resolve these problems. It will pay off in the short term and continue to pay in the long run.
-
-
-
-
-
-
-
-### 
-
+سخت ترین کار در انتخاب نام های خوب این است که به مهارت های توصیفی خوب و پیشینه فرهنگی مشترک نیاز دارد. این مسئله یک مسئله فنی، تجاری یا مدیریتی نیست بلکه یک موضوع آموزشی است. در نتیجه بسیاری از افراد یاد نمی گیرند که این کار را به درستی انجام دهند.
+مردم همچنین از ترس اینکه برخی از توسعه دهندگان دیگر مورد تخریب قرار گیرند، از تغییر نام چیزها می ترسند. ما این ترس را نداریم و وقتی اسم ها به چیز بهتری تغییر می کنند واقعاً سپاسگزاریم. بیشتر مواقع ما واقعا نام کلاس ها و متدها را به خاطر نمی آوریم. ما از ابزارهای مدرن برای کلنجار رفتن با جزئیاتی از این دست استفاده می کنیم تا بتوانیم تمرکز خود را بر این مسئله بگذاریم که آیا کد باید مانند پاراگراف ها و جملات خوانده شود، یا شبیه به جدول ها و ساختار داده ها (یک جمله همیشه بهترین راه برای نمایش داده ها نیست). احتمالاً وقتی چیزها را تغییر نام دهید، دقیقاً مانند هر بهبود دیگری در کد، افراد را شگفت زده خواهید کرد. اجازه ندهید که این مسئله شما را در مسیرتان متوقف کند.
+برخی از این قوانین را دنبال کنید و ببینید آیا خوانایی کد خود را بهبود می بخشید یا خیر. اگر کد شخص دیگری را نگهداری می کنید ، برای حل این مشکلات از ابزارهای refactoring استفاده کنید. در کوتاه مدت نتیجه را می بینید و درازمدت به افزایش بهبودها ادامه می دهد.
