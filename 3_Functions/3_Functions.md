@@ -6,73 +6,60 @@ Consider the code in Listing 3-1. It’s hard to find a long function in FitNess
 after a bit of searching I came across this one. Not only is it long, but it’s got duplicated
 code, lots of odd strings, and many strange and inobvious data types and APIs. See how
 much sense you can make of it in the next three minutes.
+
 Listing 3-1
 HtmlUtil.java (FitNesse 20070619)
-public static String testableHtml(
-PageData pageData,
-boolean includeSuiteSetup
-) throws Exception {
-WikiPage wikiPage = pageData.getWikiPage();
-StringBuffer buffer = new StringBuffer();
-if (pageData.hasAttribute("Test")) {
-if (includeSuiteSetup) {
-WikiPage suiteSetup =
-PageCrawlerImpl.getInheritedPage(
-SuiteResponder.SUITE_SETUP_NAME, wikiPage
-);
-if (suiteSetup != null) {
-WikiPagePath pagePath =
-suiteSetup.getPageCrawler().getFullPath(suiteSetup);
-String pagePathName = PathParser.render(pagePath);
-buffer.append("!include -setup .")
-.append(pagePathName)
-.append("\n");
-}
-}
-WikiPage setup =
-PageCrawlerImpl.getInheritedPage("SetUp", wikiPage);
-if (setup != null) {
-WikiPagePath setupPath =
-wikiPage.getPageCrawler().getFullPath(setup);
-String setupPathName = PathParser.render(setupPath);
-buffer.append("!include -setup .")
-.append(setupPathName)
-.append("\n");
-}
-}
-buffer.append(pageData.getContent());
-if (pageData.hasAttribute("Test")) {
-WikiPage teardown =
-PageCrawlerImpl.getInheritedPage("TearDown", wikiPage);
-if (teardown != null) {
-WikiPagePath tearDownPath =
-wikiPage.getPageCrawler().getFullPath(teardown);
-String tearDownPathName = PathParser.render(tearDownPath);
-buffer.append("\n")
-.append("!include -teardown .")
-.append(tearDownPathName)
-.append("\n");
+  public static String testableHtml(PageData pageData,boolean includeSuiteSetup) throws Exception {
+      WikiPage wikiPage = pageData.getWikiPage();
+      StringBuffer buffer = new StringBuffer();
+      if (pageData.hasAttribute("Test")) {
+          if (includeSuiteSetup) {
+              WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_SETUP_NAME, wikiPage);
+              if (suiteSetup != null) {
+                  WikiPagePath pagePath = suiteSetup.getPageCrawler().getFullPath(suiteSetup);
+                  String pagePathName = PathParser.render(pagePath);
+                  buffer.append("!include -setup .")
+                    .append(pagePathName)
+                    .append("\n");
+              }
+          }
+          WikiPage setup = PageCrawlerImpl.getInheritedPage("SetUp", wikiPage);
+          if (setup != null) {
+          WikiPagePath setupPath = wikiPage.getPageCrawler().getFullPath(setup);
+          String setupPathName = PathParser.render(setupPath);
+          buffer.append("!include -setup .")
+            .append(setupPathName)
+            .append("\n");
+          }
+      }
+
+      buffer.append(pageData.getContent());
+      if (pageData.hasAttribute("Test")) {
+          WikiPage teardown = PageCrawlerImpl.getInheritedPage("TearDown", wikiPage);
+          if (teardown != null) {
+                  WikiPagePath tearDownPath = wikiPage.getPageCrawler().getFullPath(teardown);
+                  String tearDownPathName = PathParser.render(tearDownPath);
+                  buffer.append("\n")
+                    .append("!include -teardown .")
+                    .append(tearDownPathName)
+                    .append("\n");
+          }
+
+          if (includeSuiteSetup) {
+              WikiPage suiteTeardown = PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_TEARDOWN_NAME,wikiPage);
+              if (suiteTeardown != null) {
+                  WikiPagePath pagePath = suiteTeardown.getPageCrawler().getFullPath (suiteTeardown);
+                  String pagePathName = PathParser.render(pagePath);
+                  buffer.append("!include -teardown .")
+                    .append(pagePathName)
+                    .append("\n");
+              }
+          }
+  }
+  pageData.setContent(buffer.toString());
+  return pageData.getHtml();
 }
 
-if (includeSuiteSetup) {
-WikiPage suiteTeardown =
-PageCrawlerImpl.getInheritedPage(
-SuiteResponder.SUITE_TEARDOWN_NAME,
-wikiPage
-);
-if (suiteTeardown != null) {
-WikiPagePath pagePath =
-suiteTeardown.getPageCrawler().getFullPath (suiteTeardown);
-String pagePathName = PathParser.render(pagePath);
-buffer.append("!include -teardown .")
-.append(pagePathName)
-.append("\n");
-}
-}
-}
-pageData.setContent(buffer.toString());
-return pageData.getHtml();
-}
 Do you understand the function after three minutes of study? Probably not. There’s
 too much going on in there at too many different levels of abstraction. There are strange
 strings and odd function calls mixed in with doubly nested if statements controlled by
@@ -84,18 +71,17 @@ See whether you can understand that in the next 3 minutes.
 
 Listing 3-2
 HtmlUtil.java (refactored)
-public static String renderPageWithSetupsAndTeardowns(
-PageData pageData, boolean isSuite
-) throws Exception {
-boolean isTestPage = pageData.hasAttribute("Test");
-if (isTestPage) {
-WikiPage testPage = pageData.getWikiPage();
-StringBuffer newPageContent = new StringBuffer();
-includeSetupPages(testPage, newPageContent, isSuite);
-newPageContent.append(pageData.getContent());
-includeTeardownPages(testPage, newPageContent, isSuite);
-pageData.setContent(newPageContent.toString());
-}
+
+public static String renderPageWithSetupsAndTeardowns( PageData pageData, boolean isSuite) throws Exception {
+    boolean isTestPage = pageData.hasAttribute("Test");
+    if (isTestPage) {
+        WikiPage testPage = pageData.getWikiPage();
+        StringBuffer newPageContent = new StringBuffer();
+        includeSetupPages(testPage, newPageContent, isSuite);
+        newPageContent.append(pageData.getContent());
+        includeTeardownPages(testPage, newPageContent, isSuite);
+        pageData.setContent(newPageContent.toString());
+    }
 return pageData.getHtml();
 }
 
@@ -108,7 +94,7 @@ is pretty easy, but it’s pretty well obscured by Listing 3-1.
 So what is it that makes a function like Listing 3-2 easy to read and understand? How
 can we make a function communicate its intent? What attributes can we give our functions
 that will allow a casual reader to intuit the kind of program they live inside?
-Small!
+### Small!
 The first rule of functions is that they should be small. The second rule of functions is that
 they should be smaller than that. This is not an assertion that I can justify. I can’t provide
 any references to research that shows that very small functions are better. What I can tell
@@ -136,16 +122,17 @@ should be!
 
 How short should your functions be? They should usually be shorter than Listing 3-2!
 Indeed, Listing 3-2 should really be shortened to Listing 3-3.
+
 Listing 3-3
 HtmlUtil.java (re-refactored)
-public static String renderPageWithSetupsAndTeardowns(
-PageData pageData, boolean isSuite) throws Exception {
-if (isTestPage(pageData))
-includeSetupAndTeardownPages(pageData, isSuite);
+
+public static String renderPageWithSetupsAndTeardowns(PageData pageData, boolean isSuite) throws Exception {
+    if (isTestPage(pageData))
+        includeSetupAndTeardownPages(pageData, isSuite);
 return pageData.getHtml();
 }
 
-Blocks and Indenting
+### Blocks and Indenting
 This implies that the blocks within if statements, else statements, while statements, and
 so on should be one line long. Probably that line should be a function call. Not only does
 this keep the enclosing function small, but it also adds documentary value because the
@@ -153,7 +140,7 @@ function called within the block can have a nicely descriptive name.
 This also implies that functions should not be large enough to hold nested structures.
 Therefore, the indent level of a function should not be greater than one or two. This, of
 course, makes the functions easier to read and understand.
-Do One Thing
+### Do One Thing
 It should be very clear that Listing 3-1 is doing lots
 more than one thing. It’s creating buffers, fetching
 pages, searching for inherited pages, rendering paths,
@@ -200,8 +187,9 @@ In order to make sure our functions are doing “one thing,” we need to make s
 statements within our function are all at the same level of abstraction. It is easy to see how
 Listing 3-1 violates this rule. There are concepts in there that are at a very high level of
 abstraction, such as getHtml() ; others that are at an intermediate level of abstraction, such
-as: String pagePathName = PathParser.render(pagePath) ; and still others that are remark-
-ably low level, such as: .append("\n") .
+as: 
+String pagePathName = PathParser.render(pagePath) ; 
+and still others that are remark-ably low level, such as: .append("\n") .
 Mixing levels of abstraction within a function is always confusing. Readers may not
 be able to tell whether a particular expression is an essential concept or a detail. Worse,like broken windows, once details are mixed with essential concepts, more and more
 details tend to accrete within the function.
