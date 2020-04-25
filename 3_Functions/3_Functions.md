@@ -10,7 +10,7 @@ much sense you can make of it in the next three minutes.
 Listing 3-1
 HtmlUtil.java (FitNesse 20070619
 
-    '''java
+      '''c
       public static String testableHtml(PageData pageData,boolean includeSuiteSetup) throws Exception {
           WikiPage wikiPage = pageData.getWikiPage();
           StringBuffer buffer = new StringBuffer();
