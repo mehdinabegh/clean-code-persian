@@ -1,3 +1,4 @@
+## بخش های ترجمه نشده- ترجمه را با متن انگلیسی عوض کنید
 In the early days of programming we composed our systems of routines and subroutines.
 Then, in the era of Fortran and PL/1 we composed our systems of programs, subprograms,
 and functions. Nowadays only the function survives from those early days. Functions are
