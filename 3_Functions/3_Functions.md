@@ -12,7 +12,6 @@ Listing 3-1
 HtmlUtil.java (FitNesse 20070619)
 
      ```c
-     
      public static String testableHtml(PageData pageData,boolean includeSuiteSetup) throws Exception {
          WikiPage wikiPage=pageData.getWikiPage();
          StringBuffer buffer=new StringBuffer();
@@ -63,8 +62,7 @@ HtmlUtil.java (FitNesse 20070619)
          pageData.setContent(buffer.toString());
          return pageData.getHtml();
      }
-     
-   ```
+     ```
 
 Do you understand the function after three minutes of study? Probably not. There’s
 too much going on in there at too many different levels of abstraction. There are strange
