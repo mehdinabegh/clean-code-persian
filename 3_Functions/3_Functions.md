@@ -77,19 +77,20 @@ See whether you can understand that in the next 3 minutes.
 
 Listing 3-2
 HtmlUtil.java (refactored)
-
-public static String renderPageWithSetupsAndTeardowns( PageData pageData, boolean isSuite) throws Exception {
+```java
+    public static String renderPageWithSetupsAndTeardowns( PageData       pageData, boolean isSuite) throws Exception {
     boolean isTestPage = pageData.hasAttribute("Test");
-    if (isTestPage) {
-        WikiPage testPage = pageData.getWikiPage();
-        StringBuffer newPageContent = new StringBuffer();
-        includeSetupPages(testPage, newPageContent, isSuite);
-        newPageContent.append(pageData.getContent());
-        includeTeardownPages(testPage, newPageContent, isSuite);
-        pageData.setContent(newPageContent.toString());
+        if (isTestPage) {
+            WikiPage testPage = pageData.getWikiPage();
+            StringBuffer newPageContent = new StringBuffer();
+            includeSetupPages(testPage, newPageContent, isSuite);
+            newPageContent.append(pageData.getContent());
+            includeTeardownPages(testPage, newPageContent, isSuite);
+            pageData.setContent(newPageContent.toString());
+        }
+    return pageData.getHtml();
     }
-return pageData.getHtml();
-}
+```
 
 Unless you are a student of FitNesse, you probably don’t understand all the details.
 Still, you probably understand that this function performs the inclusion of some setup and
