@@ -77,6 +77,7 @@ See whether you can understand that in the next 3 minutes.
 
 Listing 3-2
 HtmlUtil.java (refactored)
+
 ```c
     public static String renderPageWithSetupsAndTeardowns( PageData       pageData, boolean isSuite) throws Exception {
     boolean isTestPage = pageData.hasAttribute("Test");
