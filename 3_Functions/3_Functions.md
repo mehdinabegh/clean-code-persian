@@ -11,58 +11,60 @@ much sense you can make of it in the next three minutes.
 Listing 3-1
 HtmlUtil.java (FitNesse 20070619)
 
-     ```c
-     public static String testableHtml(PageData pageData,boolean includeSuiteSetup) throws Exception {
-         WikiPage wikiPage=pageData.getWikiPage();
-         StringBuffer buffer=new StringBuffer();
-         if(pageData.hasAttribute("Test")){
-             if(includeSuiteSetup){
-                 WikiPage suiteSetup=PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_SETUP_NAME,wikiPage);
-                 if(suiteSetup!=null){
-                     WikiPagePath pagePath=suiteSetup.getPageCrawler().getFullPath(suiteSetup);
-                     String pagePathName=PathParser.render(pagePath);
-                     buffer.append("!include -setup .")
-                         .append(pagePathName)
-                         .append("\n");
-                 }
-             }
-             WikiPage setup=PageCrawlerImpl.getInheritedPage("SetUp",wikiPage);
-             if(setup!=null){
-                 WikiPagePath setupPath=wikiPage.getPageCrawler().getFullPath(setup);
-                 String setupPathName=PathParser.render(setupPath);
-                 buffer.append("!include -setup .")
-                     .append(setupPathName)
-                     .append("\n");
-             }
-         }
 
-         buffer.append(pageData.getContent());
-         if(pageData.hasAttribute("Test")){
-             WikiPage teardown=PageCrawlerImpl.getInheritedPage("TearDown",wikiPage);
-             if(teardown!=null){
-                 WikiPagePath tearDownPath=wikiPage.getPageCrawler().getFullPath(teardown);
-                 String tearDownPathName=PathParser.render(tearDownPath);
-                 buffer.append("\n")
-                     .append("!include -teardown .")
-                     .append(tearDownPathName)
-                     .append("\n");
-             }
+```java
+public static String testableHtml(PageData pageData,boolean includeSuiteSetup) throws Exception {
+ WikiPage wikiPage=pageData.getWikiPage();
+ StringBuffer buffer=new StringBuffer();
+ if(pageData.hasAttribute("Test")){
+	 if(includeSuiteSetup){
+		 WikiPage suiteSetup=PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_SETUP_NAME,wikiPage);
+		 if(suiteSetup!=null){
+			 WikiPagePath pagePath=suiteSetup.getPageCrawler().getFullPath(suiteSetup);
+			 String pagePathName=PathParser.render(pagePath);
+			 buffer.append("!include -setup .")
+				 .append(pagePathName)
+				 .append("\n");
+		 }
+	 }
+	 WikiPage setup=PageCrawlerImpl.getInheritedPage("SetUp",wikiPage);
+	 if(setup!=null){
+		 WikiPagePath setupPath=wikiPage.getPageCrawler().getFullPath(setup);
+		 String setupPathName=PathParser.render(setupPath);
+		 buffer.append("!include -setup .")
+			 .append(setupPathName)
+			 .append("\n");
+	 }
+ }
 
-             if(includeSuiteSetup){
-                 WikiPage suiteTeardown=PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_TEARDOWN_NAME,wikiPage);
-                 if(suiteTeardown!=null){
-                     WikiPagePath pagePath=suiteTeardown.getPageCrawler().getFullPath(suiteTeardown);
-                     String pagePathName=PathParser.render(pagePath);
-                     buffer.append("!include -teardown .")
-                     .append(pagePathName)
-                     .append("\n");
-                 }
-             }
-         }
-         pageData.setContent(buffer.toString());
-         return pageData.getHtml();
-     }
-     ```
+ buffer.append(pageData.getContent());
+ if(pageData.hasAttribute("Test")){
+	 WikiPage teardown=PageCrawlerImpl.getInheritedPage("TearDown",wikiPage);
+	 if(teardown!=null){
+		 WikiPagePath tearDownPath=wikiPage.getPageCrawler().getFullPath(teardown);
+		 String tearDownPathName=PathParser.render(tearDownPath);
+		 buffer.append("\n")
+			 .append("!include -teardown .")
+			 .append(tearDownPathName)
+			 .append("\n");
+	 }
+
+	 if(includeSuiteSetup){
+		 WikiPage suiteTeardown=PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_TEARDOWN_NAME,wikiPage);
+		 if(suiteTeardown!=null){
+			 WikiPagePath pagePath=suiteTeardown.getPageCrawler().getFullPath(suiteTeardown);
+			 String pagePathName=PathParser.render(pagePath);
+			 buffer.append("!include -teardown .")
+			 .append(pagePathName)
+			 .append("\n");
+		 }
+	 }
+ }
+ pageData.setContent(buffer.toString());
+ return pageData.getHtml();
+}
+```
+
 
 Do you understand the function after three minutes of study? Probably not. There’s
 too much going on in there at too many different levels of abstraction. There are strange
@@ -76,10 +78,12 @@ See whether you can understand that in the next 3 minutes.
 Listing 3-2
 HtmlUtil.java (refactored)
 
-```c
-    public static String renderPageWithSetupsAndTeardowns( PageData       pageData, boolean isSuite) throws Exception {
+```java
+    public static String renderPageWithSetupsAndTeardowns( PageData, boolean isSuite) throws Exception 
+    {
     boolean isTestPage = pageData.hasAttribute("Test");
-        if (isTestPage) {
+        if (isTestPage) 
+	{
             WikiPage testPage = pageData.getWikiPage();
             StringBuffer newPageContent = new StringBuffer();
             includeSetupPages(testPage, newPageContent, isSuite);
@@ -132,11 +136,15 @@ Indeed, Listing 3-2 should really be shortened to Listing 3-3.
 Listing 3-3
 HtmlUtil.java (re-refactored)
 
-public static String renderPageWithSetupsAndTeardowns(PageData pageData, boolean isSuite) throws Exception {
+```java
+public static String renderPageWithSetupsAndTeardowns(PageData pageData, boolean isSuite) throws Exception 
+{
     if (isTestPage(pageData))
         includeSetupAndTeardownPages(pageData, isSuite);
-return pageData.getHtml();
+	
+    return pageData.getHtml();
 }
+```
 
 ### Blocks and Indenting
 This implies that the blocks within if statements, else statements, while statements, and
@@ -234,19 +242,24 @@ Consider Listing 3-4. It shows just one of the operations that might depend on t
 type of employee.
 Listing 3-4
 Payroll.java
-public Money calculatePay(Employee e)
-throws InvalidEmployeeType {
-switch (e.type) {
-case COMMISSIONED:
-return calculateCommissionedPay(e);
-case HOURLY:
-return calculateHourlyPay(e);
-case SALARIED:
-return calculateSalariedPay(e);
-default:
-throw new InvalidEmployeeType(e.type);
+
+```java
+public Money calculatePay(Employee e) throws InvalidEmployeeType 
+{
+    switch (e.type) 
+    {
+	case COMMISSIONED:
+	    return calculateCommissionedPay(e);
+	case HOURLY:
+	    return calculateHourlyPay(e);
+	case SALARIED:
+	    return calculateSalariedPay(e);
+	default:
+	    throw new InvalidEmployeeType(e.type);
+    }
 }
-}
+```
+
 There are several problems with this function. First, it’s large, and when new
 employee types are added, it will grow. Second, it very clearly does more than one thing.
 Third, it violates the Single Responsibility Principle 7 (SRP) because there is more than one
@@ -266,30 +279,42 @@ morphically through the Employee interface.
 My general rule for switch statements is that they can be tolerated if they appear
 only once, are used to create polymorphic objects, and are hidden behind an inheritance Listing 3-5
 Employee and Factory
-public abstract class Employee {
-public abstract boolean isPayday();
-public abstract Money calculatePay();
-public abstract void deliverPay(Money pay);
+
+```java
+public abstract class Employee 
+{
+    public abstract boolean isPayday();
+    public abstract Money calculatePay();
+    public abstract void deliverPay(Money pay);
 }
+```
 -----------------
-public interface EmployeeFactory {
-public Employee makeEmployee(EmployeeRecord r) throws InvalidEmployeeType;
+```java
+public interface EmployeeFactory 
+{
+     public Employee makeEmployee(EmployeeRecord r) throws InvalidEmployeeType;
 }
+```
 -----------------
-public class EmployeeFactoryImpl implements EmployeeFactory {
-public Employee makeEmployee(EmployeeRecord r) throws InvalidEmployeeType {
-switch (r.type) {
-case COMMISSIONED:
-return new CommissionedEmployee(r) ;
-case HOURLY:
-return new HourlyEmployee(r);
-case SALARIED:
-return new SalariedEmploye(r);
-default:
-throw new InvalidEmployeeType(r.type);
+```java
+public class EmployeeFactoryImpl implements EmployeeFactory 
+{
+    public Employee makeEmployee(EmployeeRecord r) throws InvalidEmployeeType 
+    {
+        switch (r.type) 
+	{
+	    case COMMISSIONED:
+		return new CommissionedEmployee(r) ;
+	    case HOURLY:
+		return new HourlyEmployee(r);
+	    case SALARIED:
+		return new SalariedEmploye(r);
+	    default:
+		throw new InvalidEmployeeType(r.type);
+	}
+   }
 }
-}
-}
+```
 relationship so that the rest of the system can’t see them [G23]. Of course every circum-
 stance is unique, and there are times when I violate one or more parts of that rule.
 Use Descriptive Names
@@ -429,7 +454,9 @@ own.
 Argument Lists
 Sometimes we want to pass a variable number of arguments into a function. Consider, for
 example, the String.format method:
+```java
 String.format("%s worked %.2f hours.", name, hours);
+```
 If the variable arguments are all treated identically, as they are in the example above, then
 they are equivalent to a single argument of type List . By that reasoning, String.format is
 actually dyadic. Indeed, the declaration of String.format as shown below is clearly
@@ -438,9 +465,11 @@ public String format(String format, Object... args)
 So all the same rules apply. Functions that take variable arguments can be monads,
 dyads, or even triads. But it would be a mistake to give them more arguments than
 that.
+```java
 void monad(Integer... args);
 void dyad(String name, Integer... args);
 void triad(String name, int count, Integer... args);
+```
 Verbs and Keywords
 Choosing good names for a function can go a long way toward explaining the intent of
 the function and the order and intent of the arguments. In the case of a monad, the
@@ -463,21 +492,28 @@ uses a standard algorithm to match a userName to a password . It returns true if
 and false if anything goes wrong. But it also has a side effect. Can you spot it?
 Listing 3-6
 UserValidator.java
-public class UserValidator {
-private Cryptographer cryptographer;
-public boolean checkPassword(String userName, String password) {
-User user = UserGateway.findByName(userName);
-if (user != User.NULL) {
-String codedPhrase = user.getPhraseEncodedByPassword();
-String phrase = cryptographer.decrypt(codedPhrase, password);
-if ("Valid Password".equals(phrase)) {
-Session.initialize();
-return true;
+```java
+public class UserValidator 
+{
+	private Cryptographer cryptographer;
+	public boolean checkPassword(String userName, String password) 
+	{
+		User user = UserGateway.findByName(userName);
+		if (user != User.NULL) 
+		{
+			String codedPhrase = user.getPhraseEncodedByPassword();
+			String phrase = cryptographer.decrypt(codedPhrase, password);
+			if ("Valid Password".equals(phrase)) 
+			{
+				Session.initialize();
+				return true;
+			}
+		}
+	return false;
+	}
 }
-}
-return false;
-}
-}
+```
+
 The side effect is the call to Session.initialize() , of course. The checkPassword func-
 tion, by its name, says that it checks the password. The name does not imply that it initial-
 izes the session. So a caller who believes what the name of the function says runs the risk
@@ -528,56 +564,84 @@ unclebob ” and not “set the username attribute to unclebob and if that worke
 could try to resolve this by renaming the set function to setAndCheckIfExists , but that
 doesn’t much help the readability of the if statement. The real solution is to separate the
 command from the query so that the ambiguity cannot occur.
+```java
 if (attributeExists("username")) {
-setAttribute("username", "unclebob");
-...
+    setAttribute("username", "unclebob");
+    ...
 }
+```
+
 Prefer Exceptions to Returning Error Codes
 Returning error codes from command functions is a subtle violation of command query
 separation. It promotes commands being used as expressions in the predicates of if state-
 ments.
+
+```java
 if (deletePage(page) == E_OK)
+```
 This does not suffer from verb/adjective confusion but does lead to deeply nested struc-
 tures. When you return an error code, you create the problem that the caller must deal with
 the error immediately.
-if (deletePage(page) == E_OK) {
-if (registry.deleteReference(page.name) == E_OK) {
-if (configKeys.deleteKey(page.name.makeKey()) == E_OK){
-logger.log("page deleted");
-} else {
-logger.log("configKey not deleted");
+```java
+if (deletePage(page) == E_OK) 
+{
+	if (registry.deleteReference(page.name) == E_OK) 
+	{
+		if (configKeys.deleteKey(page.name.makeKey()) == E_OK)
+		{
+			logger.log("page deleted");
+		} 
+	else
+	{
+		logger.log("configKey not deleted");
+	}
+	}
+	else
+	{
+		logger.log("deleteReference from registry failed");
+	}
+	
+} 
+else
+{
+	logger.log("delete failed");
+	return E_ERROR;
 }
-} else {
-logger.log("deleteReference from registry failed");
-}
-} else {
-logger.log("delete failed");
-return E_ERROR;
-}
+```
+
 On the other hand, if you use exceptions instead of returned error codes, then the error
 processing code can be separated from the happy path code and can be simplified:
-try {
-deletePage(page);
-registry.deleteReference(page.name);
-configKeys.deleteKey(page.name.makeKey());
+```java
+try
+{
+   deletePage(page);
+   registry.deleteReference(page.name);
+   configKeys.deleteKey(page.name.makeKey());
 }
-catch (Exception e) {
-logger.log(e.getMessage());
+catch (Exception e) 
+{
+    logger.log(e.getMessage());
 }
+```
+
 Extract Try/Catch Blocks
 Try/catch blocks are ugly in their own right. They confuse the structure of the code and
 mix error processing with normal processing. So it is better to extract the bodies of the try
 and catch blocks out into functions of their own.
 plies that there is some class or enum in which all the
 error codes are defined.
-public enum Error {
-OK,
-INVALID,
-NO_SUCH,
-LOCKED,
-OUT_OF_RESOURCES,
-WAITING_FOR_EVENT;
+```java
+public enum Error 
+{
+    OK,
+    INVALID,
+    NO_SUCH,
+    LOCKED,
+    OUT_OF_RESOURCES,
+    WAITING_FOR_EVENT;
 }
+```
+
 Classes like this are a dependency magnet; many other classes must import and use
 them. Thus, when the Error enum changes, all those other classes need to be recompiled
 and redeployed. 11 This puts a negative pressure on the Error class. Programmers don’t want
@@ -654,90 +718,129 @@ that telling.
 SetupTeardownIncluder
 Listing 3-7
 SetupTeardownIncluder.java
+```java
 package fitnesse.html;
 import fitnesse.responders.run.SuiteResponder;
 import fitnesse.wiki.*;
+
 public class SetupTeardownIncluder {
-private PageData pageData;
-private boolean isSuite;
-private WikiPage testPage;
-private StringBuffer newPageContent;
-private PageCrawler pageCrawler;
-public static String render(PageData pageData) throws Exception {
-return render(pageData, false);
+	private PageData pageData;
+	private boolean isSuite;
+	private WikiPage testPage;
+	private StringBuffer newPageContent;
+	private PageCrawler pageCrawler;
+
+	public static String render(PageData pageData) throws Exception 
+	{
+		return render(pageData, false);
+	}
+
+	public static String render(PageData pageData, boolean isSuite) throws Exception 
+	{
+		return new SetupTeardownIncluder(pageData).render(isSuite);
+	}
+
+	private SetupTeardownIncluder(PageData pageData)
+	{
+		this.pageData = pageData;
+		testPage = pageData.getWikiPage();
+		pageCrawler = testPage.getPageCrawler();
+		newPageContent = new StringBuffer();
+	}
+
+	private String render(boolean isSuite) throws Exception 
+	{
+		this.isSuite = isSuite;
+		if (isTestPage())
+			includeSetupAndTeardownPages();
+		return pageData.getHtml();
+	}
+
+	private boolean isTestPage() throws Exception
+	{
+		return pageData.hasAttribute("Test");
+	}
+
+	private void includeSetupAndTeardownPages() throws Exception
+	{
+		includeSetupPages();
+		includePageContent();
+		includeTeardownPages();
+		updatePageContent();
+	}
+
+	private void includeSetupPages() throws Exception 
+	{
+		if (isSuite)
+			includeSuiteSetupPage();
+		includeSetupPage();
+	}
+	private void includeSuiteSetupPage() throws Exception 
+	{
+		include(SuiteResponder.SUITE_SETUP_NAME, "-setup");
+	}
+
+	private void includeSetupPage() throws Exception
+	{
+		include("SetUp", "-setup");
+	}
+
+	private void includePageContent() throws Exception 
+	{
+		newPageContent.append(pageData.getContent());
+	}
+
+	private void includeTeardownPages() throws Exception 
+	{
+		includeTeardownPage();
+		if (isSuite)
+			includeSuiteTeardownPage();
+	}
+
+	private void includeTeardownPage() throws Exception 
+	{
+		include("TearDown", "-teardown");
+	}
+
+	private void includeSuiteTeardownPage() throws Exception 
+	{
+		include(SuiteResponder.SUITE_TEARDOWN_NAME, "-teardown");
+	}
+
+	private void updatePageContent() throws Exception 
+	{
+		pageData.setContent(newPageContent.toString());
+	}
+
+	private void include(String pageName, String arg) throws Exception 
+	{
+		WikiPage inheritedPage = findInheritedPage(pageName);
+		if (inheritedPage != null) {
+		String pagePathName = getPathNameForPage(inheritedPage);
+		buildIncludeDirective(pagePathName, arg);
+	}
+
+	}
+	
+	private WikiPage findInheritedPage(String pageName) throws Exception 
+	{
+		return PageCrawlerImpl.getInheritedPage(pageName, testPage);
+	}
+	
+	private String getPathNameForPage(WikiPage page) throws Exception 
+	{
+		WikiPagePath pagePath = pageCrawler.getFullPath(page);
+		eturn PathParser.render(pagePath);
+	}
+	
+	private void buildIncludeDirective(String pagePathName, String arg) 
+	{
+		newPageContent
+			.append("\n!include ")
+			.append(arg)
+			.append(" .")
+			.append(pagePathName)
+			.append("\n");
+	}
 }
-public static String render(PageData pageData, boolean isSuite)
-throws Exception {
-return new SetupTeardownIncluder(pageData).render(isSuite);
-}
-private SetupTeardownIncluder(PageData pageData) {
-this.pageData = pageData;
-testPage = pageData.getWikiPage();
-pageCrawler = testPage.getPageCrawler();
-newPageContent = new StringBuffer();
-}
-private String render(boolean isSuite) throws Exception {
-this.isSuite = isSuite;
-if (isTestPage())
-includeSetupAndTeardownPages();
-return pageData.getHtml();
-}
-private boolean isTestPage() throws Exception {
-return pageData.hasAttribute("Test");
-}
-private void includeSetupAndTeardownPages() throws Exception {
-includeSetupPages();
-includePageContent();
-includeTeardownPages();
-updatePageContent();
-} private void includeSetupPages() throws Exception {
-if (isSuite)
-includeSuiteSetupPage();
-includeSetupPage();
-}
-private void includeSuiteSetupPage() throws Exception {
-include(SuiteResponder.SUITE_SETUP_NAME, "-setup");
-}
-private void includeSetupPage() throws Exception {
-include("SetUp", "-setup");
-}
-private void includePageContent() throws Exception {
-newPageContent.append(pageData.getContent());
-}
-private void includeTeardownPages() throws Exception {
-includeTeardownPage();
-if (isSuite)
-includeSuiteTeardownPage();
-}
-private void includeTeardownPage() throws Exception {
-include("TearDown", "-teardown");
-}
-private void includeSuiteTeardownPage() throws Exception {
-include(SuiteResponder.SUITE_TEARDOWN_NAME, "-teardown");
-}
-private void updatePageContent() throws Exception {
-pageData.setContent(newPageContent.toString());
-}
-private void include(String pageName, String arg) throws Exception {
-WikiPage inheritedPage = findInheritedPage(pageName);
-if (inheritedPage != null) {
-String pagePathName = getPathNameForPage(inheritedPage);
-buildIncludeDirective(pagePathName, arg);
-}
-}
-private WikiPage findInheritedPage(String pageName) throws Exception {
-return PageCrawlerImpl.getInheritedPage(pageName, testPage);
-}
-private String getPathNameForPage(WikiPage page) throws Exception {
-WikiPagePath pagePath = pageCrawler.getFullPath(page);
-return PathParser.render(pagePath);
-}
-private void buildIncludeDirective(String pagePathName, String arg) {
-newPageContent
-.append("\n!include ")
-.append(arg)
-.append(" .")
-.append(pagePathName)
-.append("\n");
-}
-}
+```
