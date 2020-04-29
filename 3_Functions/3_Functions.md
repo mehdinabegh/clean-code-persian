@@ -12,7 +12,7 @@ Listing 3-1
 HtmlUtil.java (FitNesse 20070619)
 
 
-```c
+```java
 public static String testableHtml(PageData pageData,boolean includeSuiteSetup) throws Exception {
  WikiPage wikiPage=pageData.getWikiPage();
  StringBuffer buffer=new StringBuffer();
@@ -78,10 +78,12 @@ See whether you can understand that in the next 3 minutes.
 Listing 3-2
 HtmlUtil.java (refactored)
 
-```c
-    public static String renderPageWithSetupsAndTeardowns( PageData       pageData, boolean isSuite) throws Exception {
+```java
+    public static String renderPageWithSetupsAndTeardowns( PageData, boolean isSuite) throws Exception 
+    {
     boolean isTestPage = pageData.hasAttribute("Test");
-        if (isTestPage) {
+        if (isTestPage) 
+	{
             WikiPage testPage = pageData.getWikiPage();
             StringBuffer newPageContent = new StringBuffer();
             includeSetupPages(testPage, newPageContent, isSuite);
