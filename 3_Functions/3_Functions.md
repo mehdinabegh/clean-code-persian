@@ -1,13 +1,7 @@
 ## بخش های ترجمه نشده- ترجمه را با متن انگلیسی عوض کنید
-In the early days of programming we composed our systems of routines and subroutines.
-Then, in the era of Fortran and PL/1 we composed our systems of programs, subprograms,
-and functions. Nowadays only the function survives from those early days. Functions are
-the first line of organization in any program. Writing them well is the topic of this chapter.
-Consider the code in Listing 3-1. It’s hard to find a long function in FitNesse, 1 but
-after a bit of searching I came across this one. Not only is it long, but it’s got duplicated
-code, lots of odd strings, and many strange and inobvious data types and APIs. See how
-much sense you can make of it in the next three minutes.
-
+در اولین روزهای برنامه نویسی سیستم هایمان را به روال ها و زیر روال ها ترکیب کردیم.
+سپس، در عصر فورترن و PL/1 آنها را به برنامه،  زیر برنامه و توابع ترکیب کردیم.حالا از آن دوران فقط تابع باقی مانده است.توابع اولین خط تشکیل هر برنامه ای هستند.درست نوشتن آن ها عنوان این فصل است.
+تکه کد زیر را ببینید.پیدا کردن یک تابع طولانی در تابع FitNesse سخت است.  اما پس از کمی جستجو به این مورد رسیدم.نه تنها که طولانی بلکه کد تکراری، تعداد زیادی رشته غیر عادی و انواع مختلف داده های عجیب و غریب و API ها نیز استفاده شده است.ببینید که در مدت سه دقیقه جطور میتوانید آن را احساس کنید.
 Listing 3-1
 HtmlUtil.java (FitNesse 20070619)
 
@@ -66,14 +60,12 @@ public static String testableHtml(PageData pageData,boolean includeSuiteSetup) t
 ```
 
 
-Do you understand the function after three minutes of study? Probably not. There’s
-too much going on in there at too many different levels of abstraction. There are strange
+آیا این تابع را بعد از سه دقیقه خواندن درک میکنید؟احتمالا خیر.
+ There’s too much going on in there at too many different levels of abstraction. There are strange
 strings and odd function calls mixed in with doubly nested if statements controlled by
 flags.
-However, with just a few simple method extractions, some renaming, and a little
-restructuring, I was able to capture the intent of the function in the nine lines of Listing 3-2.
-See whether you can understand that in the next 3 minutes.
-
+با این حال، تنها با جند متد استخراج سازی، تعدادی تغیر نام و اندکی تغییر ساختار، توانستم منظور تابع را در نه خط بنویسم.
+ببینید که می توانید آن را در سه دقیقه بعدی درک کنید
 
 Listing 3-2
 HtmlUtil.java (refactored)
