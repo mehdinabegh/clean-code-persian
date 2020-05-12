@@ -1,4 +1,5 @@
 # 2\_Meaningful Names
+<div dir='rtl'>
 
 * [2\_اسامی با معنی](2_meaningful-names(completed)/meaningful names.md)
   * [استفاده از اسم‌های بیان کننده منظور (Intention-Revealing Names)](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%A7%D8%B3%D9%85%D9%87%D8%A7%DB%8C-%D8%A8%DB%8C%D8%A7%D9%86-%DA%A9%D9%86%D9%86%D8%AF%D9%87-%D9%85%D9%86%D8%B8%D9%88%D8%B1-intention-revealing-names)
@@ -38,5 +39,5 @@
   
   * [سخن پایانی](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%B3%D8%AE%D9%86-%D9%BE%D8%A7%DB%8C%D8%A7%D9%86%DB%8C)
 
-
+</div>
 
