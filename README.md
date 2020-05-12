@@ -19,14 +19,15 @@
 <a dir="ltr" href="mailto:noahopentranslate@gmail.com">noahopentranslate@gmail.com</a>
  
  # بخش های ترجمه شده
+
 * [Clean Code Persian](README.md)
-* [0\_Intruduction](0_introduction(completed)/README.md)
+* [0\مقدمه](0_introduction(completed)/README.md)
   * [مقدمه](0_introduction(completed)/introduction.md)
 * [1\_کد تمیز](1_Clean_Code(completed)/clean-code.md)
 
   * [کد همیشه وجود خواهد داشت](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%DA%A9%D8%AF-%D9%87%D9%85%DB%8C%D8%B4%D9%87-%D9%88%D8%AC%D9%88%D8%AF-%D8%AE%D9%88%D8%A7%D9%87%D8%AF-%D8%AF%D8%A7%D8%B4%D8%AA)
   
-  * [کد بد] (https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%DA%A9%D8%AF-%D8%A8%D8%AF)
+  * [کد بد](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%DA%A9%D8%AF-%D8%A8%D8%AF)
   
   * [هزینه کلی مالک یک شلختگی بودن](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%D9%87%D8%B2%DB%8C%D9%86%D9%87-%DA%A9%D9%84%DB%8C-%D9%85%D8%A7%D9%84%DA%A9-%DB%8C%DA%A9-%D8%B4%D9%84%D8%AE%D8%AA%DA%AF%DB%8C-%D8%A8%D9%88%D8%AF%D9%86)
   
@@ -43,9 +44,10 @@
   * [مکتب فکری!](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%D9%85%DA%A9%D8%AA%D8%A8-%D9%81%DA%A9%D8%B1%DB%8C)
 
 * [2\_اسامی با معنی](2_meaningful-names(completed)/meaningful names.md)
+
   * [استفاده از اسم‌های بیان کننده منظور (Intention-Revealing Names)](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%A7%D8%B3%D9%85%D9%87%D8%A7%DB%8C-%D8%A8%DB%8C%D8%A7%D9%86-%DA%A9%D9%86%D9%86%D8%AF%D9%87-%D9%85%D9%86%D8%B8%D9%88%D8%B1-intention-revealing-names)
   
-  *[خودداری از دادن اطلاعات اشتباه](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%AE%D9%88%D8%AF%D8%AF%D8%A7%D8%B1%DB%8C-%D8%A7%D8%B2-%D8%AF%D8%A7%D8%AF%D9%86-%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA-%D8%A7%D8%B4%D8%AA%D8%A8%D8%A7%D9%87)
+  * [خودداری از دادن اطلاعات اشتباه](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%AE%D9%88%D8%AF%D8%AF%D8%A7%D8%B1%DB%8C-%D8%A7%D8%B2-%D8%AF%D8%A7%D8%AF%D9%86-%D8%A7%D8%B7%D9%84%D8%A7%D8%B9%D8%A7%D8%AA-%D8%A7%D8%B4%D8%AA%D8%A8%D8%A7%D9%87)
   
   * [تفاوت‌های با معنی ایجاد کنید](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%AA%D9%81%D8%A7%D9%88%D8%AA%D9%87%D8%A7%DB%8C-%D8%A8%D8%A7-%D9%85%D8%B9%D9%86%DB%8C-%D8%A7%DB%8C%D8%AC%D8%A7%D8%AF-%DA%A9%D9%86%DB%8C%D8%AF)
   
@@ -79,5 +81,6 @@
   * [ساختارهای با معنی اضافه کنید](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%B3%D8%A7%D8%AE%D8%AA%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%A8%D8%A7-%D9%85%D8%B9%D9%86%DB%8C-%D8%A7%D8%B6%D8%A7%D9%81%D9%87-%DA%A9%D9%86%DB%8C%D8%AF)
   
   * [سخن پایانی](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%B3%D8%AE%D9%86-%D9%BE%D8%A7%DB%8C%D8%A7%D9%86%DB%8C)
- 
+  
+
 </div>
