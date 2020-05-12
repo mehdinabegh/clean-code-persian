@@ -1,7 +1,9 @@
-## بخش های ترجمه نشده- ترجمه را با متن انگلیسی عوض کنید
-در اولین روزهای برنامه نویسی سیستم هایمان را به روال ها و زیر روال ها ترکیب کردیم.
-سپس، در عصر فورترن و PL/1 آنها را به برنامه،  زیر برنامه و توابع ترکیب کردیم.حالا از آن دوران فقط تابع باقی مانده است.توابع اولین خط تشکیل هر برنامه ای هستند.درست نوشتن آن ها عنوان این فصل است.
-تکه کد زیر را ببینید.پیدا کردن یک تابع طولانی در تابع FitNesse سخت است.  اما پس از کمی جستجو به این مورد رسیدم.نه تنها که طولانی بلکه کد تکراری، تعداد زیادی رشته غیر عادی و انواع مختلف داده های عجیب و غریب و API ها نیز استفاده شده است.ببینید که در مدت سه دقیقه جطور میتوانید آن را احساس کنید.
+![](https://github.com/Noah1001000/clean-code-persian/blob/master/3_Functions/picture%200.img_3.1.png)
+### توابع
+<div dir='rtl'>
+در اوایل برنامه نویسی ، سیستم های خود را باroutine ها و subroutine ها ساختیم. سپس، در عصر Fortran و PL / 1 سیستم هایمان را با برنامه ها، زیر برنامه ها و توابع ساختیم. امروزه تنها توابع هستند که از آن دوران اولیه باقی مانده اند. توابع اولین خط سازماندهی در هر برنامه هستند. خوب نوشتن آنها موضوع این فصل است.
+کد ارائه شده در listing 3-1 را در نظر بگیرید. پیدا کردن یک تابع طولانی در FitNesse1 دشوار است ، اما پس از کمی جستجو به این مورد رسیدم. این تابع نه تنها طولانی است ، بلکه کد تکراری، تعداد زیادی رشته عجیب و غریب و انواع مختلف داده ها و API های عجیب و مبهم را نیز داراست. ببینید که در مدت سه دقیقه آینده چقدر از آن را می توانید درک کنید.
+</div>
 Listing 3-1
 HtmlUtil.java (FitNesse 20070619)
 
@@ -58,14 +60,11 @@ public static String testableHtml(PageData pageData,boolean includeSuiteSetup) t
  return pageData.getHtml();
 }
 ```
-
-
-آیا این تابع را بعد از سه دقیقه خواندن درک میکنید؟احتمالا خیر.
- There’s too much going on in there at too many different levels of abstraction. There are strange
-strings and odd function calls mixed in with doubly nested if statements controlled by
-flags.
-با این حال، تنها با جند متد استخراج سازی، تعدادی تغیر نام و اندکی تغییر ساختار، توانستم منظور تابع را در نه خط بنویسم.
-ببینید که می توانید آن را در سه دقیقه بعدی درک کنید
+<div dir='rtl'>
+آیا بعد از سه دقیقه مطالعه تابع آن را درک می کنید؟ احتمالا نه. اتفاقات زیادی در سطوح تجرید بسیار متفاوت رخ میدهد. رشته ها و فراخوانی های توابع عجیب و غریبی وجود دارد که با زوج جمله های شرطی تو در تو که توسط flag ها کنترل میشوند ترکیب شده اند.
+با این حال ، تنها با چند استخراج متد ساده ، تغییر نام و کمی تغییر ساختار ، توانستم هدف این تابع را در 9 سطر در listing 3-2 درج کنم. ببینید که آیا می توانید در 3 دقیقه آینده آن را درک کنید.
+با این حال ، تنها با چند استخراج متد ساده ، تغییر نام و کمی تغییر ساختار ، توانستم هدف این تابع را در 9 سطر در listing 3-2 درج کنم. ببینید که آیا می توانید در 3 دقیقه آینده آن را درک کنید.
+</div>
 
 Listing 3-2
 HtmlUtil.java (refactored)
@@ -86,44 +85,17 @@ HtmlUtil.java (refactored)
     return pageData.getHtml();
     }
 ```
+<div dir='rtl'>
+مگر اینکه دانشجوی FitNesse باشید که همه جزئیات را بفهمید. با این وجود ، شما احتمالاً می فهمید كه این تابع شامل وارد كردن برخی از صفحات setup و teardown به یك صفحه تست و تبدیل آن صفحه به HTML است. اگر باJUnit  آشنا باشید ، احتمالاً می دانید که این تابع متعلق به نوعی چارچوب تست مبتنی بر وب است. و البته که درست است. استنباط اطلاعات از لیست 3-2 بسیار آسان است ، اما با listing 3-1 اطلاعات کاملاً مبهم است.
+بنابراین چه چیزی خواندن و درک یک تابع مانند Listing 3-2 را آسان می کند؟ چگونه می توانیم یک تابع را با هدف آن مرتبط کنیم؟ چه ویژگی هایی را می توانیم به توابع خود بدهیم تا امکان درک نوع برنامه ای که آن تابع در آن قرار دارد را به یک خواننده تصادفی 
+بدهد؟
 
-Unless you are a student of FitNesse, you probably don’t understand all the details.
-Still, you probably understand that this function performs the inclusion of some setup and
-teardown pages into a test page and then renders that page into HTML. If you are familiar
-with JUnit, 2 you probably realize that this function belongs to some kind of Web-based
-testing framework. And, of course, that is correct. Divining that information from Listing 3-2
-is pretty easy, but it’s pretty well obscured by Listing 3-1.
-So what is it that makes a function like Listing 3-2 easy to read and understand? How
-can we make a function communicate its intent? What attributes can we give our functions
-that will allow a casual reader to intuit the kind of program they live inside?
-### Small!
-The first rule of functions is that they should be small. The second rule of functions is that
-they should be smaller than that. This is not an assertion that I can justify. I can’t provide
-any references to research that shows that very small functions are better. What I can tell
-you is that for nearly four decades I have written functions of all different sizes. I’ve writ-
-ten several nasty 3,000-line abominations. I’ve written scads of functions in the 100 to 300
-line range. And I’ve written functions that were 20 to 30 lines long. What this experience
-has taught me, through long trial and error, is that functions should be very small.
-In the eighties we used to say that a function should be no bigger than a screen-full.
-Of course we said that at a time when VT100 screens were 24 lines by 80 columns, and
-our editors used 4 lines for administrative purposes. Nowadays with a cranked-down font
-and a nice big monitor, you can fit 150 characters on a line and a 100 lines or more on a
-screen. Lines should not be 150 characters long. Functions should not be 100 lines long.
-Functions should hardly ever be 20 lines long.
-How short should a function be? In 1999 I went to visit Kent Beck at his home in Ore-
-gon. We sat down and did some programming together. At one point he showed me a cute
-little Java/Swing program that he called Sparkle. It produced a visual effect on the screen
-very similar to the magic wand of the fairy godmother in the movie Cinderella. As you
-moved the mouse, the sparkles would drip from the cursor with a satisfying scintillation,
-falling to the bottom of the window through a simulated gravitational field. When Kent
-showed me the code, I was struck by how small all the functions were. I was used to func-
-tions in Swing programs that took up miles of vertical space. Every function in this pro-
-gram was just two, or three, or four lines long. Each was transparently obvious. Each told
-a story. And each led you to the next in a compelling order. That’s how short your functions
-should be!
-
-How short should your functions be? They should usually be shorter than Listing 3-2!
-Indeed, Listing 3-2 should really be shortened to Listing 3-3.
+### کوچک بودن!
+اولین قانون برای توابع این است که آنها باید کوچک باشند. قانون دوم این است که آنها باید از آن هم کوچکتر باشند. این ادعایی نیست که بتوانم توجیه کنم. من نمی توانم به تحقیقاتی اشاره کنم که نشان می دهد توابع بسیار کوچک بهتر هستند. چیزی که می توانم به شما بگویم این است که من نزدیک به چهار دهه توابع مختلفی در ابعاد مختلف نوشتم. چندین مورد ناپسند 3000 خطی نوشتم. من تعداد زیادی تابع در حدود 100 تا 300 خط نوشتم. و توابعی به طول 20 تا 30 خط نوشته ام. آنچه این تجربه از طریق آزمایش طولانی و خطا به من آموخته است اینست که توابع باید بسیار کوچک باشند.
+در دهه هشتاد می گفتیم که یک تابع نباید بزرگتر از یک صفحه نمایش باشد. البته این را در زمانی گفتیم که صفحه های VT100, 24 خط در 80 ستون بودند و ویرایشگران ما تنها از 4 خط برای مقاصد مدیریتی استفاده می کردند. امروزه با یک فونت کوتاه شده و یک مانیتور بزرگ خوب ، می توانید 150 کاراکتر را روی یک خط و 100 خط یا بیشتر را در یک صفحه قرار دهید. خطوط نباید 150 کاراکتر داشته باشد. توابع نباید 100 خط باشند. توابع باید به سختی به طول 20 خط برسند.
+یک تابع چقدر باید کوتاه باشد؟ در سال 1999 من برای دیدن Kent Beck به خانه اش در Oregon رفتم. ما نشستیم و با هم برنامه نویسی کردیم. در یک لحظه او یک برنامه Java/Swing کوچک زیبا را به من نشان داد که آن را Sparkle نامید. این اثر یک جلوه بصری بسیار شبیه به چوب جادویی الهه افسانه ای در فیلم سیندرلا ایجاد کرد. با حرکت دادن ماوس ، جرقه ها با یک قلاب رضایت بخش از مکان نما بیرون می ریزند و از طریق یک میدان گرانشی شبیه سازی شده به پایین پنجره می افتادند. وقتی Kent کد را به من نشان داد ، من از این که همه توابع چقدر کوچک هستند ، تحت تأثیر قرار گرفتم. من به توابع برنامه های Swing که فضای عمودی زیادی اشغال میکنند، عادت داشتم. هر تابع در این برنامه فقط دو ، سه یا چهار خط طول داشت. هر کدام واضح و آشکار بود. هر کدام داستانی را بیان می کرد. و هر کدام شما را به ترتیبی قانع کننده به سمت بعدی سوق می دادند. این مقدار همانی مقداری است که توابع شما باید به آن اندازه کوچک باشند!1
+توابع شما چقدر کوتاه باشد؟ آنها معمولاً باید از listing 3-2 کوتاه تر باشند! در واقع ، listing 3-2 باید به اندازه listing 3-3 کوتاه شود.( من از Kent سؤال کردم که آیا او هنوز یک نسخه دارد ، اما او نتوانست یکی از آنها را پیدا کند. من تمام رایانه های قدیمی خود را نیز جستجو کردم ، اما فایده ای نداشت. تمام آنچه اکنون باقی مانده است ، خاطره من از آن برنامه است.)
+</div>
 
 Listing 3-3
 HtmlUtil.java (re-refactored)
@@ -137,15 +109,11 @@ public static String renderPageWithSetupsAndTeardowns(PageData pageData, boolean
     return pageData.getHtml();
 }
 ```
-
-### Blocks and Indenting
-This implies that the blocks within if statements, else statements, while statements, and
-so on should be one line long. Probably that line should be a function call. Not only does
-this keep the enclosing function small, but it also adds documentary value because the
-function called within the block can have a nicely descriptive name.
-This also implies that functions should not be large enough to hold nested structures.
-Therefore, the indent level of a function should not be greater than one or two. This, of
-course, makes the functions easier to read and understand.
+<div dir='rtl'>
+### بلوک ها و تو رفتگی ها
+این listing نشان میدهد که بلوک های موجود در جملات شرطی ،  حلقه ها ، و نظایر آن، باید به اندازه یک خط باشند. احتمالاً آن خط باید یک فراخوانی تابع باشد. این کار نه تنها تابع محصور را کوچک نگه می دارد بلکه یک ارزش مستندسازی را نیز به آن اضافه می کند زیرا تابع فراخوانی شده در آن بلوک می تواند نام توصیفی خوبی داشته باشد.
+همچنین این listing نشان میدهد توابع نباید برای نگه داشتن ساختارهای تو در تو به اندازه کافی بزرگ باشند. بنابراین ، سطح تورفتگی یک تابع نباید بیشتر از یک یا دو باشد. این امر البته باعث می شود خواندن و درک توابع آسان تر شود.
+</div>
 ### Do One Thing
 It should be very clear that Listing 3-1 is doing lots
 more than one thing. It’s creating buffers, fetching
