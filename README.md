@@ -18,6 +18,18 @@
 
 <a dir="ltr" href="mailto:noahopentranslate@gmail.com">noahopentranslate@gmail.com</a>
  
+ # Table of contents
+
+* [Clean Code Persian](README.md)
+* [0\_Intruduction](0_introduction(completed)/README.md)
+  * [مقدمه](0_introduction(completed)/introduction.md)
+* [1\_Clean Code](1_Clean_Code(completed)/clean-code.md)
+  * [کد همیشه وجود خواهد داشت](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%DA%A9%D8%AF-%D9%87%D9%85%DB%8C%D8%B4%D9%87-%D9%88%D8%AC%D9%88%D8%AF-%D8%AE%D9%88%D8%A7%D9%87%D8%AF-%D8%AF%D8%A7%D8%B4%D8%AA)
+* [1\_Clean Code](1_Clean_Code/README.md)
+  * [فصل یک - کد تمیز](1_Clean_Code/clean-code.md)
+* [2\_Meaningful Names](2_meaningful-names/README.md)
+  * [فصل دو - اسامی با معنی](2_meaningful-names/fsl-dw-asamy-ba-many.md)
+
 </div>
 
 
