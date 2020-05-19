@@ -20,8 +20,8 @@
  
  # بخش های ترجمه شده
 
-* [0\_مقدمه](introduction(completed)/README.md)
-  * [مقدمه](0_introduction(completed)/introduction.md)
+* [0_مقدمه](0_introduction(completed)/introduction.md)
+  * [0_مقدمه](0_introduction(completed)/introduction.md)
 * [1\_کد تمیز](Clean_Code(completed)/clean-code.md)
 
   * [کد همیشه وجود خواهد داشت](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%DA%A9%D8%AF-%D9%87%D9%85%DB%8C%D8%B4%D9%87-%D9%88%D8%AC%D9%88%D8%AF-%D8%AE%D9%88%D8%A7%D9%87%D8%AF-%D8%AF%D8%A7%D8%B4%D8%AA)
@@ -41,7 +41,7 @@
   * [کد تمیز چیست؟](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%DA%A9%D8%AF-%D8%AA%D9%85%DB%8C%D8%B2-%DA%86%DB%8C%D8%B3%D8%AA)
   
   * [مکتب فکری!](https://github.com/Noah1001000/clean-code-persian/blob/master/1_Clean_Code(completed)/clean-code.md#%D9%85%DA%A9%D8%AA%D8%A8-%D9%81%DA%A9%D8%B1%DB%8C)
-* [2\_اسامی با معنی](Clean_Code(completed)/meaningful-names(completed))
+* [2\_اسامی با معنی](2_meaningful-names(completed)/meaningful-names.md)
 
   * [استفاده از اسم‌های بیان کننده منظور (Intention-Revealing Names)](https://github.com/Noah1001000/clean-code-persian/blob/master/2_meaningful-names(completed)/meaningful%20names.md#%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%A7%D8%B3%D9%85%D9%87%D8%A7%DB%8C-%D8%A8%DB%8C%D8%A7%D9%86-%DA%A9%D9%86%D9%86%D8%AF%D9%87-%D9%85%D9%86%D8%B8%D9%88%D8%B1-intention-revealing-names)
   
