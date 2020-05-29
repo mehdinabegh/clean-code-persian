@@ -1,6 +1,7 @@
 ![alt text](img_3.1.png)
-توابع
 <div dir='rtl'>
+
+# توابع
 در اوایل برنامه نویسی ، سیستم های خود را باroutine ها و subroutine ها ساختیم. سپس، در عصر Fortran و PL / 1 سیستم هایمان را با برنامه ها، زیر برنامه ها و توابع ساختیم. امروزه تنها توابع هستند که از آن دوران اولیه باقی مانده اند. توابع اولین خط سازماندهی در هر برنامه هستند. خوب نوشتن آنها موضوع این فصل است.
 کد ارائه شده در listing 3-1 را در نظر بگیرید. پیدا کردن یک تابع طولانی در FitNesse1 دشوار است ، اما پس از کمی جستجو به این مورد رسیدم. این تابع نه تنها طولانی است ، بلکه کد تکراری، تعداد زیادی رشته عجیب و غریب و انواع مختلف داده ها و API های عجیب و مبهم را نیز داراست. ببینید که در مدت سه دقیقه آینده چقدر از آن را می توانید درک کنید.
 </div>
@@ -111,11 +112,13 @@ public static String renderPageWithSetupsAndTeardowns(PageData pageData, boolean
 }
 ```
 <div dir='rtl'>
-### بلوک ها و تو رفتگی ها
+
+## بلوک ها و تو رفتگی ها
 این listing نشان میدهد که بلوک های موجود در جملات شرطی ،  حلقه ها ، و نظایر آن، باید به اندازه یک خط باشند. احتمالاً آن خط باید یک فراخوانی تابع باشد. این کار نه تنها تابع محصور را کوچک نگه می دارد بلکه یک ارزش مستندسازی را نیز به آن اضافه می کند زیرا تابع فراخوانی شده در آن بلوک می تواند نام توصیفی خوبی داشته باشد.
 همچنین این listing نشان میدهد توابع نباید برای نگه داشتن ساختارهای تو در تو به اندازه کافی بزرگ باشند. بنابراین ، سطح تورفتگی یک تابع نباید بیشتر از یک یا دو باشد. این امر البته باعث می شود خواندن و درک توابع آسان تر شود.
 </div>
 ### Do One Thing
+
 It should be very clear that Listing 3-1 is doing lots
 more than one thing. It’s creating buffers, fetching
 pages, searching for inherited pages, rendering paths,
@@ -301,7 +304,8 @@ similar phraseology in those names allows the sequence to tell a story. Indeed, 
 showed you just the sequence above, you’d ask yourself: “What happened to
 includeTeardownPages , includeSuiteTeardownPage , and includeTeardownPage ?” How’s that
 for being “. . . pretty much what you expected.”
-Function Arguments
+
+## Function Arguments
 The ideal number of arguments for a function is
 zero (niladic). Next comes one (monadic), followed
 closely by two (dyadic). Three arguments (triadic)
@@ -331,7 +335,8 @@ through the arguments. So output arguments often cause us to do a double-take.
 One input argument is the next best thing to no arguments. SetupTeardown-
 Includer.render(pageData) is pretty easy to understand. Clearly we are going to render the
 data in the pageData object.
-Common Monadic Forms
+
+## Common Monadic Forms
 There are two very common reasons to pass a single argument into a function. You may be
 asking a question about that argument, as in boolean fileExists(“MyFile”) . Or you may be
 operating on that argument, transforming it into something else and returning it. For
@@ -352,7 +357,8 @@ argument, the transformation should appear as the return value. Indeed, StringBu
 transform(StringBuffer in) is better than void transform-(StringBuffer out) , even if the
 implementation in the first case simply returns the input argument. At least it still follows
 the form of a transformation.
-Flag Arguments
+
+## Flag Arguments
 Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It
 immediately complicates the signature of the method, loudly proclaiming that this function
 does more than one thing. It does one thing if the flag is true and another if the flag is false!
@@ -361,7 +367,8 @@ in, and I wanted to limit the scope of refactoring to the function and below. St
 method call render(true) is just plain confusing to a poor reader. Mousing over the call
 and seeing render(boolean isSuite) helps a little, but not that much. We should have
 split the function into two: renderForSuite() and renderForSingleTest() . 
-Dyadic Functions
+
+## Dyadic Functions
 A function with two arguments is harder to understand than a monadic function. For exam-
 ple, writeField(name) is easier to understand than writeField(output-Stream, name) . 10
 Though the meaning of both is clear, the first glides past the eye, easily depositing its
@@ -384,7 +391,7 @@ writeField method a member of outputStream so that you can say outputStream.
 writeField(name) . Or you might make the outputStream a member variable of the current
 class so that you don’t have to pass it. Or you might extract a new class like FieldWriter
 that takes the outputStream in its constructor and has a write method.
-Triads
+## Triads
 Functions that take three arguments are significantly harder to understand than dyads. The
 issues of ordering, pausing, and ignoring are more than doubled. I suggest you think very
 carefully before creating a triad.
@@ -396,7 +403,8 @@ message.
 On the other hand, here is a triad that is not quite so insidious: assertEquals(1.0,
 amount, .001) . Although this still requires a double-take, it’s one that’s worth taking. It’s
 always good to be reminded that equality of floating point values is a relative thing.
-Argument Objects
+
+## Argument Objects
 When a function seems to need more than two or three arguments, it is likely that some of
 those arguments ought to be wrapped into a class of their own. Consider, for example, the
 difference between the two following declarations:
@@ -406,7 +414,8 @@ Reducing the number of arguments by creating objects out of them may seem like
 cheating, but it’s not. When groups of variables are passed together, the way x and
 y are in the example above, they are likely part of a concept that deserves a name of its
 own.
-Argument Lists
+
+## Argument Lists
 Sometimes we want to pass a variable number of arguments into a function. Consider, for
 example, the String.format method:
 ```java
@@ -425,7 +434,7 @@ void monad(Integer... args);
 void dyad(String name, Integer... args);
 void triad(String name, int count, Integer... args);
 ```
-Verbs and Keywords
+## Verbs and Keywords
 Choosing good names for a function can go a long way toward explaining the intent of
 the function and the order and intent of the arguments. In the case of a monad, the
 function and argument should form a very nice verb/noun pair. For example,
@@ -481,7 +490,8 @@ fusing, especially when hidden as a side effect. If you must have a temporal cou
 you should make it clear in the name of the function. In this case we might rename the
 function checkPasswordAndInitializeSession , though that certainly violates “Do one
 thing.”
-Output Arguments
+
+## Output Arguments
 Arguments are most naturally interpreted as inputs to a function. If you have been pro-
 gramming for more than a few years, I’m sure you’ve done a double-take on an argument
 that was actually an output rather than an input. For example:
@@ -526,7 +536,7 @@ if (attributeExists("username")) {
 }
 ```
 
-Prefer Exceptions to Returning Error Codes
+## Prefer Exceptions to Returning Error Codes
 Returning error codes from command functions is a subtle violation of command query
 separation. It promotes commands being used as expressions in the predicates of if state-
 ments.
@@ -579,7 +589,7 @@ catch (Exception e)
 }
 ```
 
-Extract Try/Catch Blocks
+## Extract Try/Catch Blocks
 Try/catch blocks are ugly in their own right. They confuse the structure of the code and
 mix error processing with normal processing. So it is better to extract the bodies of the try
 and catch blocks out into functions of their own.
@@ -627,7 +637,8 @@ otherwise be redundant. Structured programming, Aspect Oriented Programming, Com
 nent Oriented Programming, are all, in part, strategies for eliminating duplication. It
 would appear that since the invention of the subroutine, innovations in software develop-
 ment have been an ongoing attempt to eliminate duplication from our source code.
-Structured Programming
+
+## Structured Programming
 Some programmers follow Edsger Dijkstra’s rules of structured programming. 14 Dijkstra
 said that every function, and every block within a function, should have one entry and one
 exit. Following these rules means that there should only be one return statement in a func-
@@ -638,7 +649,8 @@ So if you keep your functions small, then the occasional multiple return , break
 continue statement does no harm and can sometimes even be more expressive than the sin-
 gle-entry, single-exit rule. On the other hand, goto only makes sense in large functions, so
 it should be avoided.
-How Do You Write Functions Like This?
+
+## How Do You Write Functions Like This?
 Writing software is like any other kind of writing. When you write a paper or an article,
 you get your thoughts down first, then you massage it until it reads well. The first draft
 might be clumsy and disorganized, so you wordsmith it and restructure it and refine it until
