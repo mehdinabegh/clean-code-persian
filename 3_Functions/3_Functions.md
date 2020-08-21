@@ -268,63 +268,81 @@ public class EmployeeFactoryImpl implements EmployeeFactory
 
 ## آرگومان های تابع
 
+تعداد ایده آل آرگومان برای یک تابع صفر است (niladic). بعدی یک (monadic) و درنهایت دو (dyadic). در صورت امکان باید از سه آرگومان (triadic) اجتناب شود. بیش از سه مورد (polyadic) نیاز به توجیه بسیار ویژه دارند - و به هر حال نباید از آنها استفاده کرد.
 
+آرگومان ها خیلی قوی هستند. آنها از قدرت مفهومی زیادی مصرف می کنند. به همین دلیل در مثال تقریباً  شر همه آنها را کم کردم. بطور مثال StringBuffer را درنظر بگیرید. باید آن را به عنوان یک آرگومان استفاده میکردیم به جای اینکه آن را به عنوان یک متغیر تعریف کنیم ، اما پس خوانندگان ما باید هر بار که می دیدند ، آن را تفسیر کنند. هروقت داستانی که ماژول میگوید را می‌خوانید، includeSetupPage() ساده تر درک میشود تا includeSetupPageInto(newPageContent). آرگومان در سطح متفاوتی از انتزاع نسبت به نام تابع است و شما را مجبور می کند جزئیاتی را بشناسید (به عبارت دیگر StringBuffer) که در آن مرحله به خصوص اهمیتی ندارد.
 
-</div>
+آرگومان حتی از نقطه نظر تست هم سخت است. مشکل در نوشتن تمام موارد تست را تصور کنید تا اطمینان حاصل شود که تمام ترکیبات مختلف آرگومان ها به درستی کار می کنند. اگر آرگومانی وجود نداشته باشد ، این مسائل دیگر مهم نیستند. اگر یک آرگومان وجود داشته باشد ، خیلی سخت نیست. با دو آرگومان ، این مسئله کمی چالش برانگیزتر می شود. با بیش از دو آرگومان ، تست هر ترکیبی از مقادیر مناسب می تواند دلهره آور باشد.
 
-The ideal number of arguments for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible. More than three (polyadic) requires very special justification—and then shouldn’t be used anyway.
+درک آرگومانهای خروجی سخت تر از آرگومان های ورودی است. هنگامی که ما یک تابع را فرا می خوانیم ، به ایده عادت داریم که اطلاعات از طریق آرگومان ها وارد تابع می شود و از طریق مقدار بازگشتی از آن خارج می شود . ما معمولاً انتظار نداریم که اطلاعات از طریق آرگومان ها خارج شوند. بنابراین آرگومان های خروجی غالباً باعث کار دو برابر می شوند.
 
-Arguments are hard. They take a lot of conceptual power. That’s why I got rid of almost all of them from the example. Consider, for instance, the StringBuffer in the example. We could have passed it around as an argument rather than making it an instance variable, but then our readers would have had to interpret it each time they saw it. When you are reading the story told by the module, includeSetupPage() is easier to understand than includeSetupPageInto(newPageContent) . The argument is at a different level of abstraction than the function name and forces you to know a detail (in other words, StringBuffer ) that isn’t particularly important at that point.
+بعد بدون آرگومان، یک آرگومان ورودی بهترین است. SetupTeardownIncluder.render(pageData) تقریبا قابل درک است. واضح است که ما قصد داریم داده ها را در شیء PageData رندر کنیم.
 
-Arguments are even harder from a testing point of view. Imagine the difficulty of writing all the test cases to ensure that all the various combinations of arguments work properly. If there are no arguments, this is trivial. If there’s one argument, it’s not too hard.
+### فرم رایج Monadic
 
-With two arguments the problem gets a bit more challenging. With more than two arguments, testing every combination of appropriate values can be daunting. Output arguments are harder to understand than input arguments. When we read a function, we are used to the idea of information going in to the function through arguments and out through the return value. We don’t usually expect information to be going out through the arguments. So output arguments often cause us to do a double-take.
+دو دلیل بسیار رایج برای دادن یک آرگومان به تابع وجود دارد. ممکن است در مورد آن آرگومان در boolean fileExists(“MyFile”) سوال بپرسید. یا ممکن است شما بر اساس آن آرگومان کار کنید ، آن را به چیز دیگری تبدیل کرده و برگردانید. به عنوان مثال ، InputStream fileOpen(“MyFile”) یک رشته نام فایل را به مقدار بازگشتی InputStream تبدیل می کند. این دو استفاده همان چیزی است که خوانندگان با دیدن یک تابع ، انتظار دارند. شما باید نام هایی را انتخاب کنید که تمایز ایجاد می کند و همیشه از دو شکل در یک زمینه استفاده کنید. (به تفکیک فرمان پرسشی زیر مراجعه کنید.)
 
-One input argument is the next best thing to no arguments. SetupTeardownIncluder.render(pageData) is pretty easy to understand. Clearly we are going to render the data in the pageData object.
+یک شکل کمی کمتر رایج، اما هنوز هم بسیار مفید برای یک تابع تک آرگومانی ، یک رویداد است. در این شکل ، یک آرگومان ورودی وجود دارد اما هیچ آرگومان خروجی وجود ندارد. منظور از برنامه کلی ، تعبیر فراخوانی به عنوان یک رویداد و استفاده از آرگومان برای تغییر وضعیت سیستم است ، برای مثال void passwordAttemptFailedNtimes(int attempts). با دقت از این فرم استفاده کنید. باید برای خواننده بسیار روشن باشد که این یک رویداد است. نام ها و متن ها را با دقت انتخاب کنید.
 
-## Common Monadic Forms
-There are two very common reasons to pass a single argument into a function. You may be asking a question about that argument, as in boolean fileExists(“MyFile”) . Or you may be operating on that argument, transforming it into something else and returning it. For example, InputStream fileOpen(“MyFile”) transforms a file name String into an InputStream return value. These two uses are what readers expect when they see a function. You should choose names that make the distinction clear, and always use the two forms in a consistent context. (See Command Query Separation below.)
+سعی کنید از توابع monadic که این فرم ها را رعایت نمی کنند ، خودداری کنید، برای مثال void includeSetupPageInto(StringBuffer pageText). استفاده از آرگومان خروجی به جای مقدار بازگشتی برای یک تبدیل گیج کننده است. اگر یک تابع أرگومان ورودی خود را تغییر دهد ، تبدیل باید به عنوان مقدار بازگشتی ظاهر شود. درواقع، StringBuffer transform(StringBuffer in) بهتر است از void transform(StringBuffer out)، حتی اگر پیاده‌سازی در حالت اول آرگومان ورودی را بازگرداند. حداقل هنوز شکل تبدیل را دنبال می کند.
 
-A somewhat less common, but still very useful form for a single argument function, is an event. In this form there is an input argument but no output argument. The overall program is meant to interpret the function call as an event and use the argument to alter the state of the system, for example, void passwordAttemptFailedNtimes(int attempts) . Use this form with care. It should be very clear to the reader that this is an event. Choose names and contexts carefully.
+### آرگومان های پرچم
 
-Try to avoid any monadic functions that don’t follow these forms, for example, void includeSetupPageInto(StringBuffer pageText) . Using an output argument instead of a return value for a transformation is confusing. If a function is going to transform its input argument, the transformation should appear as the return value. Indeed, StringBuffer transform(StringBuffer in) is better than void transform-(StringBuffer out) , even if the implementation in the first case simply returns the input argument. At least it still follows the form of a transformation.
+آرگومان های پرچم زشت هستند. دادن یک بولین به تابع یک عمل واقعاً وحشتناک است. بلافاصله امضای تابع را پیچیده می کند و با صدای بلند می گوید که این تابع بیشتر از یک کار را انجام می دهد. اگر پرچم درست باشد یک کار، و اگر پرچم نادرست باشد یک کار دیگر را انجام می دهد!
 
-## Flag Arguments
-Flag arguments are ugly. Passing a boolean into a function is a truly terrible practice. It immediately complicates the signature of the method, loudly proclaiming that this function does more than one thing. It does one thing if the flag is true and another if the flag is false!
-In Listing 3-7 we had no choice because the callers were already passing that flag in, and I wanted to limit the scope of refactoring to the function and below. Still, the method call render(true) is just plain confusing to a poor reader. Mousing over the call and seeing render(boolean isSuite) helps a little, but not that much. We should have split the function into two: renderForSuite() and renderForSingleTest() . 
+در Listing 3-7 ما چاره ای نداشتیم زیرا صدازنندگان آن پرچم داده بودند و من می خواستم دامنه ریفکتور را به تابع و زیر آن محدود کنم. همچنان صدازدن متد render(true) برای خواننده ضعیف گیج کننده است. بردن ماوس روی صدازننده و دیدن render(boolean isSuite) میتواند کمی کمک کند اما نه زیاد. ناچاریم تابع را به تابع renderForSuite() و renderForSingleTest() تقسیم کنیم.
 
-## Dyadic Functions
-A function with two arguments is harder to understand than a monadic function. For example, writeField(name) is easier to understand than writeField(output-Stream, name) . 10 Though the meaning of both is clear, the first glides past the eye, easily depositing its meaning. The second requires a short pause until we learn to ignore the first parameter. And that, of course, eventually results in problems because we should never ignore any part of code. The parts we ignore are where the bugs will hide.
+### توابع Dyadic
 
+درک تابع دو آرگومانی، سختتر از تابع تک آرگومانی است. بطور مثال، درک writeField(name) آسان تر است از writeField(output-Stream, name). گرچه معنای هر دو روشن است ، اما با اولین دیدن سرسری ، به راحتی معنی آن را می رساند. مورد دوم، به مکث کوتاه نیاز دارد تا بفهمیم پارامتر اول را نادیده بگیریم. و این البته در نهایت منجر به مشکلاتی می شود زیرا ما هرگز نباید بخشی از کد را نادیده بگیریم. قسمت هایی که نادیده می گیریم جایی است که اشکالات در آن پنهان می شوند.
 
-There are times, of course, where two arguments are appropriate. For example, Point p = new Point(0,0); is perfectly reasonable. Cartesian points naturally take two arguments. Indeed, we’d be very surprised to see new Point(0) . However, the two arguments in this case are ordered components of a single value! Whereas output-Stream and name have neither a natural cohesion, nor a natural ordering.
+البته زمانهایی وجود دارد که دو آرگومان مناسب است. بطور مثال، Point p = new Point(0,0)؛ کاملا منطقیست. نقاط دکارتی به طور طبیعی دو آرگومان را در بر می گیرد. در واقع ، از دیدن new Point(0) بسیار شگفت زده خواهیم شد. با این حال ، در این مورد ، دو آرگومان به اجزای یک مقدار استفاده می شود! در حالی که outputStream و name هیچ انسجام طبیعی ندارند.
 
-Even obvious dyadic functions like assertEquals(expected, actual) are problematic. How many times have you put the actual where the expected should be? The two arguments have no natural ordering. The expected, actual ordering is a convention that requires practice to learn.
+حتی توابع دو آرگومانی بدیهی مانند assertEquals(expected, actual) مشکل زا هستند. چند بار از این در جایی که انتظار می رود باشد استفاده کردید؟ این دو آرگومان هیچ نظم طبیعی ندارند. ترتیب واقعی و مورد انتظار یک قرارداد است که برای یادگیری نیاز به تمرین دارد.
 
-Dyads aren’t evil, and you will certainly have to write them. However, you should be aware that they come at a cost and should take advantage of what mechanims may be available to you to convert them into monads. For example, you might make the writeField method a member of outputStream so that you can say outputStream. writeField(name) . Or you might make the outputStream a member variable of the current class so that you don’t have to pass it. Or you might extract a new class like FieldWriter that takes the outputStream in its constructor and has a write method.
+دو آرگومانی ها شر نیستند و مطمئناً باید آنها را بنویسید. با این حال ، باید بدانید که هزینه دارند و باید از مکانیسم هایی که در دسترس شماست، آنان را تبدیل به تک آرگومانی کنید. برای مثال، ممکن است متد writeField را عضوی از outputStream کنید تا بتوانید بگویید outputStream.writeField(name). یا ممکن است outputStream را عضوی از متغیرهای کلاس جاری کنید تا نیازی به دادنش به تابع نباشد. یا ممکن است کلاس جدیدی، بطور مثال FieldWriter، ایجاد کنید تا outputStream را در کانستراکتور اش بگیرد و یک مثد write داشته باشد.
 
-## Triads
-Functions that take three arguments are significantly harder to understand than dyads. The issues of ordering, pausing, and ignoring are more than doubled. I suggest you think very carefully before creating a triad.
+### سه آرگومانی
 
-For example, consider the common overload of assertEquals that takes three arguments: assertEquals(message, expected, actual) . How many times have you read the message and thought it was the expected ? I have stumbled and paused over that particular triad many times. In fact, every time I see it, I do a double-take and then learn to ignore the message.
-On the other hand, here is a triad that is not quite so insidious: assertEquals(1.0, amount, .001) . Although this still requires a double-take, it’s one that’s worth taking. It’s always good to be reminded that equality of floating point values is a relative thing.
+توابعی که سه آرگومان را در بر می گیرد درکشان به مراتب سخت تر از دو آرگومانی هاست. مسائلی مانند ترتیب ، مکث و نادیده گرفتن، بیش از دو برابر شده است. پیشنهاد می کنم قبل از ایجاد یک تابع سه آرگومانه ، خیلی با دقت فکر کنید.
 
-## Argument Objects
-When a function seems to need more than two or three arguments, it is likely that some of those arguments ought to be wrapped into a class of their own. Consider, for example, the difference between the two following declarations:
+بطور مثال، شکل رایج overload متد assertEquals که سه آرگومان میگیرد را درنظر گیرید: assertEquals(message, expected, actual). چندبار message را خواندید و فکر کردید که expected است؟ بارها روی این سه آرگومانه خاص مکث کردم. در واقع ، هر بار که آن را می بینم ، دوباره کاری انجام می دهم و بعد یاد می گیرم که message را نادیده بگیرم.
+
+از طرف دیگر، تابع سه آرگومانی ای وجود دارد که دردسرساز نیست: assertEquals(1.0, amount, .001). اگرچه این امر هنوز نیاز به یک برداشت دوباره دارد ، اما ارزش آن را دارد. همیشه خوب است یادآوری کنیم که برابری مقادیر اعشاری، یک چیز نسبی است.
+
+### آبجکت های آرگومان
+
+وقتی به نظر می رسد تابع بیش از دو یا سه آرگومان نیاز دارد ، احتمالاً بعضی از این آرگومان ها باید در یک کلاس از نوع خود پیچیده شوند. به عنوان مثال ، تفاوت بین دو تعریف زیر را در نظر بگیرید:
+
 Circle makeCircle(double x, double y, double radius);
 Circle makeCircle(Point center, double radius); 
-Reducing the number of arguments by creating objects out of them may seem like cheating, but it’s not. When groups of variables are passed together, the way x and y are in the example above, they are likely part of a concept that deserves a name of its own.
 
-## Argument Lists
-Sometimes we want to pass a variable number of arguments into a function. Consider, for example, the String.format method:
+ممکن است کاهش تعداد آرگومان ها با ایجاد آبجکت های خارج از آنها تقلب به نظر برسد ، اما اینگونه نیست. وقتی گروههای متغیر با هم داده می شوند ، مثلا x و y در مثال بالا، احتمالاً بخشی از یک مفهوم هستند که سزاوار اسمی برای خود هستند.
+
+### لیست های آرگومان
+
+بعضی اوقات می خواهیم تعداد متغیری از آرگومان را به یک تابع منتقل کنیم. بطور مثال، متد String.format را در نظر بگیرید:
+
+</div>
 
 ```java
 String.format("%s worked %.2f hours.", name, hours);
 ```
+<div dir='rtl'>
 
-If the variable arguments are all treated identically, as they are in the example above, then they are equivalent to a single argument of type List . By that reasoning, String.format is actually dyadic. Indeed, the declaration of String.format as shown below is clearly dyadic.
+اگر با همه آرگومان های متغیر به طور یکسان رفتار شوند ، همانطور که در مثال بالا وجود دارد، پس معادل یک آرگومان واحد از نوع list هستند. بنابراین، String.format درواقع یک متد دو آرگومانی است. درواقع، تعریف متد String.format که در زیر آمده، بوضوح دو آرگومانی بودنش را نشان میدهد.
+
+</div>
+
+```java
 public String format(String format, Object... args)
-So all the same rules apply. Functions that take variable arguments can be monads, dyads, or even triads. But it would be a mistake to give them more arguments than that.
+```
+
+<div dir='rtl'>
+
+بنابراین این قوانین به همه، یکسان اعمال می شود. توابعی که آرگومانهای متغیر میگیرند، می توانند تک آرگومانی، دو آرگومانی و یا حتی سه آرگومانی باشند. اما این اشتباه است که آرگومان های بیشتری را به آن دهیم.
+
+</div>
 
 ```java
 void monad(Integer... args);
@@ -332,14 +350,19 @@ void dyad(String name, Integer... args);
 void triad(String name, int count, Integer... args);
 ```
 
-## Verbs and Keywords
-Choosing good names for a function can go a long way toward explaining the intent of the function and the order and intent of the arguments. In the case of a monad, the function and argument should form a very nice verb/noun pair. For example, write(name) is very evocative. Whatever this “name” thing is, it is being “written.” An even better name might be writeField(name) , which tells us that the “name” thing is a “field.”
-This last is an example of the keyword form of a function name. Using this form we encode the names of the arguments into the function name. For example, assertEquals might be better written as assertExpectedEqualsActual(expected, actual) . This strongly mitigates the problem of having to remember the ordering of the arguments.
+<div dir='rtl'>
 
-Have No Side Effects
-Side effects are lies. Your function promises to do one thing, but it also does other hidden things. Sometimes it will make unexpected changes to the variables of its own class.
-Sometimes it will make them to the parameters passed into the function or to system globals. In either case they are devious and damaging mistruths that often result in strange temporal couplings and order dependencies.
-Consider, for example, the seemingly innocuous function in Listing 3-6. This function uses a standard algorithm to match a userName to a password . It returns true if they match and false if anything goes wrong. But it also has a side effect. Can you spot it?
+### افعال و کیوردها
+
+انتخاب نامهای خوب برای یک تابع می تواند شروع کننده یک راه طولانی برای توضیح هدف تابع و ترتیب و هدف آرگومان ها باشد. در مورد توابع تک آرگومانی، تابع و آرگومان باید یک جفت فعل/اسم بسیار زیبا را باشند. بطور مثال، write(name) بسیار خوب است. حال “name” هرچه که باشد، قرار است نوشته(“written”) شود. حتی یک نام بهتر، میتواند writeField(name) باشد که میگوید “name” یک “field” است. این آخری، مثالی است از فرم کلمه کلیدی برای نام یک تابع. با استفاده از این فرم، نام آرگومان ها را در نام تابع رمزگذاری می کنیم. برای مثال، assertEquals بهتر است به شکل assertExpectedEqualsActual(expected, actual) نوشته شود. این، به شدت مشکل یادآوری ترتیب آرگومان ها را کاهش می دهد.
+
+## نداشتن هیچ عوارض جانبی
+
+عوارض جانبی دروغ است. تابع شما قول انجام یک کار را می دهد ، اما کارهای پنهان دیگری را نیز انجام می دهد. بعضی اوقات تغییرات غیرمنتظره ای در متغیرهای کلاس خاص خود ایجاد می کند. گاهی اوقات پارامترها را به تابع یا globals system منتقل می کند. در هر دو صورت ، آنها گراه کننده و آسیب زا هستند که غالباً به ایجاد پیوندهای موقتی عجیب و غریب و ایجاد وابستگی های ترتیبی منجر می شوند.
+
+به عنوان مثال ، عملکرد به ظاهر بی ضرر Listing 3-6 را در نظر بگیرید. این تابع از یک الگوریتم استاندارد برای نظیرسازی یک نام کاربری به رمز عبور انجام می دهد. اگر نظیرسازی صورت گرفت، مقدار true و در غیر اینصورت هر اتفاق دیگری بیوفتد، false برمیگرداند. اما یک عارضه جانبی دارد. می توانید آن را تشخیص دهید؟
+
+</div>
 
 Listing 3-6
 UserValidator.java
@@ -365,24 +388,75 @@ public class UserValidator
 }
 ```
 
-The side effect is the call to Session.initialize() , of course. The checkPassword function, by its name, says that it checks the password. The name does not imply that it initializes the session. So a caller who believes what the name of the function says runs the risk of erasing the existing session data when he or she decides to check the validity of the user. 
-This side effect creates a temporal coupling. That is, checkPassword can only be called at certain times (in other words, when it is safe to initialize the session). If it is called out of order, session data may be inadvertently lost. Temporal couplings are con- fusing, especially when hidden as a side effect. If you must have a temporal coupling, you should make it clear in the name of the function. In this case we might rename the function checkPasswordAndInitializeSession , though that certainly violates “Do one thing.”
+<div dir='rtl'>
 
-## Output Arguments
-Arguments are most naturally interpreted as inputs to a function. If you have been pro- gramming for more than a few years, I’m sure you’ve done a double-take on an argument that was actually an output rather than an input. For example: appendFooter(s);
+عارضا جانبی در صدازدن Session.initialize() است. تابع checkPassword طبق اسمش، رمز عبور را چک میکند. نامش نشان نمیدهد که session را ایجاد میکند. پس هرگاه صدازننده که اعقاد دارد کار تابع طبق اسمش خواهد بود، ریسک پاک شدن دیتا session موجود را ایجاد میکند.
 
-Does this function append s as the footer to something? Or does it append some footer to s ? Is s an input or an output? It doesn’t take long to look at the function signature and see:
+این عارضه جانبی، یک جفت موقتی ایجاد میکند. تابع checkPassword فقط در زمان خاصی میتواند صدازده شود (به عبارت دیگر، زمانیکه ایجاد session ایمن است). اگر خارج از ترتیب صدا زده شود، ممکن است دیتا session از دست رود. جفت موقتی گیج کننده است، بخصوص زمانی که در عوارض جانبی پنهان شده باشند. اگر مجبورید که یک جفت موقتی داشته باشید، باید این موضوع را در نام تابع مشخص کنید. در مثال ما تابع باید به checkPasswordAndInitializeSession تغییر نام یابد که مشخص است قانون "انجام دادن یک کار" را نقض میکند.
 
-public void appendFooter(StringBuffer report) This clarifies the issue, but only at the expense of checking the declaration of the function. Anything that forces you to check the function signature is equivalent to a double-take. It’s a cognitive break and should be avoided.
+### آرگومان های خروجی
 
-In the days before object oriented programming it was sometimes necessary to have output arguments. However, much of the need for output arguments disappears in OO languages because this is intended to act as an output argument. In other words, it would be better for appendFooter to be invoked as report.appendFooter(); In general output arguments should be avoided. If your function must change the state of something, have it change the state of its owning object.
+آرگومان ها به طور طبیعی به عنوان ورودی های یک تابع تعبیر می شوند. اگر بیش از چند سال مشغول برنامه نویسی هستید ، مطمئنم که روی یک آرگومانی کار کردید که در واقع یک خروجی بود نه ورودی. مثلا:
 
-Command Query Separation
-Functions should either do something or answer something, but not both. Either your function should change the state of an object, or it should return some information about that object. Doing both often leads to confusion. Consider, for example, the following function:
+</div>
+
+```java
+appendFooter(s);
+```
+
+<div dir='rtl'>
+
+آیا این تابع s را به عنوان پانویس به چیزی اضافه میکند؟ یا پانویسی را به s اضافه میکند؟ آیا s یک ورودیست یا خروجی؟ زمان زیادی طول نمیکشد که به تابع نگاه کنیم و ببینیم:
+
+</div>
+
+```java
+public void appendFooter(StringBuffer report) 
+```
+
+<div dir='rtl'>
+
+اما مشخص شدن مسئله به بهای چک کردن پیاده سازی تابع است! هرچیزی که شمارا مجبور به چک کردن امضا تابع کند، دوباره کاریست. یک حواس پرتیست که باید از آن اجتناب شود.
+
+در روزگار قبل از برنامه نویسی شی گرا، گاهی وجود آرگومان خروجی لازم بود. هرچند نیاز به آرگومان خروجی در زبان های شی گرا ناپدید شد زیرا این هدف به عنوان آرگومان خروجی عمل می کند. به عبارت دیگر، بهتر است appendFooter به شکل زیر فراخوانی شود:
+
+</div>
+
+```java
+report.appendFooter();
+```
+
+<div dir='rtl'>
+
+به طور کلی باید از آرگومان های خروجی جلوگیری کرد. اگر تابع شما باید وضعیت چیزی را تغییر دهد ، وضعیت آبجکت آن را تغییر دهید.
+
+## جداسازی رایج Query
+
+توابع یا باید کاری انجام دهند یا به چیزی پاسخ دهند ، اما نه هر دو اینها. یا تابع شما باید وضعیت یک شی را تغییر دهد ، یا باید برخی از اطلاعات مربوط به آن شی را برگرداند. انجام هر دو، اغلب منجر به سردرگمی می شود. برای مثال، تابع زیر را در نظر بگیرید:
+
+</div>
+
+```java
 public boolean set(String attribute, String value); 
-This function sets the value of a named attribute and returns true if it is successful and false if no such attribute exists. This leads to odd statements like this:
+```
+
+<div dir='rtl'>
+
+این تابع مقدار یک ویژگی مشخص شده را تعیین می کند و در صورت موفقیت true و اگر چنین صفتی وجود نداشت،  مقدار false برمیگرداند. این منجر به statements عجیب مثل این می شود:
+
+</div>
+
+```java
 if (set("username", "unclebob"))...
-Imagine this from the point of view of the reader. What does it mean? Is it asking whether the “ username ” attribute was previously set to “ unclebob ”? Or is it asking whether the “ username ” attribute was successfully set to “ unclebob ”? It’s hard to infer the meaning from the call because it’s not clear whether the word “ set ” is a verb or an adjective. The author intended set to be a verb, but in the context of the if statement it feels like an adjective. So the statement reads as “If the username attribute was previously set to unclebob ” and not “set the username attribute to unclebob and if that worked then. . . .” We could try to resolve this by renaming the set function to setAndCheckIfExists , but that doesn’t much help the readability of the if statement. The real solution is to separate the command from the query so that the ambiguity cannot occur.
+```
+
+<div dir='rtl'>
+
+این را از نقطه نظر خواننده تصور کنید. چه معنی می دهد؟ آیا میپرسد که خصیصه “username” قبلا “unclebob” مقداردهی شده؟ یا میپرسد که خصیصه "username" با موفقیت با “unclebob” مقداردهی شده است؟ استنباط از این فراخوانی دشوار است زیرا مشخص نیست که کلمه "set" فعل است یا صفت.
+
+نویسنده قصد دارد که "set" فعل باشد، اما در متن if statement بتظر میرسد صفت باشد. بنابراین statement به این صورت خوانده می شود که: "اگر خصیصه usename قبلا unclebob مقداردهی شده" و "مقداردهی خصیصه username به unclebob انجام شد" اتفاق نیوفتاد. ما می توانیم با تغییر نام تابع set به setAndCheckIfExists سعی کنیم این مسئله را برطرف کنیم ، اما این به خوانایی if statement کمک نمی کند. راه حل واقعی جدا کردن دستور از کوئری است تا ابهام رخ ندهد.
+
+</div>
 
 ```java
 if (attributeExists("username")) {
@@ -391,43 +465,50 @@ if (attributeExists("username")) {
 }
 ```
 
-## Prefer Exceptions to Returning Error Codes
-Returning error codes from command functions is a subtle violation of command query separation. It promotes commands being used as expressions in the predicates of if statements.
+<div dir='rtl'>
+
+## ترجیح Exception ها نسبت به برگرداندن کد خطا
+
+بازگشت کدهای خطا از توابع فرمان یک نقض ظریف در تفکیک کوئری فرمان است. این دستورات را برای استفاده به عنوان عبارات در if statementها ، ترویج می کند.
+
+</div>
 
 ```java
 if (deletePage(page) == E_OK)
 ```
 
-This does not suffer from verb/adjective confusion but does lead to deeply nested structures. When you return an error code, you create the problem that the caller must deal with the error immediately.
+<div dir='rtl'>
+
+این امر از سردرگمی فعل/صفت رنج نمی برد بلکه منجر به ساختارهای عمیقاً تو در تو می شود. هنگامی که یک کد خطا را برگردانید ، این مشکل را ایجاد می کنید که صدازننده باید بلافاصله با خطا دست و پنجه نرم کند.
+
+</div>
 
 ```java
-if (deletePage(page) == E_OK) 
-{
-	if (registry.deleteReference(page.name) == E_OK) 
-	{
-		if (configKeys.deleteKey(page.name.makeKey()) == E_OK)
-		{
+if (deletePage(page) == E_OK) {
+	if (registry.deleteReference(page.name) == E_OK) {
+		if (configKeys.deleteKey(page.name.makeKey()) == E_OK) {
 			logger.log("page deleted");
 		} 
-	else
-	{
+	else {
 		logger.log("configKey not deleted");
 	}
 	}
-	else
-	{
+	else {
 		logger.log("deleteReference from registry failed");
 	}
 	
 } 
-else
-{
+else {
 	logger.log("delete failed");
 	return E_ERROR;
 }
 ```
 
-On the other hand, if you use exceptions instead of returned error codes, then the error processing code can be separated from the happy path code and can be simplified:
+<div dir='rtl'>
+
+از طرف دیگر ، اگر به جای کدهای خطای برگشتی از exceptionها استفاده می کنید ، می توانید پردازش کد خطا را از مسیر کد جدا کرده و ساده سازی شود.
+
+</div>
 
 ```java
 try
@@ -442,9 +523,50 @@ catch (Exception e)
 }
 ```
 
-## Extract Try/Catch Blocks
-Try/catch blocks are ugly in their own right. They confuse the structure of the code and mix error processing with normal processing. So it is better to extract the bodies of the try and catch blocks out into functions of their own.
-plies that there is some class or enum in which all the error codes are defined.
+<div dir='rtl'>
+
+## استخراج بلوک های Try/Catch
+
+بلوک های try/catch در نوع خود زشت هستند. ساختار کد را گیج کننده می کنند و پردازش خطا را با پردازش عادی مخلوط می کنند. بنابراین بهتر است بدنه بلوک های try/catch را استخراج کنید و توابع مربوطه را بنویسید.
+
+</div>
+
+```java
+public void delete(Page page) {
+	try {
+		deletePageAndAllReferences(page);
+	}
+	catch (Exception e) {
+		logError(e);
+	}
+}
+
+
+private void deletePageAndAllReferences(Page page) throws Exception {
+	deletePage(page);
+	registry.deleteReference(page.name);
+	configKeys.deleteKey(page.name.makeKey());
+}
+
+
+private void logError(Exception e) {
+	logger.log(e.getMessage());
+}
+```
+
+<div dir='rtl'>
+
+در بالا، تابع delete فقط مربوط به پردازش خطا است. فهم آن آسان است و بعد می توان براحتی نادیده گرفتش. تابع DeletePageAndAllReferences همه چیز مربوط به فرآیندهای حذف کامل یک صفحه است. مدیریت خطا را می توان نادیده گرفت. این یک جداسازی خوب را فراهم می کند که درک و تغییر کد را ساده تر می کند.
+
+## مدیریت خطا یک چیز است
+
+توابع باید یک کار را انجام دهند. مدیریت خطا نیز یک کار است. بنابراین ، تابعی که مدیریت خطاها را انجام می دهد ، نباید کاری دیگر انجام دهد. این دلالت دارد (مانند مثال بالا) که اگر کلمه کلیدی try در یک تابع وجود داشته باشد ، باید اولین کلمه در تابع باشد و بعد از بلوک های catch/finally نیز چیزی نباید وجود داشته باشد.
+
+## آهنربای وابستگی Error.java
+
+بازگرداندن کدهای خطا معمولاً دلالت بر این دارد که تعدادی کلاس یا enum وجود دارد که در آن همه کدهای خطا تعریف می شوند.
+
+</div>
 
 ```java
 public enum Error 
@@ -458,43 +580,45 @@ public enum Error
 }
 ```
 
-Classes like this are a dependency magnet; many other classes must import and use
-them. Thus, when the Error enum changes, all those other classes need to be recompiled
-and redeployed. 11 This puts a negative pressure on the Error class. Programmers don’t want
-to add new errors because then they have to rebuild and redeploy everything. So they reuse
-old error codes instead of adding new ones.
-When you use exceptions rather than error codes, then new exceptions are derivatives of
-the exception class. They can be added without forcing any recompilation or redeployment. 12
-Don’t Repeat Yourself 13
-Look back at Listing 3-1 carefully and you
-will notice that there is an algorithm that
-gets repeated four times, once for each of
-the SetUp , SuiteSetUp , TearDown , and
-SuiteTearDown cases. It’s not easy to spot
-this duplication because the four instances
-are intermixed with other code and aren’t
-uniformly duplicated. Still, the duplication
-is a problem because it bloats the code and
-will require four-fold modification should the algorithm ever have to change. It is also a four-fold opportunity for an error of omission.
-This duplication was remedied by the include method in Listing 3-7. Read through that code again and notice how the readability of the whole module is enhanced by the reduction of that duplication.
-Duplication may be the root of all evil in software. Many principles and practices have been created for the purpose of controlling or eliminating it. Consider, for example, that all of Codd’s database normal forms serve to eliminate duplication in data. Consider also how object-oriented programming serves to concentrate code into base classes that would otherwise be redundant. Structured programming, Aspect Oriented Programming, Component Oriented Programming, are all, in part, strategies for eliminating duplication. It would appear that since the invention of the subroutine, innovations in software development have been an ongoing attempt to eliminate duplication from our source code.
+<div dir='rtl'>
 
-## Structured Programming
-Some programmers follow Edsger Dijkstra’s rules of structured programming. 14 Dijkstra said that every function, and every block within a function, should have one entry and one exit. Following these rules means that there should only be one return statement in a function, no break or continue statements in a loop, and never, ever, any goto statements.While we are sympathetic to the goals and disciplines of structured programming, those rules serve little benefit when functions are very small. It is only in larger functions that such rules provide significant benefit.
-So if you keep your functions small, then the occasional multiple return , break , or continue statement does no harm and can sometimes even be more expressive than the single-entry, single-exit rule. On the other hand, goto only makes sense in large functions, so it should be avoided.
+کلاس هایی مانند این یک آهنربای وابستگی هستند. بسیاری از کلاس های دیگر باید آنها را import و استفاده کنند. بنابراین ، هنگامی که Error enum تغییر می کند ، باید تمام کلاسهای دیگر مجدداً  deploy و کامپایل شوند. این، یک فشار منفی به کلاس Error وارد می کند. برنامه نویسان نمی خواهند خطاهای جدیدی اضافه کنند زیرا پس از آن مجبورند همه چیز را مجدداً build و deploy کنند. بنابراین آنها به جای اضافه کردن کدهای جدید ، از کدهای خطای قدیمی استفاده مجدد می کنند.
 
-## How Do You Write Functions Like This?
-Writing software is like any other kind of writing. When you write a paper or an article, you get your thoughts down first, then you massage it until it reads well. The first draft might be clumsy and disorganized, so you wordsmith it and restructure it and refine it until it reads the way you want it to read.
-When I write functions, they come out long and complicated. They have lots of indenting and nested loops. They have long argument lists. The names are arbitrary, and there is duplicated code. But I also have a suite of unit tests that cover every one of those clumsy lines of code. 
-So then I massage and refine that code, splitting out functions, changing names, elim- inating duplication. I shrink the methods and reorder them. Sometimes I break out whole classes, all the while keeping the tests passing.
-In the end, I wind up with functions that follow the rules I’ve laid down in this chapter.
-I don’t write them that way to start. I don’t think anyone could.
+هنگامی که شما به جای کدهای خطا از exception استفاده می کنید ، exceptionهای جدید مشتقات کلاس exception هستند. می توان آنها را بدون مجبور به کامپایل یا deploy دوباره اضافه كرد.
 
-Conclusion
-Every system is built from a domain-specific language designed by the programmers to describe that system. Functions are the verbs of that language, and classes are the nouns. This is not some throwback to the hideous old notion that the nouns and verbs in a require- ments document are the first guess of the classes and functions of a system. Rather, this is a much older truth. The art of programming is, and has always been, the art of language design. 
-Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of their chosen programming language to construct a much richer and more expressive language that can be used to tell that story. Part of that domain-specific language is the hierarchy of functions that describe all the actions that take place within that system. In an artful act of recursion those actions are written to use the very domain-specific language they define to tell their own small part of the story.
-This chapter has been about the mechanics of writing functions well. If you follow the rules herein, your functions will be short, well named, and nicely organized. But never forget that your real goal is to tell the story of the system, and that the functions you write need to fit cleanly together into a clear and precise language to help you with that telling.
+## خود را تکرار نکنید
 
+دوباره به Listing 3-1 با دقت نگاه کنید و متوجه خواهید شد که یک الگوریتم وجود دارد که چهار بار تکرار می شود ، یک بار برای هر یک از موارد SetUp ، SuiteSetUp ، TearDown و SuiteTearDown. مشاهده این تکثیر کار آسانی نیست زیرا این چهار نمونه با کد دیگر درهم آمیخته اند و به طور یکنواخت کپی نشپه اند. با این وجود ، تکثیر یک مشکل است زیرا کد را منبسط می کند و در صورت نیاز به تغییر الگوریتم نیاز به اصلاح چهار برابری دارد. همچنین امکان خطا چهار برابری برای حذف نکردن آن صورت می گیرد.
+
+این تکثیر با استفاده از include متد در Listing 3-7 اصلاح شد. دوباره آن کد را بخوانید و متوجه شوید که چگونه با کاهش آن تکرار ، قابلیت خواندن کل ماژول افزایش می یابد.
+
+تکثیر ممکن است ریشه همه شر در نرم افزار باشد. بسیاری از اصول و شیوه ها به منظور کنترل یا از بین بردن آن ایجاد شده است. به عنوان مثال ، در نظر بگیرید که همه فرم های عادی بانک اطلاعاتی Codd برای از بین بردن تکثیر در داده ها استفاده می شوند. همچنین در نظر بگیرید که چگونه برنامه نویسی شی گرا با متمرکز کردن کد در کلاس های پایه از تکرار جلوگیری می کند. برنامه نویسی ساخت یافته، برنامه نویسی جهت گرا و برنامه نویسی مؤلفه ای ، کاملاً استراتژی هایی برای از بین بردن تکثیر است. به نظر می رسد از زمان اختراع زیرتوالی ها ، نوآوری ها در توسعه نرم افزار تلاشی مداوم برای از بین بردن تکثیر از کد منبع ما بوده است.
+
+## برنامه نویسی ساخت یافته
+
+برخی از برنامه نویسان از قوانین برنامه نویسی ساخت یافته Edsger Dijkstra پیروی می کنند. Dijkstra گفت كه هر تابع و هر بلوك درون یك تابع باید دارای یك ورودی و یك خروجی باشد. پیروی از این قوانین بدان معنی است که فقط باید یک عبارت برگشتی در یک تابع داشته باشید ، بدون break یا continue در یک loop، وهرگز، بدون goto. در حالی که ما با اهداف و اصول برنامه نویسی ساختاری دلسوز هستیم ، وقتی توابع بسیار کوچک باشند ، این قوانین سود کمتری دارند. فقط در توابع بزرگتر اینگونه قوانین مزایای قابل توجهی را ارائه می دهند.
+
+بنابراین اگر توابع خود را کوچک نگه دارید، چندین return ،break یا continue هیچ ضرری ندارد و حتی گاهی حتی می تواند بیانگرتر از قانون تک ورودی، تک خروجی باشد. از طرف دیگر، goto فقط در عملکردهای بزرگ معنی دارد، بنابراین باید از آن اجتناب کرد.
+
+## چگونه می توانید توابعی مانند این را بنویسید؟
+
+نوشتن نرم افزار مانند هر نوع نوشتن دیگر است. وقتی مقاله ای می نویسید ، ابتدا افکار خود را می نویسید ، سپس با آن ور می روید تا خوب خوانا شود. پیش نویس اول ممکن است دست و پا چلفتی و سازماندهی نشده باشد ، بنابراین شما آنرا کلمه بندی می کنید ، آنرا دوباره سازی کرده و مجدداً آن را اصلاح می کنید تا اینکه خواننده مطالب را آنطور بخواند که می خواهید.
+
+وقتی توابع را می نویسم، طولانی و پیچیده می شوند. حلقه های تو در تو و درهم زیادی دارند. دارای لیست طولانی آرگومان هستند. نام ها دلبخواه هستند و کد تکراری نیز وجود دارد. اما من همچنین یک مجموعه تست واحد دارم که هرکدام از آن خطوط دست و پا چلفتی کد را پوشش می دهد.
+
+بنابراین ، آن کد را مشت و مال داده  و اصلاح می کنم ، توابع را تقسیم می کنم ، نام ها را تغییر می دهم و تکرار را حذف می کنم. متدها را کوچک می کنم و دوباره مرتبشان می کنم. بعضی اوقات کلاس ها را که تست ها را پشت سر گذاشتند، حذف میکنم.
+
+در پایان ، توابعی باقی می مانند که از قوانینی که در این فصل تنظیم کرده ام پیروی می کنند. در شروع، آنان را به این شکل نمی نویسم. فکر نمی کنم کسی بتواند.
+
+## نتیجه گیری
+
+هر سیستم از یک زبان خاص دامنه ساخته شده که توسط برنامه نویسان برای توصیف آن سیستم طراحی شده است. توابع فعلهای آن زبان و کلاسها اسمها هستند. این چندان مفهوم قدیمی مسخره نیست که اسم ها و افعال موجود در یک سند مورد نیاز اولین حدس کلاس ها و عملکردهای یک سیستم هستند. در عوض، این یک حقیقت بسیار قدیمی است. هنر برنامه نویسی هنر طراحی زبان همیشه بوده.
+
+برنامه نویسان ارشد ، سیستم ها را به عنوان داستان هایی که باید گفته شود فکر می کنند نه برنامه هایی که باید نوشته شوند. آنها از امکانات زبان برنامه نویسی انتخاب شده خود برای ساختن زبانی بسیار غنی تر و رساتر استفاده می کنند که می توان برای گفتن آن داستان استفاده کرد. بخشی از آن زبان خاص دامنه سلسله مراتبی از توابع است که کلیه اقدامات انجام شده در آن سیستم را توصیف می کند. در یک عمل هنری بازگشتی، این اقدامات نوشته شده اند تا از همان زبان دامنه-خاص برای گفتن قسمت کوچک خود از داستان استفاده شود.
+
+این فصل درمورد مکانیزم نوشتن خوب توابع بود. اگراین  قوانین را رعایت کنید ، توابع شما کوتاه ، به خوبی نامیده شده و به خوبی سازماندهی می شوند. اما هرگز فراموش نکنید که هدف واقعی شما این است که داستان سیستم را بگویید و توابعی که شما می نویسید باید کاملاً با هم در یک زبان واضح و دقیق قرار بگیرد تا به شما در بیان آن کمک کند.
+
+</div>
 
 Listing 3-7
 SetupTeardownIncluder.java
@@ -510,8 +634,7 @@ public class SetupTeardownIncluder {
 	private StringBuffer newPageContent;
 	private PageCrawler pageCrawler;
 
-	public static String render(PageData pageData) throws Exception 
-	{
+	public static String render(PageData pageData) throws Exception {
 		return render(pageData, false);
 	}
 
