@@ -264,7 +264,7 @@ public class EmployeeFactoryImpl implements EmployeeFactory
 
 انتخاب نام های توصیفی ، طراحی ماژول را در ذهن شما روشن می کند و به شما در بهبود آن کمک می کند. به هیچ وجه غیر معمولی نیست که جستجوی نام خوب منجر به بازنویسی مطلوب کد شود.
 
-در نامگذاری سکپارچه عمل کنید. از همان عبارات ، اسمها و افعال در نامهای تابع استفاده کنید که برای ماژول های خود انتخاب می کنید. بطور مثال، نام های *includeSetupAndTeardownPages*، *includeSetupPages*، *includeSuiteSetupPage* و *includeSetupPage*. اصطلاحات مشابه در این نامها به توالی اجازه می دهد داستانی را بازگو کنند. در واقع ، اگر من توالی بالا را به شما نشان دادم ، از خودتان می پرسید: "برای includeTeardownPages، includeSuiteTeardownPage و includeTeardownPage چه اتفاقی افتاد؟ " این چطوراست " . . تقریباً آنچه انتظار داشتید. "
+در نامگذاری یکپارچه عمل کنید. از همان عبارات ، اسمها و افعال در نامهای تابع استفاده کنید که برای ماژول های خود انتخاب می کنید. بطور مثال، نام های *includeSetupAndTeardownPages*، *includeSetupPages*، *includeSuiteSetupPage* و *includeSetupPage*. اصطلاحات مشابه در این نامها به توالی اجازه می دهد داستانی را بازگو کنند. در واقع ، اگر من توالی بالا را به شما نشان دادم ، از خودتان می پرسید: "برای includeTeardownPages، includeSuiteTeardownPage و includeTeardownPage چه اتفاقی افتاد؟ " این چطوراست " . . تقریباً آنچه انتظار داشتید. "
 
 ## آرگومان های تابع
 
