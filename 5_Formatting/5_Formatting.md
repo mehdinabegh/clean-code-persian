@@ -1,5 +1,7 @@
 # 5 Formatting
 
+![](img-5.1.png)
+
 When people look under the hood, we want them to be impressed with the neatness, con-
 sistency, and attention to detail that they perceive. We want them to be struck by the
 orderliness. We want their eyebrows to rise as they scroll through the modules. We want
@@ -40,6 +42,11 @@ FitNesse project is about 65 lines, and about one-third of the files are between
 100+ lines. The largest file in FitNesse is about 400 lines and the smallest is 6 lines.
 Note that this is a log scale, so the small difference in vertical position implies a very
 large difference in absolute size.
+
+![File length distributions LOG scale (box height = sigma)](img-5.2.png)
+
+"File length distributions LOG scale (box height = sigma)"
+
 Junit, FitNesse, and Time and Money are composed of relatively small files. None
 are over 500 lines and most of those files are less than 200 lines. Tomcat and Ant, on the
 other hand, have some files that are several thousand lines long and close to half are over
@@ -346,6 +353,9 @@ ate level [G35]. The "FrontPage" constant could have been buried in the
 getPageNameOrDefault function, but that would have hidden a well-known and expected
 constant in an inappropriately low-level function. It was better to pass that constant down
 from the place where it makes sense to know it to the place that actually uses it.
+
+![](img-5.3.png)
+
 Conceptual Affinity. Certain bits of code want
 to be near other bits. They have a certain
 conceptual affinity. The stronger that affinity, the
@@ -400,6 +410,11 @@ of line lengths of all seven projects. The regularity is impressive, especially 
 number of lines. That’s 40 percent! Perhaps another 30 percent are less than 10 characters
 wide. Remember this is a log scale, so the linear appearance of the drop-off above 80 char-
 acters is really very significant. Programmers clearly prefer short lines.
+
+![Java line width distribution](img-5.4.png)
+
+Java line width distribution
+
 This suggests that we should strive to keep our lines short. The old Hollerith limit of
 80 is a bit arbitrary, and I’m not opposed to lines edging out to 100 or even 120. But
 beyond that is probably just careless.
@@ -612,6 +627,9 @@ just too hard to see.
 while (dis.read(buf, 0, readBufferSize) != -1);
 
 ## Team Rules
+
+![](img-5.5.png)
+
 The title of this section is a play on
 words. Every programmer has his own
 favorite formatting rules, but if he works
