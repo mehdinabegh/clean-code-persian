@@ -77,18 +77,19 @@ line that follows a blank line.
 
 Listing 5-1
 BoldWidget.java
+```java
 package fitnesse.wikitext.widgets;
 import java.util.regex.*;
 public class BoldWidget extends ParentWidget {
 	public static final String REGEXP = "'''.+?'''";
 	private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
-	Pattern.MULTILINE + Pattern.DOTALL
+		Pattern.MULTILINE + Pattern.DOTALL
 	);
 	public BoldWidget(ParentWidget parent, String text) throws Exception {
-	super(parent);
-	Matcher match = pattern.matcher(text);
-	match.find();
-	addChildWidgets(match.group(1));
+		super(parent);
+		Matcher match = pattern.matcher(text);
+		match.find();
+		addChildWidgets(match.group(1));
 	}
 	public String render() throws Exception {
 		StringBuffer html = new StringBuffer("<b>");
@@ -96,12 +97,15 @@ public class BoldWidget extends ParentWidget {
 		return html.toString();
 	}
 }
+```
 
 Taking those blank lines out, as in Listing 5-2, has a remarkably obscuring effect on the
 readability of the code.
 
 Listing 5-2
 BoldWidget.java
+
+```java
 package fitnesse.wikitext.widgets;
 import java.util.regex.*;
 public class BoldWidget extends ParentWidget {
@@ -109,16 +113,18 @@ public class BoldWidget extends ParentWidget {
 	private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
 	Pattern.MULTILINE + Pattern.DOTALL);
 	public BoldWidget(ParentWidget parent, String text) throws Exception {
-	super(parent);
-	Matcher match = pattern.matcher(text);
-	match.find();
-	addChildWidgets(match.group(1));}
+		super(parent);
+		Matcher match = pattern.matcher(text);
+		match.find();
+		addChildWidgets(match.group(1));
+	}
 	public String render() throws Exception {
 		StringBuffer html = new StringBuffer("<b>");
 		html.append(childHtml()).append("</b>");
 		return html.toString();
 	}
 }
+```
 
 This effect is even more pronounced when you unfocus your eyes. In the first example
 the different groupings of lines pop out at you, whereas the second example looks like a
@@ -130,6 +136,7 @@ of code that are tightly related should appear vertically dense. Notice how the 
 comments in Listing 5-3 break the close association of the two instance variables.
 
 Listing 5-3
+```java
 public class ReporterConfig {
 	/**
 	* The class name of the reporter listener
@@ -143,6 +150,7 @@ public class ReporterConfig {
 		m_properties.add(property);
 	}
 }
+```
 
 Listing 5-4 is much easier to read. It fits in an “eye-full,” or at least it does for me. I
 can look at it and see that this is a class with two variables and a method, without having to
@@ -150,6 +158,7 @@ move my head or eyes much. The previous listing forces me to use much more eye a
 head motion to achieve the same level of comprehension.
 
 Listing 5-4
+```java
 public class ReporterConfig {
 	private String m_className;
 	private List<Property> m_properties = new ArrayList<Property>();
@@ -157,6 +166,7 @@ public class ReporterConfig {
 		m_properties.add(property);
 	}
 }
+```
 
 ### Vertical Distance
 Have you ever chased your tail through a class, hopping from one function to the next,
@@ -177,6 +187,7 @@ Variable Declarations. Variables should be declared as close to their usage as p
 ble. Because our functions are very short, local variables should appear a the top of each
 function, as in this longish function from Junit4.3.1.
 
+```java
 private static void readPreferences() {
 	InputStream is= null;
 	try {
@@ -191,35 +202,40 @@ private static void readPreferences() {
 		}
 	}
 }
+```
 
 Control variables for loops should usually be declared within the loop statement, as in this
 cute little function from the same source.
 
+```java
 public int countTestCases() {
 	int count= 0;
 	for (Test each : tests)
 	count += each.countTestCases();
 	return count;
 }
+```
 
 In rare cases a variable might be declared at the top of a block or just before a loop in a
 long-ish function. You can see such a variable in this snippet from the midst of a very long
 function in TestNG.
 
+```java
 ...
 for (XmlTest test : m_suite.getTests()) {
-	TestRunner tr = m_runnerFactory.newTestRunner(this, test);
-	tr.addListener(m_textReporter);
-	m_testRunners.add(tr);
-	invoker = tr.getInvoker();
-	for (ITestNGMethod m : tr.getBeforeSuiteMethods()) {
-		beforeSuiteMethods.put(m.getMethod(), m);
-	}
-	for (ITestNGMethod m : tr.getAfterSuiteMethods()) {
-		afterSuiteMethods.put(m.getMethod(), m);
-	}
+		TestRunner tr = m_runnerFactory.newTestRunner(this, test);
+		tr.addListener(m_textReporter);
+		m_testRunners.add(tr);
+		invoker = tr.getInvoker();
+		for (ITestNGMethod m : tr.getBeforeSuiteMethods()) {
+			beforeSuiteMethods.put(m.getMethod(), m);
+		}
+		for (ITestNGMethod m : tr.getAfterSuiteMethods()) {
+			afterSuiteMethods.put(m.getMethod(), m);
+		}
 }
 ...
+```
 
 Instance variables, on the other hand, should be declared at the top of the class. This
 should not increase the vertical distance of these variables, because in a well-designed
@@ -236,6 +252,7 @@ you will see two instance variables declared there. It would be hard to hide the
 place. Someone reading this code would have to stumble across the declarations by acci-
 dent (as I did).
 
+```java
 public class TestSuite implements Test {
 	static public Test createTest(Class<? extends TestCase> theClass,
 	String name) {
@@ -264,6 +281,7 @@ public class TestSuite implements Test {
 	}
 	... ... ... ... ...
 }
+```
 
 Dependent Functions. If one function calls another, they should be vertically close,
 and the caller should be above the callee, if at all possible. This gives the program a natural
@@ -275,6 +293,7 @@ the readability of the whole module.
 
 Listing 5-5
 WikiPageResponder.java
+```java
 public class WikiPageResponder implements SecureResponder {
 	protected WikiPage page;
 	protected PageData pageData;
@@ -290,8 +309,7 @@ public class WikiPageResponder implements SecureResponder {
 		else
 			return makePageResponse(context);
 	}
-	private String getPageNameOrDefault(Request request, String defaultPageName)
-	{
+	private String getPageNameOrDefault(Request request, String defaultPageName) {
 		String pageName = request.getResource();
 		if (StringUtil.isBlank(pageName))
 		pageName = defaultPageName;
@@ -321,6 +339,7 @@ public class WikiPageResponder implements SecureResponder {
 	}
 }
 ...
+```
 
 As an aside, this snippet provides a nice example of keeping constants at the appropri-
 ate level [G35]. The "FrontPage" constant could have been buried in the
@@ -340,6 +359,7 @@ might be caused because a group of functions per-
 form a similar operation. Consider this snippet of
 code from Junit 4.3.1:
 
+```java
 public class Assert {
 	static public void assertTrue(String message, boolean condition) {
 		if (!condition)
@@ -356,6 +376,7 @@ public class Assert {
 	}
 }
 ...
+```
 
 These functions have a strong conceptual affinity because they share a common naming
 scheme and perform variations of the same basic task. The fact that they call each other is
@@ -408,6 +429,7 @@ the function call parenthesis to accentuate the comma and show that the argument
 separate.
 Another use for white space is to accentuate the precedence of operators.
 
+```java
 public class Quadratic {
 	public static double root1(double a, double b, double c) {
 		double determinant = determinant(a, b, c);
@@ -421,6 +443,7 @@ public class Quadratic {
 		return b*b - 4*a*c;
 	}
 }
+```
 
 Notice how nicely the equations read. The factors have no white space between them
 because they are high precedence. The terms are separated by white space because addi-
@@ -435,8 +458,8 @@ certain structures. When I started coding in C, C++, and eventually Java, I cont
 to line up all the variable names in a set of declarations, or all the rvalues in a set of assign-
 ment statements. My code might have looked like this:
 
-public class FitNesseExpediter implements ResponseSender
-{
+```java
+public class FitNesseExpediter implements ResponseSender {
 	private         Socket 		socket;
 	private 	InputStream     input;
 	private 	OutputStream    output;
@@ -449,8 +472,7 @@ public class FitNesseExpediter implements ResponseSender
 	private 	boolean 	hasError;
 	
 	public FitNesseExpediter(Socket s,
-	FitNesseContext context) throws Exception
-	{
+	FitNesseContext context) throws Exception {
 		this.context =            context;
 		socket =                  s;
 		input =                   s.getInputStream();
@@ -458,6 +480,7 @@ public class FitNesseExpediter implements ResponseSender
 		requestParsingTimeLimit = 10000;
 	}
 }
+```
 
 I have found, however, that this kind of alignment is not useful. The alignment seems to
 emphasize the wrong things and leads my eye away from the true intent. For example, in
@@ -471,8 +494,8 @@ ciency. If I have long lists that need to be aligned, the problem is the length 
 the lack of alignment. The length of the list of declarations in FitNesseExpediter below
 suggests that this class should be split up.
 
-public class FitNesseExpediter implements ResponseSender
-{
+```java
+public class FitNesseExpediter implements ResponseSender {
 	private Socket socket;
 	private InputStream input;
 	private OutputStream output;
@@ -483,8 +506,7 @@ public class FitNesseExpediter implements ResponseSender
 	private long requestProgress;
 	private long requestParsingDeadline;
 	private boolean hasError;
-	public FitNesseExpediter(Socket s, FitNesseContext context) throws Exception
-	{
+	public FitNesseExpediter(Socket s, FitNesseContext context) throws Exception {
 		this.context = context;
 		socket = s;
 		input = s.getInputStream();
@@ -492,6 +514,7 @@ public class FitNesseExpediter implements ResponseSender
 		requestParsingTimeLimit = 10000;
 	}
 }
+```
 
 ### Indentation
 A source file is a hierarchy rather like an outline. There is information that pertains to the
@@ -521,7 +544,7 @@ sender.setRequestParsingTimeLimit(requestTimeout); sender.start(); }
 catch(Exception e) { e.printStackTrace(); } } }
 -----
 
-
+```java
 public class FitNesseServer implements SocketServer {
 	private FitNesseContext context;
 	public FitNesseServer(FitNesseContext context) {
@@ -541,6 +564,7 @@ public class FitNesseServer implements SocketServer {
 		}
 	}
 }
+```
 
 Your eye can rapidly discern the structure of the indented file. You can almost instantly
 spot the variables, constructors, accessors, and methods. It takes just a few seconds to real-
@@ -551,15 +575,21 @@ if statements, short while loops, or short functions. Whenever I have succumbed 
 temptation, I have almost always gone back and put the indentation back in. So I avoid col-
 lapsing scopes down to one line like this:
 
-public class CommentWidget extends TextWidget
-{
+```java
+public class CommentWidget extends TextWidget {
 	public static final String REGEXP = "^#[^\r\n]*(?:(?:\r\n)|\n|\r)?";
-	public CommentWidget(ParentWidget parent, String text){super(parent, text);}
-	public String render() throws Exception {return ""; }
+	public CommentWidget(ParentWidget parent, String text){
+		super(parent, text);
+	}
+	public String render() throws Exception {
+		return ""; 
+	}
 }
+```
 
 I prefer to expand and indent the scopes instead, like this:
 
+```java
 public class CommentWidget extends TextWidget {
 	public static final String REGEXP = "^#[^\r\n]*(?:(?:\r\n)|\n|\r)?";
 	public CommentWidget(ParentWidget parent, String text) {
@@ -569,6 +599,7 @@ public class CommentWidget extends TextWidget {
 		return "";
 	}
 }
+```
 
 ### Dummy Scopes
 Sometimes the body of a while or for statement is a dummy, as shown below. I don’t like
