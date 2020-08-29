@@ -1,3 +1,6 @@
+![alt text](img-4.1.png)
+
+
 # 3 Comments
 
 “Don’t comment bad code—rewrite it.”
@@ -192,6 +195,8 @@ through the previous example and see how difficult it is to verify that they are
 explains both why the clarification is necessary and why it’s risky. So before writing com-
 ments like this, take care that there is no better way, and then take even more care that they
 are accurate.
+
+![alt text](img-4.2.png)
 
 ## Warning of Consequences
 Sometimes it is useful to warn other pro-
