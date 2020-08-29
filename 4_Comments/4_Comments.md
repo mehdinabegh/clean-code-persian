@@ -1,7 +1,7 @@
 ![alt text](img-4.1.png)
 
 
-# 3 Comments
+# 4 Comments
 
 “Don’t comment bad code—rewrite it.”
 —Brian W. Kernighan and P. J. Plaugher
@@ -32,6 +32,7 @@ comments get separated from the code they describe and become orphaned blurbs of
 decreasing accuracy. For example, look what has happened to this comment and the line it
 was intended to describe:
 
+```java
 MockRequest request;
 private final String HTTP_DATE_REGEXP =
   "[SMTWF][a-z]{2}\\,\\s[0-9]{2}\\s[JFMASOND][a-z]{2}\\s"+
@@ -40,7 +41,7 @@ private Response response;
 private FitNesseContext context;
 private FileResponder responder;
 private Locale saveLocale;
-
+```
 Other instance variables that were probably added later were interposed between the
 HTTP_DATE_REGEXP constant and it’s explanatory comment.
 It is possible to make the point that programmers should be disciplined enough to
@@ -68,17 +69,17 @@ There are certainly times when code makes a poor vehicle for explanation. Unfort
 many programmers have taken this to mean that code is seldom, if ever, a good means for
 explanation. This is patently false. Which would you rather see? This:
 
-
+```java
 // Check to see if the employee is eligible for full benefits
 if ((employee.flags & HOURLY_FLAG) &&
 	(employee.age > 65))
-
+```
 
 Or this?
 
-
+```java
 if (employee.isEligibleForFullBenefits())
-
+```
 
 It takes only a few seconds of thought to explain most of your intent in code. In many
 cases it’s simply a matter of creating a function that says the same thing as the comment
@@ -97,9 +98,10 @@ Here, for example, is the standard comment header that we put at the beginning o
 every source file in FitNesse. I am happy to say that our IDE hides this comment from act-
 ing as clutter by automatically collapsing it.
 
+```java
 // Copyright (C) 2003,2004,2005 by Object Mentor, Inc. All rights reserved.
 // Released under the terms of the GNU General Public License version 2 or later.
-
+```
 Comments like this should not be contracts or legal tomes. Where possible, refer to a stan-
 dard license or other external document rather than putting all the terms and conditions
 into the comment.
@@ -116,10 +118,12 @@ tion to convey the information where possible. For example, in this case the com
 could be made redundant by renaming the function: responderBeingTested .
 Here’s a case that’s a bit better:
 
+```java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 Pattern timeMatcher = Pattern.compile(
 	"\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
-	
+```
+
 In this case the comment lets us know that the regular expression is intended to match a
 time and date that were formatted with the SimpleDateFormat.format function using the
 specified format string. Still, it might have been better, and clearer, if this code had been
@@ -131,6 +135,7 @@ provides the intent behind a decision. In the following case we see an interesti
 documented by a comment. When comparing two objects, the author decided that he
 wanted to sort objects of his class higher than objects of any other.
 
+```java
 public int compareTo(Object o)
 {
 	if(o instanceof WikiPagePath)
@@ -142,10 +147,12 @@ public int compareTo(Object o)
 		}
 	return 1; // we are greater because we are the right type.
 }
+```
 
 Here’s an even better example. You might not agree with the programmer’s solution to
 the problem, but at least you know what he was trying to do.
 
+```java
 public void testConcurrentAddWidgets() throws Exception {
 	WidgetBuilder widgetBuilder =
 	new WidgetBuilder(new Class[]{BoldWidget.class});
@@ -164,6 +171,7 @@ public void testConcurrentAddWidgets() throws Exception {
 	}
 	assertEquals(false, failFlag.get());
 }
+```
 
 ## Clarification
 Sometimes it is just helpful to translate the meaning of some obscure argument or return
@@ -171,6 +179,7 @@ value into something that’s readable. In general it is better to find a way to
 ment or return value clear in its own right; but when its part of the standard library, or in
 code that you cannot alter, then a helpful clarifying comment can be useful.
 
+```java
 public void testCompareTo() throws Exception
 {
 	WikiPagePath a = PathParser.parse("PageA");
@@ -189,7 +198,7 @@ public void testCompareTo() throws Exception
 	assertTrue(ab.compareTo(aa) == 1);     // ab > aa
 	assertTrue(bb.compareTo(ba) == 1);     // bb > ba
 }
-
+```
 There is a substantial risk, of course, that a clarifying comment is incorrect. Go
 through the previous example and see how difficult it is to verify that they are correct. This
 explains both why the clarification is necessary and why it’s risky. So before writing com-
@@ -203,6 +212,8 @@ Sometimes it is useful to warn other pro-
 grammers about certain consequences. For
 example, here is a comment that explains
 why a particular test case is turned off:
+
+```java
 // Don't run unless you
 // have some time to kill.
 public void _testWithReallyBigFile()
@@ -214,6 +225,7 @@ public void _testWithReallyBigFile()
 	assertSubString("Content-Length: 1000000000", responseString);
 	assertTrue(bytesSent > 1000000000);
 }
+```
 
 Nowadays, of course, we’d turn off the test case by using the @Ignore attribute with an
 appropriate explanatory string. @Ignore("Takes too long to run") . But back in the days
@@ -221,6 +233,7 @@ before JUnit 4, putting an underscore in front of the method name was a common c
 tion. The comment, while flippant, makes the point pretty well.
 Here’s another, more poignant example:
 
+```java
 public static SimpleDateFormat makeStandardHttpDateFormat()
 {
 	//SimpleDateFormat is not thread safe,
@@ -229,7 +242,7 @@ public static SimpleDateFormat makeStandardHttpDateFormat()
 	df.setTimeZone(TimeZone.getTimeZone("GMT"));
 	return df;
 }
-
+```
 You might complain that there are better ways to solve this problem. I might agree with
 you. But the comment, as given here, is perfectly reasonable. It will prevent some overly
 eager programmer from using a static initializer in the name of efficiency.
@@ -238,12 +251,14 @@ It is sometimes reasonable to leave “To do” notes in the form of //TODO comm
 following case, the TODO comment explains why the function has a degenerate implementa-
 tion and what that function’s future should be.
 
+```java
 //TODO-MdM these are not needed
 // We expect this to go away when we do the checkout model
 protected VersionInfo makeVersion() throws Exception
 {
 	return null;
 }
+```
 
 TODO s are jobs that the programmer thinks should be done, but for some reason
 can’t do at the moment. It might be a reminder to delete a deprecated feature or a
@@ -260,12 +275,14 @@ can.
 A comment may be used to amplify the importance of something that may otherwise seem
 inconsequential.
 
+```java
 String listItemContent = match.group(3).trim();
 // the trim is real important. It removes the starting
 // spaces that could cause the item to be recognized
 // as another list.
 new ListItemWidget(this, listItemContent, this.level + 1);
 return buildList(text.substring(match.end()));
+```
 
 ## Javadocs in Public APIs
 There is nothing quite so helpful and satisfying as a well-described public API. The java-
@@ -287,6 +304,7 @@ Here, for example, is a case I found in FitNesse, where a comment might indeed h
 been useful. But the author was in a hurry or just not paying much attention. His mum-
 bling left behind an enigma:
 
+```java
 public void loadProperties()
 {
 	try
@@ -300,6 +318,7 @@ public void loadProperties()
 		// No properties files means all defaults are loaded
 	}
 }
+```
 
 What does that comment in the catch block mean? Clearly it meant something to the
 author, but the meaning does not come through all that well. Apparently, if we get an
@@ -320,6 +339,7 @@ The comment probably takes longer to read than the code itself.
 
 Listing 4-1
 waitForClose
+```java
 // Utility method that returns when this.closed is true. Throws an exception
 // if the timeout is reached.
 public synchronized void waitForClose(final long timeoutMillis)
@@ -332,7 +352,7 @@ throws Exception
 		throw new Exception("MockResponseSender could not be closed");
 	}
 }
-
+```
 What purpose does this comment serve? It’s certainly not more informative than the
 code. It does not justify the code, or provide intent or rationale. It is not easier to read than
 the code. Indeed, it is less precise than the code and entices the reader to accept that lack of
@@ -345,6 +365,8 @@ many more in this module.
 
 Listing 4-2
 ContainerBase.java (Tomcat)
+
+```java
 public abstract class ContainerBase
 	implements Container, Lifecycle, Pipeline,
 	MBeanRegistration, Serializable {
@@ -411,7 +433,8 @@ public abstract class ContainerBase
 	* is associated.
 	*/
 	protected DirContext resources = null;
-
+}
+```
 ## Misleading Comments
 Sometimes, with all the best intentions, a programmer makes a statement in his comments
 that isn’t precise enough to be accurate. Consider for another moment the badly redundant
@@ -433,6 +456,7 @@ ing 4-3. This clutter adds nothing and serves only to obfuscate the code and cre
 potential for lies and misdirection.
 
 Listing 4-3
+```java
 /**
 *
 * @param title The title of the CD
@@ -449,7 +473,7 @@ public void addCD(String title, String author,
 	cd.duration = duration;
 	cdList.add(cd);
 }
-
+```
 ## Journal Comments
 Sometimes people add a comment to the start of a module every time they edit it. These
 comments accumulate as a kind of journal, or log, of every change that has ever been
@@ -482,15 +506,17 @@ completely removed.
 ## Noise Comments
 Sometimes you see comments that are nothing but noise. They restate the obvious and
 provide no new information.
-ovide no new information.
+```java
 	/**
 	* Default constructor.
 	*/
 	protected AnnualDateRule() {
 	}
+```
 
 No, really? Or how about this:
 
+```java
 	/** The day of the month. */
 	private int dayOfMonth;
 	And then there’s this paragon of redundancy:
@@ -502,7 +528,7 @@ No, really? Or how about this:
 	public int getDayOfMonth() {
 		return dayOfMonth;
 	}
-	
+```
 These comments are so noisy that we learn to ignore them. As we read through code, our
 eyes simply skip over them. Eventually the comments begin to lie as the code around them
 changes.
@@ -512,6 +538,8 @@ just so frustrated with writing try / catch blocks in this function that he need
 
 Listing 4-4
 startSending
+
+```java
 private void startSending()
 {
 	try
@@ -535,6 +563,7 @@ private void startSending()
 		}
 	}
 }
+```
 
 Rather than venting in a worthless and noisy comment, the programmer should have
 recognized that his frustration could be resolved by improving the structure of his code.
@@ -542,6 +571,7 @@ He should have redirected his energy to extracting that last try / catch block i
 function, as shown in Listing 4-5.
 
 Listing 4-5
+```java
 startSending (refactored)
 private void startSending()
 {
@@ -569,7 +599,7 @@ private void addExceptionAndCloseResponse(Exception e)
 	{
 	}
 }
-
+```
 Replace the temptation to create noise with the determination to clean your code. You’ll
 find it makes you a better and happier programmer.
 ## Scary Noise
@@ -577,6 +607,7 @@ Javadocs can also be noisy. What purpose do the following Javadocs (from a well-
 open-source library) serve? Answer: nothing. They are just redundant noisy comments
 written out of some misplaced desire to provide documentation.
 
+```java
 /** The name. */
 private String name;
 /** The version. */
@@ -586,23 +617,24 @@ private String licenceName;
 /** The version. */
 
 private String info;
+```
 Read these comments again more carefully. Do you see the cut-paste error? If authors
 aren’t paying attention when comments are written (or pasted), why should readers be
 expected to profit from them?
 
 ## Don’t Use a Comment When You Can Use a Function or a Variable
 Consider the following stretch of code:
-
+```java
 // does the module from the global list <mod> depend on the
 // subsystem we are part of?
 if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
-
+```
 This could be rephrased without the comment as
-
+```java
 ArrayList moduleDependees = smodule.getDependSubsystems();
 String ourSubSystem = subSysMod.getSubSystem();
 if (moduleDependees.contains(ourSubSystem))
-
+```
 The author of the original code may have written the comment first (unlikely) and then
 written the code to fulfill the comment. However, the author should then have refactored
 the code, as I did, so that the comment could be removed.
@@ -610,9 +642,9 @@ the code, as I did, so that the comment could be removed.
 ## Position Markers
 Sometimes programmers like to mark a particular position in a source file. For example, I
 recently found this in a program I was looking through:
-
+```java
 // Actions //////////////////////////////////
-
+```
 There are rare times when it makes sense to gather certain functions together beneath a
 banner like this. But in general they are clutter that should be eliminated—especially the
 noisy train of slashes at the end.
@@ -628,6 +660,8 @@ yourself wanting to mark your closing braces, try to shorten your functions inst
 
 Listing 4-6
 wc.java
+
+```java
 public class wc {
 	public static void main(String[] args) {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -655,7 +689,7 @@ public class wc {
 ## ttributions and Bylines
 
 /* Added by Rick */
-
+```
 Source code control systems are very good at remembering who added what, when.
 There is no need to pollute the code with little bylines. You might think that such com-
 ments would be useful in order to help others know who to talk to about the code. But the
@@ -665,17 +699,20 @@ Again, the source code control system is a better place for this kind of informa
 ## Commented-Out Code
 Few practices are as odious as commenting-out code. Don’t do this!
 
+```java
 // InputStreamResponse response = new InputStreamResponse();
 // response.setBody(formatter.getResultStream(), formatter.getByteCount());
 // InputStream resultsStream = formatter.getResultStream();
 // StreamReader reader = new StreamReader(resultsStream);
 // response.setContent(reader.read(formatter.getByteCount()));
+```
 
 Others who see that commented-out code won’t have the courage to delete it. They’ll think
 it is there for a reason and is too important to delete. So commented-out code gathers like
 dregs at the bottom of a bad bottle of wine.
 Consider this from apache commons:
 
+```java
 this.bytePos = writeBytes(pngIdBytes, 0);
 //hdrPos = bytePos;
 writeHeader();
@@ -689,7 +726,7 @@ else {
 	this.pngBytes = null;
 }
 return this.pngBytes;
-
+```
 Why are those two lines of code commented? Are they important? Were they left as
 reminders for some imminent change? Or are they just cruft that someone commented-out
 years ago and has simply not bothered to clean up.
@@ -704,6 +741,7 @@ read—the editor/IDE. If comments are going to be extracted by some tool (like 
 appear in a Web page, then it should be the responsibility of that tool, and not the program-
 mer, to adorn the comments with appropriate HTML.
 
+```java
 /**
 * Task to run fit tests.
 * This task runs fitnesse tests and publishes the results.
@@ -733,7 +771,7 @@ resultshtmlpage=&quot;fit-results.html&quot;
 classpathref=&quot;classpath&quot; /&gt;
 * </pre>
 */
-
+```
 ## Nonlocal Information
 If you must write a comment, then make sure it describes the code it appears near. Don’t
 offer systemwide information in the context of a local comment. Consider, for example,
@@ -743,6 +781,7 @@ what that default is. The comment is not describing the function, but some other
 tant part of the system. Of course there is no guarantee that this comment will be changed
 when the code containing the default is changed.
 
+```java
 /**
 * Port on which fitnesse would run. Defaults to <b>8082</b>.
 *
@@ -752,12 +791,13 @@ public void setFitnessePort(int fitnessePort)
 {
 	this.fitnessePort = fitnessePort;
 }
-
+```
 ## Too Much Information
 Don’t put interesting historical discussions or irrelevant descriptions of details into your
 comments. The comment below was extracted from a module designed to test that a func-
 tion could encode and decode base64. Other than the RFC number, someone reading this
 code has no need for the arcane information contained in the comment.
+```java
 /*
 	RFC 2045 - Multipurpose Internet Mail Extensions (MIME)
 	Part One: Format of Internet Message Bodies
@@ -773,6 +813,7 @@ code has no need for the arcane information contained in the comment.
 	the first 8-bit byte, and the eighth bit will be the low-order bit in
 	the first 8-bit byte, and so on.
 */
+```
 ## Inobvious Connection
 The connection between a comment and the code it describes should be obvious. If you are
 going to the trouble to write a comment, then at least you’d like the reader to be able to
@@ -780,12 +821,13 @@ look at the comment and the code and understand what the comment is talking abou
 
 Consider, for example, this comment drawn from apache commons:
 
+```java
 /*
 * start with an array that is big enough to hold all the pixels
 * (plus filter bytes), and an extra 200 bytes for header info
 */
 this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
-
+```
 What is a filter byte? Does it relate to the +1? Or to the *3? Both? Is a pixel a byte? Why
 200? The purpose of a comment is to explain code that does not explain itself. It is a pity
 when a comment needs its own explanation.
@@ -810,6 +852,7 @@ many different comment problems you can find.
 
 Listing 4-7
 GeneratePrimes.java
+```java
 /**
 * This class Generates prime numbers up to a user specified
 * maximum. The algorithm used is the Sieve of Eratosthenes.
@@ -878,13 +921,14 @@ public class GeneratePrimes
 		return new int[0]; // return null array if bad input.
 	}
 }
-
+```
 In Listing 4-8 you can see a refactored version of the same module. Note that the use
 of comments is significantly restrained. There are just two comments in the whole module.
 Both comments are explanatory in nature.
 
 Listing 4-8
 PrimeGenerator.java (refactored)
+```java
 /**
 * This class Generates prime numbers up to a user specified
 * maximum. The algorithm used is the Sieve of Eratosthenes.
@@ -958,7 +1002,7 @@ public class PrimeGenerator
 		return count;
 	}
 }
-
+```
 It is easy to argue that the first comment is redundant because it reads very much like
 the generatePrimes function itself. Still, I think the comment serves to ease the reader into
 the algorithm, so I’m inclined to leave it.
