@@ -2,16 +2,22 @@
 
 ![](img-5.1.png)
 
-When people look under the hood, we want them to be impressed with the neatness, consistency, and attention to detail that they perceive. We want them to be struck by the orderliness. We want their eyebrows to rise as they scroll through the modules. We want them to perceive that professionals have been at work. If instead they see a scrambled mass of code that looks like it was written by a bevy of drunken sailors, then they are likely to conclude that the same inattention to detail pervades every other aspect of the project.
+<div dir='rtl'>
 
-You should take care that your code is nicely formatted. You should choose a set of simple rules that govern the format of your code, and then you should consistently apply those rules. If you are working on a team, then the team should agree to a single set of formatting rules and all members should comply. It helps to have an automated tool that can apply those formatting rules for you.
+هنگامی‌که دیگران شروع می‌کنند به بررسی زیر و بم کد، می‌خواهیم آن‌ها را تحت تأثیر منظم بودن ، قوام و توجه به جزئیاتی که درک می‌کنند تحت تأثیر قرار دهیم. می‌خواهیم با نظم تحت‌تاثیر قرارگیرند. وقتی‌که به ماژول‌ها دقت می‌کنند، ابروهایشان بالا رود. می‌خواهیم بفهمند که افراد حرفه‌ای پشت کار بوده‌اند. اگر در عوض، توده کدی بینند که گویی توسط تعدادی ملوان مست نوشته شده‌است، به احتمال زیاد نتیجه می‌گیرند که همین عدم توجه به جزئیات، بر دیگر جنبه‌های پروژه نیز حاکم است.
 
-## The Purpose of Formatting
-First of all, let’s be clear. Code formatting is important. It is too important to ignore and it is too important to treat religiously. Code formatting is about communication, and communication is the professional developer’s first order of business.
+باید مراقب باشید که کد شما به خوبی قالب‌بندی شود. باید مجموعه‌ای از قوانین ساده را انتخاب کنید که بر فرمت کد شما حاکم باشد، و سپس باید آن قوانین را به طور مداوم اعمال کنید. اگر در یک تیم کار می‌کنید ، تیم باید با یک مجموعه از قوانین قالب‌بندی موافقت کند و همه اعضا، آن را رعایت کنند. داشتن ابزاری خودکار که بتواند آن قوانین قالب‌بندی را برای شما اعمال کند، می‌تواند کمک‌کننده باشد.
 
-Perhaps you thought that “getting it working” was the first order of business for a professional developer. I hope by now, however, that this book has disabused you of that idea. The functionality that you create today has a good chance of changing in the next release, but the readability of your code will have a profound effect on all the changes that will ever be made. The coding style and readability set precedents that continue to affect maintainability and extensibility long after the original code has been changed beyond recognition. Your style and discipline survives, even though your code does not.
+## هدف قالب‌بندی
 
-So what are the formatting issues that help us to communicate best?
+اول از همه، بگذارید واضح باشیم. قالب‌بندی کد مهم است. بسیار مهم است که نادیده گرفته‌نشود و بسیار مهم است که مثل یک رفتار مذهبی به آن اهمیت دهید. قالب‌بندی کد مربوط به ارتباطات است و ارتباطات، مهمترین بخش برای توسعه‌دهندگان حرفه‌ای است.
+
+شاید فکر کرده باشید که "به نتیجه رساندن" مهمترین بخش برای یک توسعه‌دهنده حرفه‌ای است. با این حال امیدوارم تاکنون این کتاب شما را از این ایده خارج کرده‌باشد. عملکردی که امروز ایجاد می کنید شانس زیادی برای تغییر در نسخه بعدی دارد ، اما خوانایی کد شما تأثیر عمیقی در تمام تغییراتی خواهد داشت که ایجاد می‌شود. شیوه کد نویسی و خوانایی مواردی را ایجاد می کند که مدت ها بعد از تغییر کد اصلی، بر حفظ و توسعه آن تأثیر می گذارد. سبک و نظم شما زنده می ماند ، حتی اگر کد شما اینگونه نباشد.
+
+بنابراین چه موارد قالب‌بندی به ما کمک می‌کند تا بهترین ارتباط را برقرار کنیم؟
+
+
+</div>
 
 ## Vertical Formatting
 
