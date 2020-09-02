@@ -16,55 +16,60 @@
 
 بنابراین چه موارد قالب‌بندی به ما کمک می‌کند تا بهترین ارتباط را برقرار کنیم؟
 
+## قالب بندی عمودی
 
+بیایید با اندازه عمودی شروع کنیم. یک فایل منبع چقدر باید بزرگ باشد؟ در جاوا ، اندازه فایل با اندازه کلاس ارتباط نزدیک دارد. وقتی در مورد کلاس صحبت کنیم ، درباره اندازه کلاس صحبت خواهیم کرد. در حال حاضر بگذارید فقط اندازه فایل را در نظر بگیریم.
+
+بزرگترین فایل‌های منبع جاوا چقدر بزرگ هستند؟ به نظر می‌رسد که طیف وسیعی از اندازه‌ها و تفاوت‌های قابل توجه در سبک وجود دارد. شکل 5-1 برخی از این تفاوت‌ها را نشان می‌دهد.
+
+هفت پروژه مختلف به تصویر کشیده شده است.Junit, FitNesse, testNG, Time and Money, JDepend, Ant, و Tomcat. خطوط موجود در کادرها حداقل و حداکثر طول فایل را در هر پروژه نشان می‌دهد. این کادر تقریباً یک سوم فایل‌ها (یک انحراف استاندارد) را نشان می دهد. وسط جعبه، میانگین است. بنابراین متوسط اندازه فایل در پروژه FitNesse حدود 65 خط است و حدود یک سوم پرونده ها بین 40 تا 100 خط است. بزرگترین فایل در FitNesse حدود 400 خط و کوچکترین آن 6 خط است. توجه داشته باشید که این مقیاس لگاریتمی است، بنابراین اختلاف کم در موقعیت عمودی نشانگر اختلاف بسیار بزرگ در اندازه مطلق است.
 </div>
-
-## Vertical Formatting
-
-Let’s start with vertical size. How big should a source file be? In Java, file size is closely related to class size. We’ll talk about class size when we talk about classes. For the moment let’s just consider file size.
-
-How big are most Java source files? It turns out that there is a huge range of sizes and some remarkable differences in style. Figure 5-1 shows some of those differences.
-
-Seven different projects are depicted. Junit, FitNesse, testNG, Time and Money, JDepend, Ant, and Tomcat. The lines through the boxes show the minimum and maximum file lengths in each project. The box shows approximately one-third (one standard deviation 1 ) of the files. The middle of the box is the mean. So the average file size in the FitNesse project is about 65 lines, and about one-third of the files are between 40 and 100+ lines. The largest file in FitNesse is about 400 lines and the smallest is 6 lines. Note that this is a log scale, so the small difference in vertical position implies a very large difference in absolute size.
 
 ![File length distributions LOG scale (box height = sigma)](img-5.2.png)
 
-"File length distributions LOG scale (box height = sigma)"
+<div dir='rtl'>
+توزیع طول فایل در مقیاس لگاریتمی (box height = sigma)
 
-Junit, FitNesse, and Time and Money are composed of relatively small files. None are over 500 lines and most of those files are less than 200 lines. Tomcat and Ant, on the other hand, have some files that are several thousand lines long and close to half are over 200 lines.
+Junit ، FitNesse و Time and Money از فایل‌های نسبتاً کمی تشکیل شده اند. هیچکدام بیش از 500 خط نیستند و بیشتر این فایل‌ها کمتر از 200 خط هستند. از طرف دیگر ، Tomcat و Ant دارای برخی از فایل‌ها هستند که چندین هزار خط طول دارند و نزدیک به نیمی از آنها بیش از 200 خط هستند.
 
-What does that mean to us? It appears to be possible to build significant systems (FitNesse is close to 50,000 lines) out of files that are typically 200 lines long, with an upper limit of 500. Although this should not be a hard and fast rule, it should be considered very desirable. Small files are usually easier to understand than large files are.
+برای ما چه معنایی دارد؟ به نظر می‌رسد امکان ساخت سیستم های قابل توجهی وجود دارد (FitNesse نزدیک به 50000 خط است) از فایل‌هایی که معمولاً 200 خط طول دارند و حد بالایی آنها 500 است. اگرچه این یک قانون سخت و سریع نیست ، اما باید بسیار مورد توجه قرار گیرد که درک فایل‌های کوچک معمولاً آسانتر از فایل‌های بزرگ است.
 
-### The Newspaper Metaphor
+### استعاره روزنامه
 
-Think of a well-written newspaper article. You read it vertically. At the top you expect a headline that will tell you what the story is about and allows you to decide whether it is something you want to read. The first paragraph gives you a synopsis of the whole story, hiding all the details while giving you the broad-brush concepts. As you continue downward, the details increase until you have all the dates, names, quotes, claims, and other minutia.
+به یک مقاله خوش نوشت روزنامه فکر کنید. آن را به صورت عمودی می خوانید. در بالا، یک عنوان وجود دارد که به شما بگویید داستان از چه قرار است و به شما امکان می‌دهد تصمیم بگیرید که آیا مطلبی است که می خواهید بخوانید یا نه. پاراگراف اول خلاصه ای از کل داستان را به شما می دهد و تمام جزئیات را پنهان می کند. وقتی به سمت پایین ادامه می دهید ، جزئیات بیشتر می‌شوند، تا زمانی که همه تاریخ‌ها ، نام‌ها ، نقل قول‌ها ، ادعاها و سایر جزئیات را دارید.
 
-We would like a source file to be like a newspaper article. The name should be simple but explanatory. The name, by itself, should be sufficient to tell us whether we are in the right module or not. The topmost parts of the source file should provide the high-level concepts and algorithms. Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.
+دوست داریم که یک فایل منبع مانند مقاله روزنامه باشد. نام باید ساده، اما توضیحی باشد. این نام به خودی خود باید کافی باشد تا به ما بگوید آیا در ماژول درستی هستیم یا نه. بالاترین قسمت‌های فایل منبع باید مفاهیم و الگوریتم‌های سطح بالایی را ارائه دهند. با حرکت به سمت پایین جزئیات باید افزایش یابد تا اینکه در پایان، توابع و جزئیات پایین‌ترین سطح را در فایل منبع پیدا کنیم.
 
-A newspaper is composed of many articles; most are very small. Some are a bit larger. Very few contain as much text as a page can hold. This makes the newspaper usable. If the newspaper were just one long story containing a disorganized agglomeration of facts, dates, and names, then we simply would not read it.
+یک روزنامه از مقالات زیادی تشکیل شده است؛ بیشتر آنها بسیار کوچک هستند. بعضی از آنها کمی بزرگتر هستند. تعداد کمی از آنها درحد یک صفحه هستند. این باعث می شود روزنامه قابل استفاده باشد. اگر روزنامه فقط یک داستان طولانی بود که شامل مجموعه‌ای بی‌نظم از واقعیت‌ها‌، تاریخ‌ها و نام‌ها بود‌، به‌راحتی آن را نمی‌خواندیم.
 
-### Vertical Openness Between Concepts
+### گشودگی عمودی بین مفاهیم
 
-Nearly all code is read left to right and top to bottom. Each line represents an expression or a clause, and each group of lines represents a complete thought. Those thoughts should be separated from each other with blank lines.
+تقریباً همه کد‌ها از چپ به راست و بالا به پایین خوانده می‌شوند. هر سطر بیانگر یک عبارت یا بند است و هر گروه از خطوط بیانگر یک تفکر کامل است. این افکار را باید با خطوط خالی از یکدیگر جدا کرد.
 
-Consider, for example, Listing 5-1. There are blank lines that separate the package declaration, the import(s), and each of the functions. This extremely simple rule has a pro- found effect on the visual layout of the code. Each blank line is a visual cue that identifies a new and separate concept. As you scan down the listing, your eye is drawn to the first line that follows a blank line.
+برای مثال ، لیست 5-1 را در نظر بگیرید. خطوط خالی‌ای وجود دارد که تعریف پکیج ، import(ها) و هر یک از توابع را جدا می کند. این قانون بسیار ساده، تأثیر پیش‌بینی شده‌ای در طرح بصری کد دارد. هر خط خالی، یک نشانه بصری است که مفهوم جدید و جداگانه‌ای را مشخص می‌کند. هنگامی که لیست را اسکن می‌کنید ، چشمتان به اولین خطی می‌رود که بعد یک خط خالی آمده.
+
+</div>
 
 Listing 5-1
 BoldWidget.java
 ```java
 package fitnesse.wikitext.widgets;
+
 import java.util.regex.*;
+
 public class BoldWidget extends ParentWidget {
 	public static final String REGEXP = "'''.+?'''";
 	private static final Pattern pattern = Pattern.compile("'''(.+?)'''",
 		Pattern.MULTILINE + Pattern.DOTALL
 	);
+
 	public BoldWidget(ParentWidget parent, String text) throws Exception {
 		super(parent);
 		Matcher match = pattern.matcher(text);
 		match.find();
 		addChildWidgets(match.group(1));
 	}
+
 	public String render() throws Exception {
 		StringBuffer html = new StringBuffer("<b>");
 		html.append(childHtml()).append("</b>");
@@ -72,8 +77,11 @@ public class BoldWidget extends ParentWidget {
 	}
 }
 ```
+<div dir='rtl'>
 
-Taking those blank lines out, as in Listing 5-2, has a remarkably obscuring effect on the readability of the code.
+حذف آن خطوط خالی، مانند لیست 5-2، تأثیر قابل ملاحظه ای در خوانایی کد دارد.
+
+</div>
 
 Listing 5-2
 BoldWidget.java
@@ -98,31 +106,40 @@ public class BoldWidget extends ParentWidget {
 	}
 }
 ```
+<div dir='rtl'>
 
-This effect is even more pronounced when you unfocus your eyes. In the first example the different groupings of lines pop out at you, whereas the second example looks like a muddle. The difference between these two listings is a bit of vertical openness.
+هنگامی که چشم خود را متمرکز نکنید این اثر حتی بیشتر نمایان می شود. در مثال اول، گروه‌بنهدی‌های مختلف خطوط، واضح‌اند، درحالی‌که مثال دوم، به نظر می رسد درهم و برهم است. تفاوت این دو لیست درمقدار کمی از گشودگی عمودی است.
 
-### Vertical Density
+### تراکم عمودی
 
-If openness separates concepts, then vertical density implies close association. So lines of code that are tightly related should appear vertically dense. Notice how the useless comments in Listing 5-3 break the close association of the two instance variables.
+اگر گشودگی، مفاهیم را از هم جدا کند ، پس تراکم عمودی به معنای یک ارتباط نزدیک است. بنابراین خطوط کدی که کاملاً با هم مرتبط هستند، باید به صورت عمودی متراکم به نظر برسند. توجه کنید که چگونه کامنت‌های بی فایده در لیست 5-3 ارتباط نزدیک دو متغیر نمونه را از بین می‌برد.
+
+</div>
 
 Listing 5-3
 ```java
 public class ReporterConfig {
+
 	/**
 	* The class name of the reporter listener
 	*/
 	private String m_className;
+	
 	/**
 	* The properties of the reporter listener
 	*/
 	private List<Property> m_properties = new ArrayList<Property>();
+	
 	public void addProperty(Property property) {
 		m_properties.add(property);
 	}
 }
 ```
+<div dir='rtl'>
 
-Listing 5-4 is much easier to read. It fits in an “eye-full,” or at least it does for me. I can look at it and see that this is a class with two variables and a method, without having to move my head or eyes much. The previous listing forces me to use much more eye and head motion to achieve the same level of comprehension.
+خواندن لیست 5-4 بسیار راحت‌تر است. این در یک "نگاه" قرار می‌گیرد ، یا حداقل برای من اینطور است. بدون اینکه خیلی سر یا چشمهایم را حرکت دهم، می توانم به آن نگاه کنم و ببینم که این یک کلاس با دو متغیر و یک تابع است. لیست قبلی من را مجبور می‌کند تا از حرکت چشم و سر بسیار بیشتری برای رسیدن به سطح درک مشابه استفاده کنم.
+
+</div>
 
 Listing 5-4
 ```java
@@ -134,6 +151,11 @@ public class ReporterConfig {
 	}
 }
 ```
+<div dir='rtl'>
+
+
+
+</div>
 
 ### Vertical Distance
 Have you ever chased your tail through a class, hopping from one function to the next, scrolling up and down the source file, trying to divine how the functions relate and operate, only to get lost in a rat’s nest of confusion? Have you ever hunted up the chain of inheritance for the definition of a variable or function? This is frustrating because you are trying to understand what the system does, but you are spending your time and mental energy on trying to locate and remember where the pieces are.
