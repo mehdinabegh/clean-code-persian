@@ -153,18 +153,16 @@ public class ReporterConfig {
 ```
 <div dir='rtl'>
 
+### فاصله عمودی
+تابحال شده که در کلاسی پرسه بزنید، از یک تابع به تابع دیگر بروید، سورس فایل را بالا و پایین کنید، ارتباط و عملکرد توابع را بفهمید اما نهایتا گیج شوید؟ آیا تابحال برای فهمیدن تعریف یک متغیر یا تابع به زنجیره‌ای از وراثت برخورد کرده‌اید؟ این ناامیدکننده است زیرا شما در حال فهمیدن این هستید که سیستم چه کاری انجام می دهد ، اما وقت و انرژی ذهنی خود را صرف این می کنید که مکانها را بیابید و به خاطر بسپارید.
 
+مفاهیمی که ارتباط تنگاتنگی دارند باید به صورت عمودی نزدیک به یکدیگر نگه داشته شوند [G10]. واضح است که این قانون برای مفاهیمی که در فایل‌های جداگانه قرار دارند کار نمی کند. اما در این صورت مفاهیم نزدیک به هم را نباید در فایل‌های مختلف جدا کرد ، مگر اینکه دلیل خیلی خوبی داشته باشید. در واقع ، این یکی از دلایلی است که باید از متغیرهای محافظت شده اجتناب شود.
+
+برای آن دسته از مفاهیمی که چنان با هم مرتبط هستند که در همان پرونده منبع قرار دارند ، تفکیک عمودی آنها باید معیاری برای میزان اهمیت هر یک برای قابل درک بودن دیگری باشد. می‌خواهیم از اجبار خوانندگان خود برای جستجوی فایل‌ها و کلاس‌های منبع جلوگیری کنیم.
+
+**تعریف متغیر** متغیرها باید تا حد امکان نزدیک به کاربرد آنها تعریف شوند. از آنجا که توابع ما بسیار کوتاه هستند ، متغیرهای محلی باید در بالای هر تابع ظاهر شوند ، مانند این تابع longish از Junit4.3.1.
 
 </div>
-
-### Vertical Distance
-Have you ever chased your tail through a class, hopping from one function to the next, scrolling up and down the source file, trying to divine how the functions relate and operate, only to get lost in a rat’s nest of confusion? Have you ever hunted up the chain of inheritance for the definition of a variable or function? This is frustrating because you are trying to understand what the system does, but you are spending your time and mental energy on trying to locate and remember where the pieces are.
-
-Concepts that are closely related should be kept vertically close to each other [G10]. Clearly this rule doesn’t work for concepts that belong in separate files. But then closely related concepts should not be separated into different files unless you have a very good reason. Indeed, this is one of the reasons that protected variables should be avoided.
-
-For those concepts that are so closely related that they belong in the same source file, their vertical separation should be a measure of how important each is to the understandability of the other. We want to avoid forcing our readers to hop around through our source files and classes.
-
-**Variable Declarations.** Variables should be declared as close to their usage as possible. Because our functions are very short, local variables should appear a the top of each function, as in this longish function from Junit4.3.1.
 
 ```java
 private static void readPreferences() {
@@ -182,8 +180,11 @@ private static void readPreferences() {
 	}
 }
 ```
+<div dir='rtl'>
 
-Control variables for loops should usually be declared within the loop statement, as in this cute little function from the same source.
+متغیرهای کنترلی برای حلقه‌ها معمولاً باید در عبارت حلقه اعلان شوند ، همانطور که در این تابع کوچک زیبا از همان منبع وجود دارد.
+
+</div>
 
 ```java
 public int countTestCases() {
@@ -193,8 +194,11 @@ public int countTestCases() {
 	return count;
 }
 ```
+<div dir='rtl'>
 
-In rare cases a variable might be declared at the top of a block or just before a loop in a long-ish function. You can see such a variable in this snippet from the midst of a very long function in TestNG.
+در موارد نادر ، یک متغیر ممکن است در بالای یک بلوک یا درست قبل از حلقه در یک تابع طولانی اعلام شود. چنین متغیری را می توانید از وسط یک تابع بسیار طولانی در TestNG در این قطعه مشاهده کنید.
+
+</div>
 
 ```java
 ...
@@ -212,12 +216,15 @@ for (XmlTest test : m_suite.getTests()) {
 }
 ...
 ```
+<div dir='rtl'>
 
-**Instance variables,** on the other hand, should be declared at the top of the class. This should not increase the vertical distance of these variables, because in a well-designed class, they are used by many, if not all, of the methods of the class.
+**متغیرهای نمونه** از طرف دیگر، باید در بالای کلاس اعلام شود. نباید فاصله عمودی این متغیرها را افزایش داد، زیرا در یک کلاس خوب طراحی شده، اگر نه همه ، بسیاری از متدهای کلاس از آنها استفاده می‌کنند.
 
-There have been many debates over where instance variables should go. In C++ we commonly practiced the so-called scissors rule, which put all the instance variables at the bottom. The common convention in Java, however, is to put them all at the top of the class. I see no reason to follow any other convention. The important thing is for the instance vari- ables to be declared in one well-known place. Everybody should know where to go to see the declarations.
+بحث های زیادی در مورد اینکه متغیرهای نمونه باید به کجا بروند وجود داشته است. در C ++ معمولاً قانون به اصطلاح قیچی را اجرا می‌کنیم که همه متغیرهای نمونه را در پایین قرار می‌دهد. با این حال ، قرارداد رایج در جاوا این است که همه آن‌ها را در بالای کلاس قرار دهید. من دلیلی برای پیروی از هر قرارداد دیگری نمی‌بینم. نکته مهم این است که متغیرهای نمونه در یک مکان شناخته شده اعلام شوند. همه باید بدانند که برای دیدن تعاریف به کجا مراجعه کنند.
 
-Consider, for example, the strange case of the TestSuite class in JUnit 4.3.1. I have greatly attenuated this class to make the point. If you look about halfway down the listing, you will see two instance variables declared there. It would be hard to hide them in a better place. Someone reading this code would have to stumble across the declarations by accident (as I did).
+به عنوان مثال ، مورد عجیب کلاس TestSuite را در JUnit 4.3.1 در نظر بگیرید. من این کلاس را بسیار ضعیف کردم تا نکته را بیان کنم. اگر نگاهی به نیمه لیست بیندازید ، دو متغیر نمونه  در آنجا تعریف شده. پنهان‌کردن آن‌ها در مکان بهتر دشوار خواهد بود. شخصی که این کد را می خواند باید در تعریف‌ها تصادفی بلغزد (همانطور که من این کار را کردم).
+
+</div>
 
 ```java
 public class TestSuite implements Test {
@@ -249,8 +256,11 @@ public class TestSuite implements Test {
 	... ... ... ... ...
 }
 ```
+<div dir='rtl'>
 
-**Dependent Functions.** If one function calls another, they should be vertically close, and the caller should be above the callee, if at all possible. This gives the program a natural flow. If the convention is followed reliably, readers will be able to trust that function definitions will follow shortly after their use. Consider, for example, the snippet from FitNesse in Listing 5-5. Notice how the topmost function calls those below it and how they in turn call those below them. This makes it easy to find the called functions and greatly enhances the readability of the whole module.
+**توابع وابسته** اگر یک تابع، دیگری را فراخوانی می‌کند ، باید به صورت عمودی نزدیک باشند و در صورت امکان، صدازننده باید بالاتر از صدازده‌شده باشد. این به برنامه جریان طبیعی می‌بخشد. اگر این قرارداد با اطمینان دنبال شود ، خوانندگان می توانند اعتماد کنند که تعاریف تابع کمی بعد از استفاده دنبال می شوند. به عنوان مثال ، قطعه FitNesse را در لیست 5-5 در نظر بگیرید. توجه کنید که بالاترین تابع چگونه توابع زیر خود را فراخوانی می‌کند و چگونه آن‌ها به نوبه خود توابع زیر خود را فراخوانی می‌کنند. این کار، پیدا کردن توابع فراخوانی شده را آسان می‌کند و خوانایی کل ماژول را تا حد زیادی افزایش می‌دهد.
+
+</div>
 
 Listing 5-5
 WikiPageResponder.java
@@ -301,8 +311,11 @@ public class WikiPageResponder implements SecureResponder {
 }
 ...
 ```
+<div dir='rtl'>
 
-As an aside, this snippet provides a nice example of keeping constants at the appropriate level [G35]. The "FrontPage" constant could have been buried in the getPageNameOrDefault function, but that would have hidden a well-known and expected constant in an inappropriately low-level function. It was better to pass that constant down from the place where it makes sense to know it to the place that actually uses it.
+بعلاوه، این قطعه، نمونه خوبی از نگه داشتن ثابتها در سطح مناسب است [G35]. ثابت "FrontPage" می توانست در تابع getPageNameOrDefault دفن شود ، اما این می تواند یک ثابت شناخته شده و مورد انتظار را در تابع نامناسب سطح پایین پنهان کند. بهتر بود که آن ثابت را از جایی که منطقی است باشد، به محلی انتقال دهیم که واقعاً از آن استفاده می کند.
+
+</div>
 
 ![](img-5.3.png)
 
