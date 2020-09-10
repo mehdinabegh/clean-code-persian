@@ -21,6 +21,7 @@
 
 متاسفانه کامنت ها همیشه آنها را دنبال نمیکنند-در واقع نمیتوانند دنبال کنند.اغلب اوقات از کدی که توصیف میکنند فاصله میگیرند وتکه های بریده ای میشوند که باعث کاهش مداوم دقت هستند. به طور مثال ، ببینید چه اتفاقی برای این کامنت و کدی که قصد داشت توضیح بدهد افتاد:
 </div>
+
 ```java
 MockRequest request;
 private final String HTTP_DATE_REGEXP =
@@ -51,6 +52,7 @@ private Locale saveLocale;
 ## منظورتان را با کد برسانید
 مطمئناً مواردی وجود دارد که کد وسیله ی ضعیفی برای توصیف است. متاسفانه  بسیاری از برنامه نویسان این را اینطور برداشت کرده اند که کد بندرت میتواند راه خوبی برای توصیف باشد. این به وضوح اشتباه است. شما ترجیح میدهید کدام را ببینید؟ این:
 </div>
+
 ```java
 // Check to see if the employee is eligible for full benefits
 if ((employee.flags & HOURLY_FLAG) &&
@@ -59,6 +61,7 @@ if ((employee.flags & HOURLY_FLAG) &&
 <div dir="rtl">
 یا این؟
 </div>
+
 ```java
 if (employee.isEligibleForFullBenefits())
 ```
@@ -73,6 +76,7 @@ if (employee.isEligibleForFullBenefits())
 
 در اینجا، مثلا، این یک کامنت استاندارد است که درا ول همه ی سورس ها در FitNesse قرار می دهیم. خوشحالم که بگویم IDE ما با از بین بردن این کامنت به طور اتوماتیک، از عمل کردن آن به عنوان یک اخلال گر جلو گیری میکند.
 </div>
+
 ```java
 // Copyright (C) 2003,2004,2005 by Object Mentor, Inc. All rights reserved.
 // Released under the terms of the GNU General Public License version 2 or later.
@@ -83,6 +87,7 @@ if (employee.isEligibleForFullBenefits())
 ## کامنت های آموزنده
 ارائه ی اطلاعات پایه ای در کامنت مفید است. برای مثال ، به نظر می آید که این کامنت مقدار بازگشتی یک متد abstractرا برمیگرداند .
 </div>
+
 ```java
 // Returns an instance of the Responder being tested.
 protected abstract Responder responderInstance();
@@ -91,6 +96,7 @@ protected abstract Responder responderInstance();
 یک کامنت مثل این گاهی میتواند مفید باشد، اما بهتر است تاجای ممکن برای انتقال اطلاعات از نام تابع استفاده کنیم . مثلا، دراین مورد کامنت می تواند با عوض کردن نام تابع حذف شود. responderBeingTested .
 در این مورد کمی بهتر است:
 </div>
+
 ```java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 Pattern timeMatcher = Pattern.compile(
