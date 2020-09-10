@@ -319,8 +319,13 @@ public class WikiPageResponder implements SecureResponder {
 
 ![](img-5.3.png)
 
-**Conceptual Affinity.** Certain bits of code want to be near other bits. They have a certain conceptual affinity. The stronger that affinity, the less vertical distance there should be between them.
-As we have seen, this affinity might be based on a direct dependence, such as one function calling another, or a function using a variable. But there are other possible causes of affinity. Affinity might be caused because a group of functions perform a similar operation. Consider this snippet of code from Junit 4.3.1:
+<div dir='rtl'>
+
+**میل مفهومی** بخش‌های خاصی از کد نیازست نزدیک بخش‌های دیگر باشند. آنها میل مفهومی خاصی دارند. هرچه این میل قوی‌تر باشد ، فاصله عمودی کمتری باید بین آنها وجود داشته باشد.
+
+همانطور که دیدیم، این میل ممکن است بر اساس یک وابستگی مستقیم باشد، مانند اینکه یک تابع، تابع دیگری را صدا می‌کند، یا یک تابع از یک متغیر استفاده می‌کند. اما علل احتمالی دیگری نیز وجود دارد. وابستگی ممکن است ایجاد شود زیرا گروهی از توابع عملیاتی مشابه را انجام می دهند. این قطعه کد را از Junit 4.3.1 در نظر بگیرید:
+
+</div>
 
 ```java
 public class Assert {
@@ -340,28 +345,37 @@ public class Assert {
 }
 ...
 ```
+<div dir='rtl'>
 
-These functions have a strong conceptual affinity because they share a common naming scheme and perform variations of the same basic task. The fact that they call each other is secondary. Even if they didn’t, they would still want to be close together.
+این توابع از یک تمایل مفهومی قوی برخوردار هستند زیرا آنها دارای یک طرح مشترک نام‌گذاری هستند و صورت‌های مختلفی از یک کار پایه را انجام می دهند. این واقعیت که آنها یکدیگر را صدا می کنند در درجه دوم است. حتی اگر این کار را نکردند، هنوز هم نیاز است به هم نزدیک باشند.
 
-### Vertical Ordering
+### ترتیب عمودی
 
-In general we want function call dependencies to point in the downward direction. That is, a function that is called should be below a function that does the calling. 2 This creates a nice flow down the source code module from high level to low level.
+به طور کلی می خواهیم وابستگی های فراخوانی تابع به سمت پایین باشد. یعنی تابعی که فراخوانی می شود باید زیر تابعی باشد که فراخوانی را انجام می دهد. این یک جریان خوب از ماژول کد منبع از سطح بالا به سطح پایین ایجاد می کند.
 
-As in newspaper articles, we expect the most important concepts to come first, and we expect them to be expressed with the least amount of polluting detail. We expect the low-level details to come last. This allows us to skim source files, getting the gist from the first few functions, without having to immerse ourselves in the details. Listing 5-5 is organized this way. Perhaps even better examples are Listing 15-5 on page 263, and Listing 3-7 on page 50.
+همانند مقالات روزنامه‌ها، انتظار داریم مهمترین مفاهیم ابتدا مطرح شوند، همچنین انتظار داریم که با کمترین جزئیات آلوده کننده بیان شوند. ما انتظار داریم که جزئیات سطح پایین آخر باشد. این به ما اجازه می‌دهد بدون اینکه خود را در جزئیات غوطه‌ور کنیم، از فایل‌های منبع خلاص شویم، و از چند تابع اول خلاصه کنیم. لیست 5-5 از این طریق سازمان‌یافته است. شاید حتی مثالهای بهتر این موارد عبارتند از لیست 15-5 در صفحه 263 و لیست 3-7 در صفحه 50.
 
-## Horizontal Formatting
-How wide should a line be? To answer that, let’s look at how wide lines are in typical programs. Again, we examine the seven different projects. Figure 5-2 shows the distribution of line lengths of all seven projects. The regularity is impressive, especially right around 45 characters. Indeed, every size from 20 to 60 represents about 1 percent of the total number of lines. That’s 40 percent! Perhaps another 30 percent are less than 10 characters wide. Remember this is a log scale, so the linear appearance of the drop-off above 80 characters is really very significant. Programmers clearly prefer short lines.
+## قالب‌بندی افقی
+
+یک خط باید چقدر عرض داشته باشد؟ برای پاسخ دادن به آن ، بیایید بررسی کنیم که خطوط در برنامه های معمول چقدر عرض دارند. باز هم، ما هفت پروژه مختلف را بررسی می کنیم. شکل 5-2 توزیع طول خطوط هر هفت پروژه را نشان می دهد. منظم بودن، خصوصاً در حدود 45 کاراکتر چشمگیر است. در واقع، هر اندازه از 20 تا 60 نشان دهنده حدود 1 درصد از تعداد کل خطوط است. این 40 درصد است! شاید 30 درصد دیگر کمتر از 10 حرف عرض داشته باشند. به یاد داشته باشید این مقیاس ورود به سیستم است، بنابراین شکل خطی افت بیش از 80 کاراکتر واقعاً قابل توجه است. برنامه نویسان به وضوح خطوط کوتاه را ترجیح می دهند.
+
+</div>
 
 ![Java line width distribution](img-5.4.png)
 
 Java line width distribution
 
-This suggests that we should strive to keep our lines short. The old Hollerith limit of 80 is a bit arbitrary, and I’m not opposed to lines edging out to 100 or even 120. But beyond that is probably just careless.
+<div dir='rtl'>
 
-I used to follow the rule that you should never have to scroll to the right. But monitors are too wide for that nowadays, and younger programmers can shrink the font so small that they can get 200 characters across the screen. Don’t do that. I personally set my limit at 120.
+این نشان می دهد که ما باید تلاش کنیم خطوط خود را کوتاه نگه داریم. حد 80 قدیمی هولریت کمی خودسرانه است و من مخالف این نیستم که خطوط به 100 یا حتی 120 برسد. اما فراتر از آن احتمالاً فقط بی احتیاطی است.
 
-### Horizontal Openness and Density
-We use horizontal white space to associate things that are strongly related and disassociate things that are more weakly related. Consider the following function:
+من قبلاً از این قانون پیروی می کردم که شما هرگز نباید به سمت راست پیمایش کنید. اما امروزه مانیتورها برای این امر بسیار گسترده هستند و برنامه نویسان جوان می توانند فونت را به اندازه ای کوچک کنند که بتوانند 200 کاراکتر در صفحه نمایش دهند. چنین کاری نکن من، شخصاً حد خودم را 120 گذاشتم.
+
+### گشودگی و چگالی افقی
+
+ما از فضای سفید افقی برای ارتباط چیزهایی که به شدت مرتبط هستند و جدا کردن مواردی که ارتباط ضعیف‌تری دارند استفاده می‌کنیم. تابع زیر را در نظر بگیرید:
+
+</div>
 
 ```java
 private void measureLine(String line) {
@@ -372,12 +386,15 @@ private void measureLine(String line) {
 	recordWidestLine(lineSize);
 }
 ```
+<div dir='rtl'>
 
-I surrounded the assignment operators with white space to accentuate them. Assignment statements have two distinct and major elements: the left side and the right side. The spaces make that separation obvious.
+من اپراتورهای انتصاب را با فضای سفید احاطه کردم تا آنها را برجسته کنم. عبارات انتساب دارای دو عنصر مشخص و اصلی هستند: سمت چپ و سمت راست. فضاها آن تفکیک را آشکار می سازند.
 
-On the other hand, I didn’t put spaces between the function names and the opening parenthesis. This is because the function and its arguments are closely related. Separating them makes them appear disjoined instead of conjoined. I separate arguments within the function call parenthesis to accentuate the comma and show that the arguments are separate.
+از طرف دیگر ، من بین نام تابع و پرانتز باز فاصله نگذاشتم. این به این دلیل است که عملکرد و آرگومان های آن ارتباط تنگاتنگی دارند. جدا کردن آنها باعث می شود که به جای متصل بودن ، از هم جدا به نظر برسند. من آرگومان های درون پرانتز فراخوانی تابع را برای برجسته کردن ویرگول، جدا می کنم و نشان می دهم که آرگومان ها جدا هستند.
 
-Another use for white space is to accentuate the precedence of operators.
+یکی دیگر از موارد استفاده از فضای خالی ، تأکید بر تقدم عملگرها است.
+
+</div>
 
 ```java
 public class Quadratic {
@@ -394,26 +411,30 @@ public class Quadratic {
 	}
 }
 ```
+<div dir='rtl'>
 
-Notice how nicely the equations read. The factors have no white space between them because they are high precedence. The terms are separated by white space because addition and subtraction are lower precedence.
+توجه کنید که تساوی‌ها به چه زیبایی خوانده می‌شوند. بین فاکتورها فضای خالی وجود ندارد زیرا از اولویت بالایی برخوردار هستند. ترم‌ها با فضای خالی از هم جدا می‌شوند زیرا جمع و تفریق اولویت‌های کمتری هستند.
 
-Unfortunately, most tools for reformatting code are blind to the precedence of operators and impose the same spacing throughout. So subtle spacings like those shown above tend to get lost after you reformat the code.
+متأسفانه ، بیشتر ابزارها برای اصلاح مجدد کد از اولویت عملگرها چشم پوشی می کنند و فاصله یکسانی را در کل اعمال می کنند. بنابراین فاصله های ظریف مانند آنچه در بالا نشان داده شده است پس از اصلاح کد ، از بین می روند.
 
-### Horizontal Alignment
-When I was an assembly language programmer, 3 I used horizontal alignment to accentuate certain structures. When I started coding in C, C++, and eventually Java, I continued to try to line up all the variable names in a set of declarations, or all the rvalues in a set of assignment statements. My code might have looked like this:
+### ترازبندی افقی
+
+هنگامی که من یک برنامه نویس زبان اسمبلی بودم ، از تراز افقی برای برجسته سازی برخی ساختارها استفاده می کردم. وقتی شروع به کد نویسی در C ، C ++ و سرانجام جاوا کردم ، سعی کردم همه نام متغیرها را در مجموعه ای از اعلامیه ها یا همه مقادیر را در مجموعه عبارات انتساب ردیف کنم. کد من ممکن است به این شکل باشد:
+
+</div>
 
 ```java
 public class FitNesseExpediter implements ResponseSender {
-	private         Socket 		socket;
+	private     Socket 			socket;
 	private 	InputStream     input;
 	private 	OutputStream    output;
-	private 	Request 	request;
-	private 	Response 	response;
+	private 	Request 		request;
+	private 	Response 		response;
 	private 	FitNesseContext context;
-	protected 	long 		requestParsingTimeLimit;
-	private 	long 		requestProgress;
-	private 	long 		requestParsingDeadline;
-	private 	boolean 	hasError;
+	protected 	long 			requestParsingTimeLimit;
+	private 	long 			requestProgress;
+	private 	long 			requestParsingDeadline;
+	private 	boolean 		hasError;
 	
 	public FitNesseExpediter(Socket s,
 	FitNesseContext context) throws Exception {
@@ -425,10 +446,13 @@ public class FitNesseExpediter implements ResponseSender {
 	}
 }
 ```
+<div dir='rtl'>
 
-I have found, however, that this kind of alignment is not useful. The alignment seems to emphasize the wrong things and leads my eye away from the true intent. For example, in the list of declarations above you are tempted to read down the list of variable names without looking at their types. Likewise, in the list of assignment statements you are tempted to look down the list of rvalues without ever seeing the assignment operator. To make matters worse, automatic reformatting tools usually eliminate this kind of alignment.
+من فهمیدم که این نوع هم ترازی مفید نیست. به نظر می رسد هم ترازی موارد پرت را تأکید می‌کند و چشم من را از قصد واقعی دور می‌کند. به عنوان مثال ، در لیست اعلامیه های بالا وسوسه می شوید لیستی از نام های متغیر را بدون بررسی انواع آنها بخوانید. به همین ترتیب ، در لیست عبارات انتساب ، وسوسه می شوید که لیست مقادیر را بدون دیدن عملگر انتساب به پایین نگاه کنید. بدتر از آن ، ابزارهای قالب بندی مجدد خودکار معمولاً این نوع هم ترازی را از بین می برند.
 
-So, in the end, I don’t do this kind of thing anymore. Nowadays I prefer unaligned declarations and assignments, as shown below, because they point out an important deficiency. If I have long lists that need to be aligned, the problem is the length of the lists, not the lack of alignment. The length of the list of declarations in FitNesseExpediter below suggests that this class should be split up.
+بنابراین ، در پایان ، من دیگر این نوع کارها را انجام نمی دهم. امروزه من ترجیح می دهم تعاریف و انتساب غیر هم‌تراز ، همانطور که در زیر نشان داده شده است ، زیرا آنها یک نقص مهم را نشان می دهند. اگر من لیست های طولانی دارم که باید تراز شوند ، مشکل طولانی بودن لیست ها است ، نه عدم هم ترازی. طول لیست تعاریف در FitNesseExpediter در زیر نشان می دهد که این کلاس باید تقسیم شود.
+
+</div>
 
 ```java
 public class FitNesseExpediter implements ResponseSender {
@@ -451,15 +475,19 @@ public class FitNesseExpediter implements ResponseSender {
 	}
 }
 ```
+<div dir='rtl'>
 
-### Indentation
-A source file is a hierarchy rather like an outline. There is information that pertains to the file as a whole, to the individual classes within the file, to the methods within the classes, to the blocks within the methods, and recursively to the blocks within the blocks. Each level of this hierarchy is a scope into which names can be declared and in which declarations and executable statements are interpreted.
+### تورفتگی
 
-To make this hierarchy of scopes visible, we indent the lines of source code in proportion to their position in the hiearchy. Statements at the level of the file, such as most class declarations, are not indented at all. Methods within a class are indented one level to the right of the class. Implementations of those methods are implemented one level to the right of the method declaration. Block implementations are implemented one level to the right of their containing block, and so on.
+فایل منبع یک سلسله مراتب است و بیشتر شبیه یک طرح کلی است. اطلاعاتی وجود دارد که مربوط به فایل به طور کلی ، به کلاسهای جداگانه درون فایل ، به متدهای درون کلاسها ، به بلوک های درون متدها و به طور بازگشتی به بلوک های درون بلوک ها است. هر سطح از این سلسله مراتب محدوده ای است که می توان در آن اسامی را اعلام کرد و در آن تعاریف و دستورات اجرایی را تفسیر می کند.
 
-Programmers rely heavily on this indentation scheme. They visually line up lines on the left to see what scope they appear in. This allows them to quickly hop over scopes, such as implementations of if or while statements, that are not relevant to their current situation. They scan the left for new method declarations, new variables, and even new classes. Without indentation, programs would be virtually unreadable by humans.
+برای اینکه این سلسله مراتب از محدوده ها قابل مشاهده باشد ، متناسب با موقعیت آنها در سلسله مراتب ، خطوط کد منبع را تورفتگی می دهیم. عبارات موجود در سطح فایل ، مانند اکثر تعاریف کلاس ، به هیچ وجه فرورفته نیستند. متدهای درون یک کلاس در یک سطح سمت راست کلاس قرار دارند. پیاده سازی آن متدها در یک سطح به سمت راست تعریف متد اجرا می شود. پیاده سازی بلوک در یک سطح سمت راست بلوک حاوی آن اجرا می شود و غیره.
 
-Consider the following programs that are syntactically and semantically identical:
+برنامه نویسان به شدت به این طرح تورفتگی اعتماد می کنند. آنها به صورت تصویری خطوطی را در سمت چپ قرار می دهند تا ببینند در چه دامنه ای ظاهر می شوند. این به آنها امکان می دهد تا به سرعت در دامنه هایی مانند پیاده سازی دستورات if یا while که مربوط به وضعیت فعلی آنها نیستند ، جست و جو کنند. آنها سمت چپ را برای اعلامیه های متد جدید ، متغیرهای جدید و حتی کلاس های جدید اسکن می کنند. بدون تورفتگی ، برنامه ها برای انسان عملاً قابل خواندن نیستند.
+
+برنامه های زیر را که از نظر نحوی و معنایی یکسان هستند در نظر بگیرید:
+
+</div>
 
 ```java
 public class FitNesseServer implements SocketServer { private FitNesseContext
@@ -492,9 +520,15 @@ public class FitNesseServer implements SocketServer {
 }
 ```
 
-Your eye can rapidly discern the structure of the indented file. You can almost instantly spot the variables, constructors, accessors, and methods. It takes just a few seconds to realize that this is some kind of simple front end to a socket, with a time-out. The unindented version, however, is virtually impenetrable without intense study.
+<div dir='rtl'>
 
-**Breaking Indentation.** It is sometimes tempting to break the indentation rule for short if statements, short while loops, or short functions. Whenever I have succumbed to this temptation, I have almost always gone back and put the indentation back in. So I avoid collapsing scopes down to one line like this:
+چشم شما به سرعت می تواند ساختار پرونده تورفتگی را تشخیص دهد. تقریباً بلافاصله می توانید متغیرها ، سازنده ها ، دسترسی ها و متد ها را تشخیص دهید. فقط چند ثانیه طول می کشد تا متوجه شوید که این نوعی ازفرانت‌اند ساده یک سوکت است که دارای زمان است. با این وجود، مطالعه نسخه بدون تورفتگی شدیدا غیر قابل نفوذ است.
+
+**نادیده گرفتن تورفتگی** 
+
+شکستن قانون تورفتگی برای دستورات کوتاه if، حلقه های کوتاه یا توابع کوتاه ، وسوسه انگیز است. هر وقت که تسلیم این وسوسه شدم ، تقریباً همیشه برمی گردم و تورفتگی را دوباره برمی گردانم. بنابراین از فرو ریختن دامنه ها به یک خط مانند این جلوگیری می کنم:
+
+</div>
 
 ```java
 public class CommentWidget extends TextWidget {
@@ -507,8 +541,11 @@ public class CommentWidget extends TextWidget {
 	}
 }
 ```
+<div dir='rtl'>
 
-I prefer to expand and indent the scopes instead, like this:
+من ترجیح می دهم به جای این موارد دامنه ها را گسترش و تورفتگی بدهم:
+
+</div>
 
 ```java
 public class CommentWidget extends TextWidget {
@@ -521,30 +558,41 @@ public class CommentWidget extends TextWidget {
 	}
 }
 ```
+<div dir='rtl'>
 
-### Dummy Scopes
+### دامنه های ساختگی
 
-Sometimes the body of a while or for statement is a dummy, as shown below. I don’t like these kinds of structures and try to avoid them. When I can’t avoid them, I make sure that the dummy body is properly indented and surrounded by braces. I can’t tell you how many times I’ve been fooled by a semicolon silently sitting at the end of a while loop on the same line. Unless you make that semicolon visible by indenting it on it’s own line, it’s just too hard to see.
+همانطور که در زیر نشان داده می شود ، بعضی اوقات بدنه while یا for ساختگی است. من این نوع ساختارها را دوست ندارم و سعی می کنم از آنها اجتناب کنم. وقتی نمی توانم از آنها اجتناب کنم ، مطمئن می شوم که بدنه ساختگی به درستی فرورفتگی داشته و توسط براکت احاطه شده باشد. نمی توانم به شما بگویم که چند بار گول یک نقطه ویرگول را خورده ام که در انتهای حلقه while روی همان خط بوده. مگر اینکه آن نقطه ویرگول را با تورفته کردن روی خط خود قابل مشاهده کنید ، دیدن آن خیلی سخت است.
+
+</div>
 
 ```java
 while (dis.read(buf, 0, readBufferSize) != -1);
 ```
+<div dir='rtl'>
 
-## Team Rules
+## قوانین تیم
+
+</div>
 
 ![](img-5.5.png)
 
-The title of this section is a play on words. Every programmer has his own favorite formatting rules, but if he works in a team, then the team rules.
+<div dir='rtl'>
 
-A team of developers should agree upon a single formatting style, and then every member of that team should use that style. We want the software to have a consistent style. We don’t want it to appear to have been written by a bunch of disagreeing individuals.
+عنوان این بخش بازی با کلمات است. هر برنامه نویس قوانین قالب بندی مورد علاقه خود را دارد ، اما اگر در یک تیم کار کند ، قوانین تیم حاکم است.
 
-When I started the FitNesse project back in 2002, I sat down with the team to work out a coding style. This took about 10 minutes. We decided where we’d put our braces, what our indent size would be, how we would name classes, variables, and methods, and so forth. Then we encoded those rules into the code formatter of our IDE and have stuck with them ever since. These were not the rules that I prefer; they were rules decided by the team. As a member of that team I followed them when writing code in the FitNesse project.
+یک تیم از توسعه دهندگان باید بر روی یک سبک قالب بندی واحد توافق کنند و سپس هر یک از اعضای آن تیم باید از آن سبک استفاده کنند. ما می خواهیم که این نرم افزار سبک سازگار داشته باشد. ما نمی خواهیم که به نظر می رسد توسط گروهی از افراد مخالف نوشته شده است.
 
-Remember, a good software system is composed of a set of documents that read nicely. They need to have a consistent and smooth style. The reader needs to be able to trust that the formatting gestures he or she has seen in one source file will mean the same thing in others. The last thing we want to do is add more complexity to the source code by writing it in a jumble of different individual styles.
+هنگامی که پروژه FitNesse را در سال 2002 شروع کردم ، با تیم برای کار در یک سبک کدگذاری نشستم. این کار حدود 10 دقیقه طول کشید. ما تصمیم گرفتیم که براکت‌های خود را کجا قرار دهیم ، اندازه فرورفتگی ما چه اندازه باشد ، چگونه کلاس ها ، متغیرها و روش ها را نام ببریم و موارد دیگر. سپس ما آن قوانین را در قالب ساز کد IDE خود رمزگذاری کردیم و از آن زمان با آنها همراه هستیم. این قوانینی نبود که من ترجیح می دهم. آنها قوانینی بودند که توسط تیم تصمیم گرفته شد. من به عنوان عضوی از این تیم هنگام نوشتن کد در پروژه FitNesse آنها را دنبال می کردم.
 
-## Uncle Bob’s Formatting Rules
+به یاد داشته باشید ، یک سیستم نرم افزاری خوب از مجموعه اسنادی تشکیل شده است که به زیبایی خوانده می شوند. آنها باید سبک ثابت و روان داشته باشند. خواننده باید بتواند اعتماد کند که حرکات قالب بندی که در یک فایل منبع دیده است ، در دیگران معنای مشابهی خواهد داشت. آخرین کاری که می خواهیم انجام دهیم افزودن پیچیدگی بیشتر به کد منبع با نوشتن آن در مخلوطی از سبک های مختلف فردی است.
 
-The rules I use personally are very simple and are illustrated by the code in Listing 5-6. Consider this an example of how code makes the best coding standard document.
+## قوانین قالب بندی عمو باب
+
+قوانینی که من شخصاً استفاده می کنم بسیار ساده هستند و توسط کدی در لیست 5-6 نشان داده شده اند. این را مثالی از نحوه ایجاد کد بهترین سند استاندارد کدگذاری در نظر بگیرید.
+
+</div>
+
 
 Listing 5-6
 CodeAnalyzer.java
