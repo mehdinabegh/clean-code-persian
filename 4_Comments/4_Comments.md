@@ -3,34 +3,23 @@
 
 # 4 Comments
 
-“Don’t comment bad code—rewrite it.”
-—Brian W. Kernighan and P. J. Plaugher
+« کد بد را کامنت نکنید – دوباره بنویسید.»
+—Brian W. Kernighan and P. J. Plaugher1
 
-Nothing can be quite so helpful as a well-placed comment. Nothing can clutter up a mod-
-ule more than frivolous dogmatic comments. Nothing can be quite so damaging as an old
-crufty comment that propagates lies and misinformation.
-Comments are not like Schindler’s List. They are not “pure good.” Indeed, comments
-are, at best, a necessary evil. If our programming languages were expressive enough, or if we had the talent to subtly wield those languages to express our intent, we would not need
-comments very much—perhaps not at all.
-The proper use of comments is to compensate for our failure to express ourself in
-code. Note that I used the word failure. I meant it. Comments are always failures. We must
-have them because we cannot always figure out how to express ourselves without them,
-but their use is not a cause for celebration.
-So when you find yourself in a position where you need to write a comment, think it
-through and see whether there isn’t some way to turn the tables and express yourself in
-code. Every time you express yourself in code, you should pat yourself on the back. Every
-time you write a comment, you should grimace and feel the failure of your ability of
-expression.
-Why am I so down on comments? Because they lie. Not always, and not intentionally,
-but too often. The older a comment is, and the farther away it is from the code it describes,
-the more likely it is to be just plain wrong. The reason is simple. Programmers can’t realis-
-tically maintain them.
-Code changes and evolves. Chunks of it move from here to there. Those chunks bifur-
-cate and reproduce and come together again to form chimeras. Unfortunately the com-
-ments don’t always follow them—can’t always follow them. And all too often the
-comments get separated from the code they describe and become orphaned blurbs of ever-
-decreasing accuracy. For example, look what has happened to this comment and the line it
-was intended to describe:
+هیچ چیز نمیواند به اندازه ی یک کامنت که در جای مناسب قرار گرفته مفید باشد. هیچ چیز نمیواند یک ماژول را به اندازه ی کامنت های بیهوده به هم بریزد. هیچ چیز نمیتواند مضر تراز یک کامنت ضعیف قدیمی که اطلاعات غلط میدهد باشد.
+
+کامنت ها شبیه شیندلرلیست (نام یک فیلم) نیستند . آنها کاملا خوب نیستند‍‍ در حقیقت کامنت ها جنایت های لازمی هستند .اگر زبان های برنامه نویسی ما به اندازه ی کافی رسا بودند یا ما تونایی استفاده ی ماهرانه از ان زبان ها برای بیان منظور را داشتیم خیلی به کامنت ها نیاز نداشتیم . شاید هم اصلا!
+
+کاربرد مناسب کامنت برای جبران شکست رساندن مفهوم با کد است . توجه داشته باشید از واژه ی شکست استفاده میکنم.منظورم این است که کامنت ها همیشه نشانه شکست هستند . ما باید از آنها استفاده کنیم چون همیشه راهی برای توضیح دادن منظورمان بدون آنها پیدا نمی کنیم ولی استفاده از آنها دلیلی برای خوشحالی نیست.
+
+وقتی خودتان را در موقعیتی میبینید که کامنت بگذارید، در موردش فکر کنید و ببینید راهی برای عوض کد و توضیح منظورتان در کد وجود ندارد؟ هر بار که میتوانید منظورتان را درخود کد برسانید باید خودتان را تشویق کنید . هر بار که منظورتان را در کامنت توضیح میدهید، باید به خودتان دهن کجی کنید واز توانایی بیانتان احساس شکست کنید .
+
+چرا من انقدر با کامنت مخالفم؟چون آنها دروغ میگویند. نه همیشه ونه عمدا،ولی خیلی زیاد.
+هر چه کامنت قدیمی تر باشد و از کدی که توصیف میکند دورتر باشد ، بیشتر احتمال دارد که اشتباه باشد.دلیلش ساده است، برنامه نویس ها نمیتوانند واقع بینانه از انها استفاده کنند.
+
+کد تغییر میکند و تکامل پیدا میکند. تکه های آن جابه جا میشود.آن تکه ها دوشاخه 1 و باز نویسی میشوند و دوباره گرد هم می آیند تا یک چیز خارق العاده را خلق کنند.
+
+متاسفانه کامنت ها همیشه آنها را دنبال نمیکنند-در واقع نمیتوانند دنبال کنند.اغلب اوقات از کدی که توصیف میکنند فاصله میگیرند وتکه های بریده ای میشوند که باعث کاهش مداوم دقت هستند. به طور مثال ، ببینید چه اتفاقی برای این کامنت و کدی که قصد داشت توضیح بدهد افتاد:
 
 ```java
 MockRequest request;
@@ -42,32 +31,25 @@ private FitNesseContext context;
 private FileResponder responder;
 private Locale saveLocale;
 ```
-Other instance variables that were probably added later were interposed between the
-HTTP_DATE_REGEXP constant and it’s explanatory comment.
-It is possible to make the point that programmers should be disciplined enough to
-keep the comments in a high state of repair, relevance, and accuracy. I agree, they should.
-But I would rather that energy go toward making the code so clear and expressive that it
-does not need the comments in the first place.
-Inaccurate comments are far worse than no comments at all. They delude and mislead.
-They set expectations that will never be fulfilled. They lay down old rules that need not, or
-should not, be followed any longer.
-Truth can only be found in one place: the code. Only the code can truly tell you what
-it does. It is the only source of truly accurate information. Therefore, though comments are
-sometimes necessary, we will expend significant energy to minimize them.
+بقیه ی متغیر های نمونه احتمالا بعدا بین ثابت HTTP_DATE_REGEXP وکامنت توضیحی آن اضافه شده اند.
+
+می توان این نکته را بیان کرد که برنامه نویسان باید به اندازه کافی نظم و انضباط داشته
+باشند که کامنت را به روز،مرتبط و دقیق نگه دارند.
+
+من موافق این کار هستم اما ترجیح میدهم آنها این انرژی را صرف واضح کردن کد کنند که در وهله ی اول نیاز به کامنت نداشته باشد.
+کامنت های نادرست به مراتب بدتر از نبود هیچ کامنتی هستند. آنها خواننده را گمراه میکنند. آنها انتظاراتی به وجود می اورند که هیچ وقت براورده نمیکنند و قوانینی را مشخص میکنند که لازم نیست یا نباید بعد از این دنبال شوند.
+
+حقیقت را در یک جا میتوان یافت:کد. فقط کد میتواند به درستی به شما بگوید چه کاری انجام میدهد.این تنها منبع درست اطلاعات است.بنابراین، با اینکه کامنت ها بعضی اوقات لازم اند ، ما انرژی زیادی صرف میکنیم تا آنها را به کمترین حد برسانیم.
 
 
-## Comments Do Not Make Up for Bad Code
-One of the more common motivations for writing comments is bad code. We write a mod-
-ule and we know it is confusing and disorganized. We know it’s a mess. So we say to our-
-selves, “Ooh, I’d better comment that!” No! You’d better clean it!
-Clear and expressive code with few comments is far superior to cluttered and complex
-code with lots of comments. Rather than spend your time writing the comments that
-explain the mess you’ve made, spend it cleaning that mess.
+## کامنت ها برای کد بد نوشته نشده اند
 
-## Explain Yourself in Code
-There are certainly times when code makes a poor vehicle for explanation. Unfortunately,
-many programmers have taken this to mean that code is seldom, if ever, a good means for
-explanation. This is patently false. Which would you rather see? This:
+یکی از انگیزه های رایج نوشتن کامنت کد بد است. ما یک ماژول مینویسیم ومیدانیم که گیج کننده و بی نظم است. می دانیم که کثیف است. ما خودمان میدانیم و به خود میگوییم:,
+«اوه ،بهتراست کامنتش کنم»، نه! بهتراست پاکش کنی.
+ کامنت های زیاد بهتر است. به جای اینکه وقتتان را صرف نوشتن کامنت روی کد کثیف کنید که آن را توضیح دهد، صرف تمیز کردنش کنید
+
+## منظورتان را با کد برسانید
+مطمئناً مواردی وجود دارد که کد وسیله ی ضعیفی برای توصیف است. متاسفانه  بسیاری از برنامه نویسان این را اینطور برداشت کرده اند که کد بندرت میتواند راه خوبی برای توصیف باشد. این به وضوح اشتباه است. شما ترجیح میدهید کدام را ببینید؟ این:
 
 ```java
 // Check to see if the employee is eligible for full benefits
@@ -75,60 +57,45 @@ if ((employee.flags & HOURLY_FLAG) &&
 	(employee.age > 65))
 ```
 
-Or this?
+یا این؟
 
 ```java
 if (employee.isEligibleForFullBenefits())
 ```
+فقط چند ثانیه زمان میبرد که بیشتر منظورتان را در کد توضیح دهید . در بیشتر موارد این به سادگی ایجاد یک تابع است که همان چیزی را می گوید که با کامنت می خواهید بگویید.
 
-It takes only a few seconds of thought to explain most of your intent in code. In many
-cases it’s simply a matter of creating a function that says the same thing as the comment
-you want to write.
+## کامنت های خوب
+بعضی از کامنت ها لازم یا مفید هستند. ما چند مورد را بررسی میکنیم که من آنها را لایق بیت هایی که مصرف میکنند میدانم. به خاطر داشته باشید، در هر حال، تنها کامنتی که واقعا خوب است کامنتی است که راهی برای ننوشتنش پیدا کنیم.
 
-## Good Comments
-Some comments are necessary or beneficial. We’ll look at a few that I consider worthy of
-the bits they consume. Keep in mind, however, that the only truly good comment is the
-comment you found a way not to write.
+## کامنت های قانونی
+گاهی اوقات استاندارد های برنامه نویسی شرکتی ما را مجبور میکند به دلایل قانونی کامنت های مشخصی بنویسیم. برای مثال کپی رایت و حق تالیف چیز های منطقی و لازمی هستند برای اینکه اول هر سورس کدی قرار بگیرند.
 
-## Legal Comments
-Sometimes our corporate coding standards force us to write certain comments for legal
-reasons. For example, copyright and authorship statements are necessary and reasonable
-things to put into a comment at the start of each source file.
-Here, for example, is the standard comment header that we put at the beginning of
-every source file in FitNesse. I am happy to say that our IDE hides this comment from act-
-ing as clutter by automatically collapsing it.
+در اینجا، مثلا، این یک کامنت استاندارد است که درا ول همه ی سورس ها در FitNesse قرار می دهیم. خوشحالم که بگویم IDE ما با از بین بردن این کامنت به طور اتوماتیک، از عمل کردن آن به عنوان یک اخلال گر جلو گیری میکند.
 
 ```java
 // Copyright (C) 2003,2004,2005 by Object Mentor, Inc. All rights reserved.
 // Released under the terms of the GNU General Public License version 2 or later.
 ```
-Comments like this should not be contracts or legal tomes. Where possible, refer to a stan-
-dard license or other external document rather than putting all the terms and conditions
-into the comment.
+کامنت هایی مانند این نباید نوشته شوند. تا جایی که ممکن است، به مجوز های استاندارد یا بقیه ی مدارک خارجی مراجعه شود ، به جای اینکه همه ی آن شرایط و ضوابط را در کامنت قرار دهیم.
 
-## Informative Comments
-It is sometimes useful to provide basic information with a comment. For example, con-
-sider this comment that explains the return value of an abstract method:
+## کامنت های آموزنده
+ارائه ی اطلاعات پایه ای در کامنت مفید است. برای مثال ، به نظر می آید که این کامنت مقدار بازگشتی یک متد abstractرا برمیگرداند .
 
+‍‍‍‍‍‍```java
 // Returns an instance of the Responder being tested.
 protected abstract Responder responderInstance();
 
-A comment like this can sometimes be useful, but it is better to use the name of the func-
-tion to convey the information where possible. For example, in this case the comment
-could be made redundant by renaming the function: responderBeingTested .
-Here’s a case that’s a bit better:
-
+یک کامنت مثل این گاهی میتواند مفید باشد، اما بهتر است تاجای ممکن برای انتقال اطلاعات از نام تابع استفاده کنیم . مثلا، دراین مورد کامنت می تواند با عوض کردن نام تابع حذف شود. responderBeingTested .
+در این مورد کمی بهتر است:
 ```java
 // format matched kk:mm:ss EEE, MMM dd, yyyy
 Pattern timeMatcher = Pattern.compile(
 	"\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 ```
 
-In this case the comment lets us know that the regular expression is intended to match a
-time and date that were formatted with the SimpleDateFormat.format function using the
-specified format string. Still, it might have been better, and clearer, if this code had been
-moved to a special class that converted the formats of dates and times. Then the comment
-would likely have been superfluous.
+در این مورد کامنت به ما اجازه میدهد بدانیم که این عبارت منظم برای مطابقت زمان و تاریخ در نظر گرفته شده است که با SimpleDateFormat.format  قالب بندی(فرمت) شده است.
+تابعی که از فرمت استرینگ معینی استفاده میکند.باز هم میتوانست بهتر باشد ، و واضح تر،اگر این کد به کلاس خاصی که فرمت های تاریخ و زمان را تغییر می دهدمنتقل شده بود ،سپس کامنت احتمالا زیادی میشد.
+
 ## Explanation of Intent
 Sometimes a comment goes beyond just useful information about the implementation and
 provides the intent behind a decision. In the following case we see an interesting decision
