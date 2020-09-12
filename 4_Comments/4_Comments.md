@@ -1,7 +1,7 @@
 ![alt text](img-4.1.png)
 
 
-# فصل چهار - کامنت ها
+# کامنت ها ۴
 <div dir="rtl">
 « کد بد را کامنت نکنید – دوباره بنویسید.»
 —Brian W. Kernighan and P. J. Plaugher
