@@ -1,8 +1,8 @@
-# 5 Formatting
+# ۵ قالب‌بندی
 
 <div dir='rtl'>
 
-* [قالب‌بندی](5_Formatting(completed)/5_Formatting.md#5-formatting)
+* [۵ قالب‌بندی](5_Formatting.md#%DB%B5-%D9%82%D8%A7%D9%84%D8%A8%D8%A8%D9%86%D8%AF%DB%8C)
   * [هدف قالب‌بندی](5_Formatting(completed)/5_Formatting.md#%D9%87%D8%AF%D9%81-%D9%82%D8%A7%D9%84%D8%A8%D8%A8%D9%86%D8%AF%DB%8C)
   * [قالب بندی عمودی](5_Formatting(completed)/5_Formatting.md#%D9%82%D8%A7%D9%84%D8%A8-%D8%A8%D9%86%D8%AF%DB%8C-%D8%B9%D9%85%D9%88%D8%AF%DB%8C)
     * [استعاره روزنامه](5_Formatting(completed)/5_Formatting.md#%D8%A7%D8%B3%D8%AA%D8%B9%D8%A7%D8%B1%D9%87-%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87)
