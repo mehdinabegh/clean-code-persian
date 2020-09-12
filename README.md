@@ -106,7 +106,7 @@
   * [چگونه می توانید توابعی مانند این را بنویسید؟](3_Functions.md#%DA%86%DA%AF%D9%88%D9%86%D9%87-%D9%85%DB%8C-%D8%AA%D9%88%D8%A7%D9%86%DB%8C%D8%AF-%D8%AA%D9%88%D8%A7%D8%A8%D8%B9%DB%8C-%D9%85%D8%A7%D9%86%D9%86%D8%AF-%D8%A7%DB%8C%D9%86-%D8%B1%D8%A7-%D8%A8%D9%86%D9%88%DB%8C%D8%B3%DB%8C%D8%AF)
   * [نتیجه گیری](3_Functions.md#%D9%86%D8%AA%DB%8C%D8%AC%D9%87-%DA%AF%DB%8C%D8%B1%DB%8C)
   
-* [قالب‌بندی](5_Formatting(completed)/5_Formatting.md#5-formatting)
+* [۵ قالب‌بندی](5_Formatting.md#%DB%B5-%D9%82%D8%A7%D9%84%D8%A8%D8%A8%D9%86%D8%AF%DB%8C)
   * [هدف قالب‌بندی](5_Formatting(completed)/5_Formatting.md#%D9%87%D8%AF%D9%81-%D9%82%D8%A7%D9%84%D8%A8%D8%A8%D9%86%D8%AF%DB%8C)
   * [قالب بندی عمودی](5_Formatting(completed)/5_Formatting.md#%D9%82%D8%A7%D9%84%D8%A8-%D8%A8%D9%86%D8%AF%DB%8C-%D8%B9%D9%85%D9%88%D8%AF%DB%8C)
     * [استعاره روزنامه](5_Formatting(completed)/5_Formatting.md#%D8%A7%D8%B3%D8%AA%D8%B9%D8%A7%D8%B1%D9%87-%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87)
