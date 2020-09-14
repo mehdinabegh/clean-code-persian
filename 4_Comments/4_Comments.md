@@ -1,5 +1,3 @@
-![alt text](img-4.1.png)
-
 <p align="center">
   <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/4_Comments/img-4.1.png"/>
 </p>
