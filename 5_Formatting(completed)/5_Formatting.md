@@ -25,7 +25,9 @@
 هفت پروژه مختلف به تصویر کشیده شده است.Junit, FitNesse, testNG, Time and Money, JDepend, Ant, و Tomcat. خطوط موجود در کادرها حداقل و حداکثر طول فایل را در هر پروژه نشان می‌دهد. این کادر تقریباً یک سوم فایل‌ها (یک انحراف استاندارد) را نشان می دهد. وسط جعبه، میانگین است. بنابراین متوسط اندازه فایل در پروژه FitNesse حدود 65 خط است و حدود یک سوم پرونده ها بین 40 تا 100 خط است. بزرگترین فایل در FitNesse حدود 400 خط و کوچکترین آن 6 خط است. توجه داشته باشید که این مقیاس لگاریتمی است، بنابراین اختلاف کم در موقعیت عمودی نشانگر اختلاف بسیار بزرگ در اندازه مطلق است.
 </div>
 
-![File length distributions LOG scale (box height = sigma)](img-5.2.png)
+<p align="center">
+  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/5_Formatting(completed)/img-5.2.png"/>
+</p>
 
 <div dir='rtl'>
 توزیع طول فایل در مقیاس لگاریتمی (box height = sigma)
@@ -319,7 +321,9 @@ public class WikiPageResponder implements SecureResponder {
 
 </div>
 
-![](img-5.3.png)
+<p align="center">
+  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/5_Formatting(completed)/img-5.3.png"/>
+</p>
 
 <div dir='rtl'>
 
@@ -363,7 +367,9 @@ public class Assert {
 
 </div>
 
-![Java line width distribution](img-5.4.png)
+<p align="center">
+  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/5_Formatting(completed)/img-5.4.png"/>
+</p>
 
 Java line width distribution
 
@@ -576,8 +582,9 @@ while (dis.read(buf, 0, readBufferSize) != -1);
 ## قوانین تیم
 
 </div>
-
-![](img-5.5.png)
+<p align="center">
+  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/5_Formatting(completed)/img-5.5.png"/>
+</p>
 
 <div dir='rtl'>
 
