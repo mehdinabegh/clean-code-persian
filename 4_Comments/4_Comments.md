@@ -1,7 +1,7 @@
 ![alt text](img-4.1.png)
 
 
-# 4 Comments
+# کامنت ها ۴
 <div dir="rtl">
 « کد بد را کامنت نکنید – دوباره بنویسید.»
 —Brian W. Kernighan and P. J. Plaugher
@@ -107,7 +107,7 @@ Pattern timeMatcher = Pattern.compile(
 تابعی که از فرمت استرینگ معینی استفاده میکند.باز هم میتوانست بهتر باشد ، و واضح تر،اگر این کد به کلاس خاصی که فرمت های تاریخ و زمان را تغییر می دهدمنتقل شده بود ،سپس کامنت احتمالا زیادی میشد.
 </div>
 
-## Explanation of Intent
+## شرح نیت
 Sometimes a comment goes beyond just useful information about the implementation and
 provides the intent behind a decision. In the following case we see an interesting decision
 documented by a comment. When comparing two objects, the author decided that he
@@ -151,7 +151,7 @@ public void testConcurrentAddWidgets() throws Exception {
 }
 ```
 
-## Clarification
+## شفاف سازی
 Sometimes it is just helpful to translate the meaning of some obscure argument or return
 value into something that’s readable. In general it is better to find a way to make that argu-
 ment or return value clear in its own right; but when its part of the standard library, or in
@@ -185,7 +185,7 @@ are accurate.
 
 ![alt text](img-4.2.png)
 
-## Warning of Consequences
+## هشدار پیامدها
 Sometimes it is useful to warn other pro-
 grammers about certain consequences. For
 example, here is a comment that explains
@@ -224,7 +224,7 @@ public static SimpleDateFormat makeStandardHttpDateFormat()
 You might complain that there are better ways to solve this problem. I might agree with
 you. But the comment, as given here, is perfectly reasonable. It will prevent some overly
 eager programmer from using a static initializer in the name of efficiency.
-## TODO Comments
+## TODO کامنت های
 It is sometimes reasonable to leave “To do” notes in the form of //TODO comments. In the
 following case, the TODO comment explains why the function has a degenerate implementa-
 tion and what that function’s future should be.
@@ -249,7 +249,7 @@ TODO comments, so it’s not likely that they will get lost. Still, you don’t 
 to be littered with TODO s. So scan through them regularly and eliminate the ones you
 can.
 
-## Amplification
+## تقویت
 A comment may be used to amplify the importance of something that may otherwise seem
 inconsequential.
 
@@ -262,7 +262,7 @@ new ListItemWidget(this, listItemContent, this.level + 1);
 return buildList(text.substring(match.end()));
 ```
 
-## Javadocs in Public APIs
+## اسناد java در API های عمومی
 There is nothing quite so helpful and satisfying as a well-described public API. The java-
 docs for the standard Java library are a case in point. It would be difficult, at best, to write
 Java programs without them.
@@ -270,11 +270,11 @@ If you are writing a public API, then you should certainly write good javadocs f
 But keep in mind the rest of the advice in this chapter. Javadocs can be just as misleading,
 nonlocal, and dishonest as any other kind of comment.
 
-# Bad Comments
+# کامنت های بد
 Most comments fall into this category. Usually they are crutches or excuses for poor code
 or justifications for insufficient decisions, amounting to little more than the programmer
 talking to himself.
-## Mumbling
+## غرزدن
 Plopping in a comment just because you feel you should or because the process requires it,
 is a hack. If you decide to write a comment, then spend the time necessary to make sure it
 is the best comment you can write.
@@ -311,7 +311,7 @@ load the defaults?
 Our only recourse is to examine the code in other parts of the system to find out what’s
 going on. Any comment that forces you to look in another module for the meaning of that
 comment has failed to communicate to you and is not worth the bits it consumes.
-## Redundant Comments
+## کامنت های اضافی
 Listing 4-1 shows a simple function with a header comment that is completely redundant.
 The comment probably takes longer to read than the code itself.
 
@@ -413,7 +413,7 @@ public abstract class ContainerBase
 	protected DirContext resources = null;
 }
 ```
-## Misleading Comments
+## کامنت های گمراه کننده
 Sometimes, with all the best intentions, a programmer makes a statement in his comments
 that isn’t precise enough to be accurate. Consider for another moment the badly redundant
 but also subtly misleading comment we saw in Listing 4-1.
@@ -425,7 +425,7 @@ the body of the code, could cause another programmer to blithely call this funct
 expectation that it will return as soon as this.closed becomes true . That poor programmer
 would then find himself in a debugging session trying to figure out why his code executed
 so slowly.
-## Mandated Comments
+## کامنت های مجاز
 It is just plain silly to have a rule that says that every function must have a javadoc, or
 every variable must have a comment. Comments like this just clutter up the code, propa-
 gate lies, and lend to general confusion and disorganization.
@@ -452,12 +452,12 @@ public void addCD(String title, String author,
 	cdList.add(cd);
 }
 ```
-## Journal Comments
+## کامنت های گزارشی
 Sometimes people add a comment to the start of a module every time they edit it. These
 comments accumulate as a kind of journal, or log, of every change that has ever been
 made. I have seen some modules with dozens of pages of these run-on journal entries.
 
-Changes (from 11-Oct-2001)
+تغیرات (از 11-Oct-2001)
 --------------------------
 * 11-Oct-2001 : Re-organised the class and moved it to new package
 * com.jrefinery.date (DG);
@@ -481,7 +481,7 @@ Long ago there was a good reason to create and maintain these log entries at the
 of every module. We didn’t have source code control systems that did it for us. Nowadays,
 however, these long journals are just more clutter to obfuscate the module. They should be
 completely removed.
-## Noise Comments
+## کامنت های شلوغ
 Sometimes you see comments that are nothing but noise. They restate the obvious and
 provide no new information.
 ```java
@@ -580,7 +580,7 @@ private void addExceptionAndCloseResponse(Exception e)
 ```
 Replace the temptation to create noise with the determination to clean your code. You’ll
 find it makes you a better and happier programmer.
-## Scary Noise
+## شلوغی هولناک
 Javadocs can also be noisy. What purpose do the following Javadocs (from a well-known
 open-source library) serve? Answer: nothing. They are just redundant noisy comments
 written out of some misplaced desire to provide documentation.
@@ -600,7 +600,7 @@ Read these comments again more carefully. Do you see the cut-paste error? If aut
 aren’t paying attention when comments are written (or pasted), why should readers be
 expected to profit from them?
 
-## Don’t Use a Comment When You Can Use a Function or a Variable
+## زمانی که میتوانید از یک تابع یا متغییر استفاده کنید از کامنت ها استفاده نکنید
 Consider the following stretch of code:
 ```java
 // does the module from the global list <mod> depend on the
@@ -617,7 +617,7 @@ The author of the original code may have written the comment first (unlikely) an
 written the code to fulfill the comment. However, the author should then have refactored
 the code, as I did, so that the comment could be removed.
 
-## Position Markers
+## نشانگرهای موقعیت
 Sometimes programmers like to mark a particular position in a source file. For example, I
 recently found this in a program I was looking through:
 ```java
@@ -630,7 +630,7 @@ Think of it this way. A banner is startling and obvious if you don’t see banne
 often. So use them very sparingly, and only when the benefit is significant. If you overuse
 banners, they’ll fall into the background noise and be ignored.
 
-## Closing Brace Comments
+## کامنت های بستن آکولاد
 Sometimes programmers will put special comments on closing braces, as in Listing 4-6.
 Although this might make sense for long functions with deeply nested structures, it serves
 only to clutter the kind of small and encapsulated functions that we prefer. So if you find
@@ -674,7 +674,7 @@ ments would be useful in order to help others know who to talk to about the code
 reality is that they tend to stay around for years and years, getting less and less accurate
 and relevant.
 Again, the source code control system is a better place for this kind of information.
-## Commented-Out Code
+## کامنت کردن کد
 Few practices are as odious as commenting-out code. Don’t do this!
 
 ```java
@@ -712,7 +712,7 @@ There was a time, back in the sixties, when commenting-out code might have been
 useful. But we’ve had good source code control systems for a very long time now. Those
 systems will remember the code for us. We don’t have to comment it out any more. Just
 delete the code. We won’t lose it. Promise.
-## HTML Comments
+## HTML کامنت های
 HTML in source code comments is an abomination, as you can tell by reading the code
 below. It makes the comments hard to read in the one place where they should be easy to
 read—the editor/IDE. If comments are going to be extracted by some tool (like Javadoc) to
@@ -750,7 +750,7 @@ classpathref=&quot;classpath&quot; /&gt;
 * </pre>
 */
 ```
-## Nonlocal Information
+## اطلاعات غیرمحلی
 If you must write a comment, then make sure it describes the code it appears near. Don’t
 offer systemwide information in the context of a local comment. Consider, for example,
 the javadoc comment below. Aside from the fact that it is horribly redundant, it also offers
@@ -770,7 +770,7 @@ public void setFitnessePort(int fitnessePort)
 	this.fitnessePort = fitnessePort;
 }
 ```
-## Too Much Information
+## اطلاعات بیش از اندازه
 Don’t put interesting historical discussions or irrelevant descriptions of details into your
 comments. The comment below was extracted from a module designed to test that a func-
 tion could encode and decode base64. Other than the RFC number, someone reading this
@@ -792,7 +792,7 @@ code has no need for the arcane information contained in the comment.
 	the first 8-bit byte, and so on.
 */
 ```
-## Inobvious Connection
+## ارتباط نامشخص
 The connection between a comment and the code it describes should be obvious. If you are
 going to the trouble to write a comment, then at least you’d like the reader to be able to
 look at the comment and the code and understand what the comment is talking about.
@@ -809,16 +809,16 @@ this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
 What is a filter byte? Does it relate to the +1? Or to the *3? Both? Is a pixel a byte? Why
 200? The purpose of a comment is to explain code that does not explain itself. It is a pity
 when a comment needs its own explanation.
-## Function Headers
+## عناوین تابع
 Short functions don’t need much description. A well-chosen name for a small function that
 does one thing is usually better than a comment header.
 
-## Javadocs in Nonpublic Code
+## اسناد java در کد غیرعمومی
 As useful as javadocs are for public APIs, they are anathema to code that is not intended
 for public consumption. Generating javadoc pages for the classes and functions inside a
 system is not generally useful, and the extra formality of the javadoc comments amounts
 to little more than cruft and distraction.
-## Example
+## مثال
 I wrote the module in Listing 4-7 for the first XP Immersion. It was intended to be an
 example of bad coding and commenting style. Kent Beck then refactored this code into a
 much more pleasant form in front of several dozen enthusiastic students. Later I adapted
