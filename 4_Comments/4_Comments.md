@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/4_Comments/img-4.1.png"/>
-</p>
+![](img-4.1.png)
 
 # کامنت ها ۴
 <div dir="rtl">
@@ -184,9 +182,7 @@ explains both why the clarification is necessary and why it’s risky. So before
 ments like this, take care that there is no better way, and then take even more care that they
 are accurate.
 
-<p align="center">
-  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/4_Comments/img-4.2.png"/>
-</p>
+![](img-4.2.png)
 
 ## هشدار پیامدها
 Sometimes it is useful to warn other pro-
