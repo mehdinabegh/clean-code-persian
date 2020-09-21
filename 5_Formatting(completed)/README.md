@@ -1,5 +1,6 @@
-# ۵ قالب‌بندی
+<div dir='rtl'>
 
+# فرمت کردن
 <div dir='rtl'>
 
 * [۵ قالب‌بندی](5_Formatting.md#%DB%B5-%D9%82%D8%A7%D9%84%D8%A8%D8%A8%D9%86%D8%AF%DB%8C)
