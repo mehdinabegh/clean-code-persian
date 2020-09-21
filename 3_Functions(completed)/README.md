@@ -1,6 +1,6 @@
-# 3\_Functions
-
 <div dir='rtl'>
+
+# فصل سوم: توابع
 
 * [توابع](3_Functions(completed)/3_Functions.md#%D8%AA%D9%88%D8%A7%D8%A8%D8%B9)
 
