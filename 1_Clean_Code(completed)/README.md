@@ -1,7 +1,6 @@
 <div dir='rtl'>
 
-# فصل اول
-
+# فصل اول: کد تمیز
 * [1\_کد تمیز](1_Clean_Code(completed)/clean-code.md)
 
   * [کد همیشه وجود خواهد داشت](1_Clean_Code(completed)/clean-code.md#%DA%A9%D8%AF-%D9%87%D9%85%DB%8C%D8%B4%D9%87-%D9%88%D8%AC%D9%88%D8%AF-%D8%AE%D9%88%D8%A7%D9%87%D8%AF-%D8%AF%D8%A7%D8%B4%D8%AA)

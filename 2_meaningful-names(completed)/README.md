@@ -1,7 +1,6 @@
 <div dir='rtl'>
 
-# فصل دو - اسامی با معنی
-
+# فصل دوم: اسامی با معنی 
 * [مقدمه](2_meaningful-names(completed)/meaningful-names.md#%D9%85%D9%82%D8%AF%D9%85%D9%87)
 
   * [استفاده از اسم‌های بیان کننده منظور (Intention-Revealing Names)](2_meaningful-names(completed)/meaningful%20names.md#%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%A7%D8%B3%D9%85%D9%87%D8%A7%DB%8C-%D8%A8%DB%8C%D8%A7%D9%86-%DA%A9%D9%86%D9%86%D8%AF%D9%87-%D9%85%D9%86%D8%B8%D9%88%D8%B1-intention-revealing-names)
