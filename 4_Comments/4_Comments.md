@@ -103,10 +103,12 @@ Pattern timeMatcher = Pattern.compile(
 <div dir="rtl">
 در این مورد کامنت به ما اجازه میدهد بدانیم که این عبارت منظم برای مطابقت زمان و تاریخ در نظر گرفته شده است که با SimpleDateFormat.format  قالب بندی(فرمت) شده است.
 تابعی که از فرمت استرینگ معینی استفاده میکند.باز هم میتوانست بهتر باشد ، و واضح تر،اگر این کد به کلاس خاصی که فرمت های تاریخ و زمان را تغییر می دهدمنتقل شده بود ،سپس کامنت احتمالا زیادی میشد.
-</div>
 
 ## شرح نیت
-Sometimes a comment goes beyond just useful information about the implementation and provides the intent behind a decision. In the following case we see an interesting decision documented by a comment. When comparing two objects, the author decided that he wanted to sort objects of his class higher than objects of any other.
+
+بعضی اوقات یک کامنت فقط از دادن اطلاعات مفید در مورد اجرا فراتر می رود و هدف تصمیم گیری را فراهم می کند. در مورد زیر ، یک تصمیم جالب را می بینیم که توسط یک کامنت مستند شده است. هنگام مقایسه دو شی، ، نویسنده به این نتیجه رسید که می خواهد اشیا کلاس خود را بالاتر از اشیا دیگر مرتب کند.
+
+</div>
 
 ```java
 public int compareTo(Object o)
@@ -122,7 +124,11 @@ public int compareTo(Object o)
 }
 ```
 
-Here’s an even better example. You might not agree with the programmer’s solution to the problem, but at least you know what he was trying to do.
+<div dir="rtl">
+
+در اینجا یک مثال حتی بهتر است. شما ممکن است با راه حل برنامه نویس برای مشکل موافق نباشید ، اما حداقل می دانید که او می خواست چه کاری انجام دهد.
+
+</div>
 
 ```java
 public void testConcurrentAddWidgets() throws Exception {
