@@ -151,8 +151,13 @@ public void testConcurrentAddWidgets() throws Exception {
 }
 ```
 
+<div dir="rtl">
+
 ## شفاف سازی
-Sometimes it is just helpful to translate the meaning of some obscure argument or return value into something that’s readable. In general it is better to find a way to make that argument or return value clear in its own right; but when its part of the standard library, or in code that you cannot alter, then a helpful clarifying comment can be useful.
+
+گاهی اوقات فقط ترجمه معنای برخی از آرگومان‌های مبهم یا بازگردان مقدار به چیزی که قابل فهمیدن بوده، مفید است. به طور کلی ، بهتر است راهی پیدا کنید که آن آرگومان یا مقدار بازگشتی را به خودی خود روشن کند. اما اگر بخشی از آن در کتابخانه استاندارد باشد یا در کدی باشد که نمی توانید تغییر دهید ، یک توضیح روشن و خوب می تواند مفید باشد.
+
+</div>
 
 ```java
 public void testCompareTo() throws Exception
@@ -174,7 +179,12 @@ public void testCompareTo() throws Exception
 	assertTrue(bb.compareTo(ba) == 1);     // bb > ba
 }
 ```
-There is a substantial risk, of course, that a clarifying comment is incorrect. Go through the previous example and see how difficult it is to verify that they are correct. This explains both why the clarification is necessary and why it’s risky. So before writing comments like this, take care that there is no better way, and then take even more care that they are accurate.
+
+<div dir="rtl">
+
+البته یک خطر اساسی وجود دارد که یک کامنت روشن نادرست باشد. مثال قبلی را مرور کنید و ببینید تایید صحت آنها چقدر دشوار است. هم شفاف‌سازی لازم است و هم اینکه چرا خطرناک است. بنابراین قبل از نوشتن کامنت‌هایی از این دست ، مراقب باشید که راهی بهتر وجود نداشته باشد و حتی بیشتر دقت کنید که درست باشند.
+
+</div>
 
 ![](img-4.2.png)
 
