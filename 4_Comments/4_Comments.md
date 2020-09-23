@@ -188,8 +188,13 @@ public void testCompareTo() throws Exception
 
 ![](img-4.2.png)
 
+<div dir="rtl">
+
 ## هشدار پیامدها
-Sometimes it is useful to warn other programmers about certain consequences. For example, here is a comment that explains why a particular test case is turned off:
+
+گاهی اوقات مفید است که به سایر برنامه نویسان در مورد عواقب خاص هشدار دهید. به عنوان مثال ، در اینجا یک کامنت وجود دارد که توضیح می دهد چرا یک مورد آزمایشی خاص خاموش است:
+
+</div>
 
 ```java
 // Don't run unless you
@@ -204,9 +209,11 @@ public void _testWithReallyBigFile()
 	assertTrue(bytesSent > 1000000000);
 }
 ```
+<div dir="rtl">
 
-Nowadays, of course, we’d turn off the test case by using the @Ignore attribute with an appropriate explanatory string. @Ignore("Takes too long to run") . But back in the days before JUnit 4, putting an underscore in front of the method name was a common convention. The comment, while flippant, makes the point pretty well.
-Here’s another, more poignant example:
+البته امروزه ، ما می توانیم با استفاده از ویژگی @Ignore با یک رشته توضیحی مناسب ، مورد آزمایشی را خاموش کنیم. @Ignore ("برای اجرای خیلی طولانی می شود"). اما در روزهای قبل از JUnit4 ، قرار دادن underscore در مقابل نام متد یک امر عادی بود. این کامنت هر چند گنگ است ، اما نکته را به خوبی بیان می کند.در اینجا مثال مهیج تر دیگری وجود دارد:
+
+</div>
 
 ```java
 public static SimpleDateFormat makeStandardHttpDateFormat()
@@ -218,7 +225,12 @@ public static SimpleDateFormat makeStandardHttpDateFormat()
 	return df;
 }
 ```
-You might complain that there are better ways to solve this problem. I might agree with you. But the comment, as given here, is perfectly reasonable. It will prevent some overly eager programmer from using a static initializer in the name of efficiency.
+
+<div dir="rtl">
+
+ممکن است شکایت کنید که روش های بهتری برای حل این مشکل وجود دارد. ممکن است با شما موافق باشم اما کامنت ، همانطور که در اینجا ارائه شد ، کاملاً منطقی است. این باعث می شود که برخی از برنامه نویسان بیش از حد مشتاق از یک مقداردهنده اولیه ثابت برای کارایی استفاده نکنند.
+
+</div>
 
 ## TODO کامنت های
 It is sometimes reasonable to leave “To do” notes in the form of //TODO comments. In the following case, the TODO comment explains why the function has a degenerate implementation and what that function’s future should be.
