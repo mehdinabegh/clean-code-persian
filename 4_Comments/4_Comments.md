@@ -230,10 +230,11 @@ public static SimpleDateFormat makeStandardHttpDateFormat()
 
 ممکن است شکایت کنید که روش های بهتری برای حل این مشکل وجود دارد. ممکن است با شما موافق باشم اما کامنت ، همانطور که در اینجا ارائه شد ، کاملاً منطقی است. این باعث می شود که برخی از برنامه نویسان بیش از حد مشتاق از یک مقداردهنده اولیه ثابت برای کارایی استفاده نکنند.
 
-</div>
-
 ## TODO کامنت های
-It is sometimes reasonable to leave “To do” notes in the form of //TODO comments. In the following case, the TODO comment explains why the function has a degenerate implementation and what that function’s future should be.
+
+گاهی اوقات منطقی است که یادداشت های "TODO" را در قالب کامنت‌های TODO // انجام دهید. در مورد زیر ، کامنت‌های TODO توضیح می دهد که چرا این تابع یک اجرای منحط دارد و آینده آن تابع چگونه است.
+
+</div>
 
 ```java
 //TODO-MdM these are not needed
@@ -244,8 +245,13 @@ protected VersionInfo makeVersion() throws Exception
 }
 ```
 
-TODO s are jobs that the programmer thinks should be done, but for some reason can’t do at the moment. It might be a reminder to delete a deprecated feature or a plea for someone else to look at a problem. It might be a request for someone else to think of a better name or a reminder to make a change that is dependent on a planned event. Whatever else a TODO might be, it is not an excuse to leave bad code in the system.
-Nowadays, most good IDEs provide special gestures and features to locate all the TODO comments, so it’s not likely that they will get lost. Still, you don’t want your code to be littered with TODO s. So scan through them regularly and eliminate the ones you can.
+<div dir="rtl">
+
+TODO کارهایی است که به نظر برنامه نویس باید انجام شود ، اما به دلایلی فعلاً نمی تواند انجام دهد. این ممکن است یک یادآوری برای حذف یک ویژگی منسوخ شده یا یک درخواست برای شخص دیگری برای بررسی یک مشکل باشد. این ممکن است درخواستی باشد که شخص دیگری به نام بهتر فکر کند یا یادآوری باشد برای ایجاد تغییری وابسته به یک برنامه ریزی. TODO هرچه باشد ، بهانه ای برای گذاشتن کد بد در سیستم نیست.
+
+امروزه ، اکثر IDE های خوب ویژگی های خاصی را برای یافتن همه کامنت‌های TODO ارائه می دهند ، بنابراین احتمالاً گم نمی شوند. اگر هم نمی خواهید کد شما با TODO پر شود، مرتباً از طریق آنها اسکن کرده و مواردی را که می توانید حذف کنید.
+
+</div>
 
 ## تقویت
 A comment may be used to amplify the importance of something that may otherwise seem inconsequential.
