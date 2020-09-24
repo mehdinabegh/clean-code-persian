@@ -266,9 +266,15 @@ new ListItemWidget(this, listItemContent, this.level + 1);
 return buildList(text.substring(match.end()));
 ```
 
+<div dir="rtl">
+
 ## اسناد java در API های عمومی
-There is nothing quite so helpful and satisfying as a well-described public API. The javadocs for the standard Java library are a case in point. It would be difficult, at best, to write Java programs without them.
-If you are writing a public API, then you should certainly write good javadocs for it. But keep in mind the rest of the advice in this chapter. Javadocs can be just as misleading, nonlocal, and dishonest as any other kind of comment.
+
+هیچ چیز به اندازه یک API عمومی خوش‌توضیح، مفید و رضایت بخش وجود ندارد. javadocs برای کتابخانه استاندارد جاوا نمونه ای از این موارد است. در بهترین حالت نوشتن برنامه های جاوا بدون آنها دشوار خواهد بود.
+
+اگر در حال نوشتن یک API عمومی هستید ، مطمئناً باید javadocs خوبی برای آن بنویسید. اما بقیه توصیه های این فصل را به خاطر بسپارید. Javadocs می تواند مانند هر نوع نظر دیگر گمراه کننده ، غیرمحلی و غیر صادق باشد.
+
+</div>
 
 # کامنت های بد
 Most comments fall into this category. Usually they are crutches or excuses for poor code or justifications for insufficient decisions, amounting to little more than the programmer talking to himself.
