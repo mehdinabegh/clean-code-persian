@@ -274,10 +274,11 @@ return buildList(text.substring(match.end()));
 
 اگر در حال نوشتن یک API عمومی هستید ، مطمئناً باید javadocs خوبی برای آن بنویسید. اما بقیه توصیه های این فصل را به خاطر بسپارید. Javadocs می تواند مانند هر نوع نظر دیگر گمراه کننده ، غیرمحلی و غیر صادق باشد.
 
-</div>
-
 # کامنت های بد
-Most comments fall into this category. Usually they are crutches or excuses for poor code or justifications for insufficient decisions, amounting to little more than the programmer talking to himself.
+
+بیشتر کامنت‌ها در این گروه قرار می گیرند. معمولاً آنها بهانه‌ای برای کد ضعیف یا توجیهی برای تصمیمات ناکافی هستند، کمی بیشتر از صحبت های برنامه نویس با خودش.
+
+</div>
 
 ## غرزدن
 Plopping in a comment just because you feel you should or because the process requires it, is a hack. If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write.
