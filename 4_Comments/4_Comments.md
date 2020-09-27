@@ -278,11 +278,13 @@ return buildList(text.substring(match.end()));
 
 بیشتر کامنت‌ها در این گروه قرار می گیرند. معمولاً آنها بهانه‌ای برای کد ضعیف یا توجیهی برای تصمیمات ناکافی هستند، کمی بیشتر از صحبت های برنامه نویس با خودش.
 
-</div>
-
 ## غرزدن
-Plopping in a comment just because you feel you should or because the process requires it, is a hack. If you decide to write a comment, then spend the time necessary to make sure it is the best comment you can write.
-Here, for example, is a case I found in FitNesse, where a comment might indeed have been useful. But the author was in a hurry or just not paying much attention. His mumbling left behind an enigma:
+
+یهویی کامنتی نوشتن فقط به این دلیل که احساس می کنید باید این کار را انجام دهید یا این که روند کار به آن نیاز دارد، جالب نیست. اگر تصمیم دارید یک کامنت بنویسید ، وقت لازم را صرف کنید تا مطمئن شوید بهترین کامنتی است که می توانید بنویسید.
+
+به عنوان مثال ، این مورد موردی است که من در FitNesse پیدا کردم ، جایی که یک کامنت واقعاً مفید بوده است. اما نویسنده عجله داشت یا فقط توجه زیادی نمی کرد. غر زدن او یک معما را پشت سر گذاشت:
+
+</div>
 
 ```java
 public void loadProperties()
@@ -292,16 +294,22 @@ public void loadProperties()
 		String propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
 		FileInputStream propertiesStream = new FileInputStream(propertiesPath);
 		loadedProperties.load(propertiesStream);
-		}
-		catch(IOException e)
-		{
+	}
+	catch(IOException e)
+	{
 		// No properties files means all defaults are loaded
 	}
 }
 ```
 
-What does that comment in the catch block mean? Clearly it meant something to the author, but the meaning does not come through all that well. Apparently, if we get an IOException , it means that there was no properties file; and in that case all the defaults are loaded. But who loads all the defaults? Were they loaded before the call to loadProperties.load ? Or did loadProperties.load catch the exception, load the defaults, and then pass the exception on for us to ignore? Or did loadProperties.load load all the defaults before attempting to load the file? Was the author trying to comfort himself about the fact that he was leaving the catch block empty? Or—and this is the scary possibility— was the author trying to tell himself to come back here later and write the code that would load the defaults?
-Our only recourse is to examine the code in other parts of the system to find out what’s going on. Any comment that forces you to look in another module for the meaning of that comment has failed to communicate to you and is not worth the bits it consumes.
+<div dir="rtl">
+
+این کامنت در بلوک catch به چه معناست؟ واضح است که این برای نویسنده معنی داشته است ، اما معنی آن واضح نیست. ظاهراً ، اگر IOException دریافت کنیم ، به این معنی است که هیچ فایلی وجود نداشته است. و در این حالت تمام پیش فرض ها بارگیری می شوند. اما چه کسی تمام پیش فرض ها را بارگیری می کند؟ آیا آنها قبل از صدازدن loadProperties.load بارگیری شده اند؟ یا آیا loadProperties.load استثنا را گرفت ، پیش فرض ها را بارگذاری کرد و سپس استثنا را به ما منتقل کرد تا نادیده بگیریم؟ یا آیا loadProperties.load قبل از بارگیری فایل ، همه پیش فرض ها را بارگیری کرده است؟ آیا نویسنده سعی در دلجویی از این واقعیت داشت که بلوک catch را خالی می گذارد؟ یا - و این احتمال ترسناک است - آیا نویسنده سعی داشته به خودش بگوید بعداً به اینجا برگردد و کدی را بنویسد که پیش فرض ها را بارگیری کند؟
+
+تنها راه حل ما این است که کد را در قسمت های دیگر سیستم بررسی کنیم تا بفهمیم چه خبر است. هر کامنتی که شما را مجبور کند به دنبال معنای آن کامنت در یک ماژول دیگر بگردید ، در برقراری ارتباط با شما ناموفق بوده و ارزش بیت های مصرفی آن را ندارد.
+
+</div>
+
 ## کامنت های اضافی
 Listing 4-1 shows a simple function with a header comment that is completely redundant. 
 The comment probably takes longer to read than the code itself.
