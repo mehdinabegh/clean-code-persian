@@ -308,13 +308,15 @@ public void loadProperties()
 
 تنها راه حل ما این است که کد را در قسمت های دیگر سیستم بررسی کنیم تا بفهمیم چه خبر است. هر کامنتی که شما را مجبور کند به دنبال معنای آن کامنت در یک ماژول دیگر بگردید ، در برقراری ارتباط با شما ناموفق بوده و ارزش بیت های مصرفی آن را ندارد.
 
+## کامنت های اضافی
+
+لیست 4-1 تابع ساده ای را با یک عنوان هدر کاملاً زائد نشان می دهد.
+خواندن این کامنت احتمالاً طولانی تر از خود کد است.
+
 </div>
 
-## کامنت های اضافی
-Listing 4-1 shows a simple function with a header comment that is completely redundant. 
-The comment probably takes longer to read than the code itself.
-
 Listing 4-1
+
 waitForClose
 ```java
 // Utility method that returns when this.closed is true. Throws an exception
@@ -330,12 +332,17 @@ throws Exception
 	}
 }
 ```
-What purpose does this comment serve? It’s certainly not more informative than the code. It does not justify the code, or provide intent or rationale. It is not easier to read than the code. Indeed, it is less precise than the code and entices the reader to accept that lack of precision in lieu of true understanding. It is rather like a gladhanding used-car salesman assuring you that you don’t need to look under the hood.
-Now consider the legion of useless and redundant javadocs in Listing 4-2 taken from Tomcat. These comments serve only to clutter and obscure the code. They serve no documentary purpose at all. To make matters worse, I only showed you the first few. There are many more in this module.
+<div dir="rtl">
+
+این کامنت چه هدفی را دنبال می کند؟ مطمئناً از کد بیشتر آموزنده نیست. این کد را توجیه نمی کند ، یا قصد یا منطقی را ارائه نمی دهد. خواندن آن از کد آسان نیست. در حقیقت ، دقت آن کمتر از کد است و خواننده را فریب می دهد که به جای درک درست ، عدم دقت را بپذیرد. این کار دقیقاً مانند این است که یک فروشنده ماشین دست دوم خوشحال به شما اطمینان دهد که نیازی به دیدن زیر کاپوت نیست.
+
+اکنون javadocs بی فایده و زائد را در لیست 4-2 برگرفته از تامکت در نظر بگیرید. این کامنت ها فقط برای بهم ریختن و پنهان کردن کد کار می کنند. اصلاً هدف مستندی ندارند. برای بدتر کردن ، من فقط چند مورد اول را به شما نشان دادم. تعداد بیشتری در این ماژول وجود دارد.
+
+</div>
 
 Listing 4-2
-ContainerBase.java (Tomcat)
 
+ContainerBase.java (Tomcat)
 ```java
 public abstract class ContainerBase
 	implements Container, Lifecycle, Pipeline,
