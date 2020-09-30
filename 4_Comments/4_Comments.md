@@ -413,10 +413,17 @@ public abstract class ContainerBase
 }
 ```
 
-## کامنت های گمراه کننده
-Sometimes, with all the best intentions, a programmer makes a statement in his comments that isn’t precise enough to be accurate. Consider for another moment the badly redundant but also subtly misleading comment we saw in Listing 4-1.
-Did you discover how the comment was misleading? The method does not return when this.closed becomes true. It returns if this.closed is true; otherwise, it waits for a blind time-out and then throws an exception if this.closed is still not true.
-This subtle bit of misinformation, couched in a comment that is harder to read than the body of the code, could cause another programmer to blithely call this function in the expectation that it will return as soon as this.closed becomes true . That poor programmer would then find himself in a debugging session trying to figure out why his code executed so slowly.
+<div dir="rtl">
+
+## کامنت‌های گمراه کننده
+
+گاهی اوقات ، با بهترین آرزوها ، یک برنامه نویس بیانیه ای را در کامنت‌های خود ارائه می دهد که دقیق نیست. لیست ۴-۲ را درنظر بگیرید.
+
+آیا کشف کردید که چگونه این کامنت گمراه کننده است؟ وقتی this.closed درست است، این متد چیزی برنمی گرداند. اگر this.closed درست باشد ، بر می گردد. در غیر این صورت ، منتظر تایم اوت است و اگر this.closed همچنان درست نباشد، exception پرتاب می‌شود.
+
+این اطلاعات نادرست ، که در کامنتی ارائه می شود که خواندن آن دشوارتر از متن کد است ، می تواند باعث شود تا برنامه نویس دیگری با خیال راحت این تابع را  صدا زند. آن برنامه نویس ضعیف سپس خود را درحال رفع اشکال پیدا می کند و می خواهد بفهمد چرا کد او به این کندی اجرا شده است.
+
+</div>
 
 ## کامنت های مجاز
 It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization.
