@@ -423,11 +423,13 @@ public abstract class ContainerBase
 
 این اطلاعات نادرست ، که در کامنتی ارائه می شود که خواندن آن دشوارتر از متن کد است ، می تواند باعث شود تا برنامه نویس دیگری با خیال راحت این تابع را  صدا زند. آن برنامه نویس ضعیف سپس خود را درحال رفع اشکال پیدا می کند و می خواهد بفهمد چرا کد او به این کندی اجرا شده است.
 
-</div>
-
 ## کامنت های مجاز
-It is just plain silly to have a rule that says that every function must have a javadoc, or every variable must have a comment. Comments like this just clutter up the code, propagate lies, and lend to general confusion and disorganization.
-For example, required javadocs for every function lead to abominations such as Listing 4-3. This clutter adds nothing and serves only to obfuscate the code and create the potential for lies and misdirection.
+
+این یک قانون احمقانه‌ای است که هر تابع باید یک javadoc، یا هر متغیر باید یک کامنت داشته باشد. کامنت‌هایی از این دست فقط کد را بهم می ریزند ، دروغ ها را تبلیغ می کنند ، و باعث سردرگمی و بی نظمی می شوند.
+
+به عنوان مثال ، javadocs مورد نیاز برای هر تابع منجر به مکروهاتی مانند لیست 4-3 می شود. این بی نظمی چیزی اضافه نمی کند و فقط باعث کدرشدن کد و ایجاد پتانسیل دروغ وسوتفاهم می‌شود.
+
+</div>
 
 Listing 4-3
 ```java
