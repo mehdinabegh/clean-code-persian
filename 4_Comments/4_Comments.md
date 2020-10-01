@@ -451,10 +451,16 @@ public void addCD(String title, String author,
 }
 ```
 
-## کامنت های گزارشی
-Sometimes people add a comment to the start of a module every time they edit it. These comments accumulate as a kind of journal, or log, of every change that has ever been made. I have seen some modules with dozens of pages of these run-on journal entries.
+<div dir="rtl">
 
-تغیرات (از 11-Oct-2001)
+## کامنت های گزارشی
+
+گاهی اوقات افراد هر بار که ویرایش می کنند یک کامنت به شروع ماژول اضافه می کنند. این کامنت‌ها به عنوان نوعی ژورنال ، یا گزارش ، از هر تغییری که ایجاد شده است جمع می شود. من چند ماژول با ده ها صفحه از این ورودی های ژورنال دیده ام.
+
+</div>
+
+```
+Changes (from 11-Oct-2001)
 --------------------------
 * 11-Oct-2001 : Re-organised the class and moved it to new package
 * com.jrefinery.date (DG);
@@ -473,8 +479,13 @@ Sometimes people add a comment to the start of a module every time they edit it.
 * 29-May-2003 : Fixed bug in addMonths method (DG);
 * 04-Sep-2003 : Implemented Comparable. Updated the isInRange javadocs (DG);
 * 05-Jan-2005 : Fixed bug in addYears() method (1096282) (DG);
+```
 
-Long ago there was a good reason to create and maintain these log entries at the start of every module. We didn’t have source code control systems that did it for us. Nowadays, however, these long journals are just more clutter to obfuscate the module. They should be completely removed.
+<div dir="rtl">
+
+مدت ها پیش دلیل خوبی برای ایجاد و نگهداری این ورودی های log در ابتدای هر ماژول وجود داشت. ما سیستم های کنترل کد منبع نداشتیم که این کار را برای ما انجام دهند. امروزه ، این ژورنال‌های طولانی فقط به ماژول آشفتگی اضافه می‌کنند. باید کاملاً برداشته شوند.
+
+</div>
 
 ## کامنت های شلوغ
 
