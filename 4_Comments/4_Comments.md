@@ -485,11 +485,11 @@ Changes (from 11-Oct-2001)
 
 مدت ها پیش دلیل خوبی برای ایجاد و نگهداری این ورودی های log در ابتدای هر ماژول وجود داشت. ما سیستم های کنترل کد منبع نداشتیم که این کار را برای ما انجام دهند. امروزه ، این ژورنال‌های طولانی فقط به ماژول آشفتگی اضافه می‌کنند. باید کاملاً برداشته شوند.
 
-</div>
-
 ## کامنت های شلوغ
 
-Sometimes you see comments that are nothing but noise. They restate the obvious and provide no new information.
+بعضی اوقات کامنت‌هایی را می بینید که چیزی جز سر و صدا نیست. موارد واضحی را بیان می کنند و هیچ اطلاعات جدیدی ارائه نمی دهند.
+
+</div>
 
 ```java
 	/**
@@ -499,14 +499,22 @@ Sometimes you see comments that are nothing but noise. They restate the obvious 
 	}
 ```
 
-No, really? Or how about this:
+<div dir="rtl">
+
+نه، واقعا؟ یا چگونه در مورد این:
+
+</div>
 
 ```java
 	/** The day of the month. */
 	private int dayOfMonth;
 ```
 
-And then there’s this paragon of redundancy:
+<div dir="rtl">
+
+و سپس این مثال اضافی وجود دارد:
+
+</div>
 
 ```java
 	/**
@@ -519,10 +527,16 @@ And then there’s this paragon of redundancy:
 	}
 ```
 
-These comments are so noisy that we learn to ignore them. As we read through code, our eyes simply skip over them. Eventually the comments begin to lie as the code around them changes.
-The first comment in Listing 4-4 seems appropriate. 2 It explains why the catch block is being ignored. But the second comment is pure noise. Apparently the programmer was just so frustrated with writing try/catch blocks in this function that he needed to vent.	
+<div dir="rtl">
+
+این کامنت‌ها آنقدر پر سر و صدا هستند که یاد می گیریم آنها را نادیده بگیریم. وقتی کد را می خوانیم ، چشمانمان به راحتی از روی آنها عبور می کنند. سرانجام با تغییر کد پیرامون ، کامنت‌ها شروع به دروغ گفتن می کنند.
+
+اولین کامنت در لیست 4-4 مناسب به نظر می رسد. دلیل نادیده گرفته شدن بلوک catch را توضیح می دهد. اما کامنت دوم کاملا سر و صدا است. ظاهراً برنامه نویس از نوشتن بلوک های try / catch در این تابع آنقدر ناامید شده بود که نیاز به تخلیه داشت.
+
+</div>
 
 Listing 4-4
+
 startSending
 
 ```java
@@ -551,7 +565,11 @@ private void startSending()
 }
 ```
 
-Rather than venting in a worthless and noisy comment, the programmer should have recognized that his frustration could be resolved by improving the structure of his code. He should have redirected his energy to extracting that last try / catch block into a separate function, as shown in Listing 4-5.
+<div dir="rtl">
+
+به جای تخلیه کامنت‌های بی ارزش و پر سر و صدا ، برنامه نویس باید تشخیص می داد که با بهبود ساختار کد خود می تواند ناامیدی او را برطرف کند. باید انرژی خود را به استخراج آخرین بلوک try / catch به یک تابع جداگانه هدایت کند ، همانطور که در لیست 4-5 نشان داده شده است.
+
+</div>
 
 Listing 4-5
 ```java
@@ -584,7 +602,11 @@ private void addExceptionAndCloseResponse(Exception e)
 }
 ```
 
-Replace the temptation to create noise with the determination to clean your code. You’ll find it makes you a better and happier programmer.
+<div dir="rtl">
+
+وسوسه ایجاد نویز را با تصمیم برای پاک کردن کد خود جایگزین کنید. خواهید فهمید که این باعث می شود شما یک برنامه نویس بهتر و شاد باشید.
+
+</div>
 
 ## شلوغی هولناک
 
