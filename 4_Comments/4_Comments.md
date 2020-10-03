@@ -628,10 +628,11 @@ private String info;
 
 این کامنت‌ها را با دقت بیشتری دوباره بخوانید. خطای cut-paste را مشاهده می کنید؟ اگر نویسندگان هنگام نوشتن کامنت‌ها (یا چسباندن) توجه نمی کنند ، چرا از خوانندگان انتظار می رود که از آنها سود ببرند؟
 
-</div>
-
 ## زمانی که میتوانید از یک تابع یا متغییر استفاده کنید از کامنت ها استفاده نکنید
-Consider the following stretch of code:
+
+بخش زیر کد را در نظر بگیرید:
+
+</div>
 
 ```java
 // does the module from the global list <mod> depend on the
@@ -639,14 +640,23 @@ Consider the following stretch of code:
 if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
 ```
 
-This could be rephrased without the comment as
+<div dir="rtl">
+
+بدون تفسیر می توان این را دوباره بیان کرد
+
+</div>
 
 ```java
 ArrayList moduleDependees = smodule.getDependSubsystems();
 String ourSubSystem = subSysMod.getSubSystem();
 if (moduleDependees.contains(ourSubSystem))
 ```
-The author of the original code may have written the comment first (unlikely) and then written the code to fulfill the comment. However, the author should then have refactored the code, as I did, so that the comment could be removed.
+
+<div dir="rtl">
+
+نویسنده کد اصلی ممکن است ابتدا کامنت را نوشته باشد (بعید است) و سپس کد را برای تحقق کامنت نوشته باشد. با این حال ، نویسنده باید همانند من کدها را مجدداً ویرایش می کرد تا بتواند کامنت را حذف کند.
+
+</div>
 
 ## نشانگرهای موقعیت
 
