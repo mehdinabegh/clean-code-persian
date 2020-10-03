@@ -606,11 +606,11 @@ private void addExceptionAndCloseResponse(Exception e)
 
 وسوسه ایجاد نویز را با تصمیم برای پاک کردن کد خود جایگزین کنید. خواهید فهمید که این باعث می شود شما یک برنامه نویس بهتر و شاد باشید.
 
-</div>
-
 ## شلوغی هولناک
 
-Javadocs can also be noisy. What purpose do the following Javadocs (from a well-known open-source library) serve? Answer: nothing. They are just redundant noisy comments written out of some misplaced desire to provide documentation.
+Javadocs همچنین می تواند پر سر و صدا باشد. Javadocs زیر (از یک کتابخانه منبع باز مشهور) چه هدفی را دنبال می کند؟ جواب: هیچی. فقط کامنت های پر سر و صداي زائدي هستند كه به دليل تمايل بي جا به ارائه مستندات نوشته شده اند.
+
+</div>
 
 ```java
 /** The name. */
@@ -623,7 +623,12 @@ private String licenceName;
 
 private String info;
 ```
-Read these comments again more carefully. Do you see the cut-paste error? If authors aren’t paying attention when comments are written (or pasted), why should readers be expected to profit from them?
+
+<div dir="rtl">
+
+این کامنت‌ها را با دقت بیشتری دوباره بخوانید. خطای cut-paste را مشاهده می کنید؟ اگر نویسندگان هنگام نوشتن کامنت‌ها (یا چسباندن) توجه نمی کنند ، چرا از خوانندگان انتظار می رود که از آنها سود ببرند؟
+
+</div>
 
 ## زمانی که میتوانید از یک تابع یا متغییر استفاده کنید از کامنت ها استفاده نکنید
 Consider the following stretch of code:
