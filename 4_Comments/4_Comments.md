@@ -708,14 +708,24 @@ public class wc {
 }
 ```
 
-## Attributions and Bylines
+<div dir="rtl">
+
+## خصیصه‌ها و خطوط معرف نویسنده کد
+
+</div>
+
 
 ```java
 /* Added by Rick */
 ```
-Source code control systems are very good at remembering who added what, when. There is no need to pollute the code with little bylines. You might think that such comments would be useful in order to help others know who to talk to about the code. But the reality is that they tend to stay around for years and years, getting less and less accurate and relevant.
 
-Again, the source code control system is a better place for this kind of information.
+<div dir="rtl">
+
+سیستم های کنترل کد منبع در به خاطر سپردن اینکه چه کسی چه چیزی را اضافه کرده است ، بسیار خوب است. نیازی به آلوده سازی کد با کمترین bylines نیست. ممکن است فکر کنید چنین کامنت‌هایی برای کمک به دیگران در دانستن اینکه با چه کسی در مورد کد صحبت می کنند مفید باشد. اما واقعیت این است که سالها و سالها در اطراف بمانند ، هرچه دقیق تر و کم اهمیت تر می شوند.
+
+باز هم ، سیستم کنترل کد منبع مکان بهتری برای این نوع اطلاعات است.
+
+</div>
 
 ## کامنت کردن کد
 
