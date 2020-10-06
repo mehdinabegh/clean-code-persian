@@ -672,13 +672,14 @@ if (moduleDependees.contains(ourSubSystem))
 
 اینجوری فکر کن اگر شما اغلب بنرها را مشاهده نکنید ، یک بنر حیرت انگیز و واضح است. بنابراین خیلی کم و فقط در صورت سودمند بودن از آنها استفاده کنید. اگر بیش از اندازه از بنرها استفاده نکنید ، در سر و صدای پس زمینه قرار می گیرند و نادیده گرفته می شوند.
 
-</div>
-
 ## کامنت های بستن آکولاد
 
-Sometimes programmers will put special comments on closing braces, as in Listing 4-6. Although this might make sense for long functions with deeply nested structures, it serves only to clutter the kind of small and encapsulated functions that we prefer. So if you find yourself wanting to mark your closing braces, try to shorten your functions instead.
+بعضی اوقات ، برنامه نویسان نظیر لیست 4-6 ، کامنت‌های ویژه ای در مورد آکولاد‌های بسته می‌نهند. اگرچه این ممکن است برای توابع طولانی با ساختارهای کاملاً تو در تو منطقی باشد ، اما در انواع توابع کوچک و محصور شده فقط منجر به  بهم ریختن می‌شود. بنابراین اگر متوجه شدید که می خواهید آکولادهای بسته خود را مشخص کنید ، سعی کنید در عوض توابع خود را کوتاه کنید.
+
+</div>
 
 Listing 4-6
+
 wc.java
 
 ```java
@@ -691,10 +692,10 @@ public class wc {
 		int wordCount = 0;
 		try {
 			while ((line = in.readLine()) != null) {
-			lineCount++;
-			charCount += line.length();
-			String words[] = line.split("\\W");
-			wordCount += words.length;
+				lineCount++;
+				charCount += line.length();
+				String words[] = line.split("\\W");
+				wordCount += words.length;
 			} //while
 			System.out.println("wordCount = " + wordCount);
 			System.out.println("lineCount = " + lineCount);
