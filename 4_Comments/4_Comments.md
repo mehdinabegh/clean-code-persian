@@ -725,11 +725,11 @@ public class wc {
 
 باز هم ، سیستم کنترل کد منبع مکان بهتری برای این نوع اطلاعات است.
 
-</div>
-
 ## کامنت کردن کد
 
-Few practices are as odious as commenting-out code. Don’t do this!
+تعداد کمی از اعمال به اندازه کد توضیح دادن کراهت دارند. این کار را نکنید!
+
+</div>
 
 ```java
 // InputStreamResponse response = new InputStreamResponse();
@@ -739,8 +739,13 @@ Few practices are as odious as commenting-out code. Don’t do this!
 // response.setContent(reader.read(formatter.getByteCount()));
 ```
 
-Others who see that commented-out code won’t have the courage to delete it. They’ll think it is there for a reason and is too important to delete. So commented-out code gathers like dregs at the bottom of a bad bottle of wine.
-Consider this from apache commons:
+<div dir="rtl">
+
+دیگران که این کد کامنت شده را می بینند ، جرات حذف آن را ندارند. آنها فکر می کنند آنجا به دلایلی وجود دارد و حذف آنها بسیار خطرناک است. بنابراین کد کامنت شده مانند خاکه ته یک بطری بد شراب جمع می شود.
+
+این را از apache commons در نظر بگیرید:
+
+</div>
 
 ```java
 this.bytePos = writeBytes(pngIdBytes, 0);
@@ -758,8 +763,13 @@ else {
 return this.pngBytes;
 ```
 
-Why are those two lines of code commented? Are they important? Were they left as reminders for some imminent change? Or are they just cruft that someone commented-out years ago and has simply not bothered to clean up.
-There was a time, back in the sixties, when commenting-out code might have been useful. But we’ve had good source code control systems for a very long time now. Those systems will remember the code for us. We don’t have to comment it out any more. Just delete the code. We won’t lose it. Promise.
+<div dir="rtl">
+
+چرا آن دو خط کد کامنت داده شده است؟ آیا آنها مهم هستند؟ آیا آنها به عنوان یادآوری برای برخی تغییرات قریب الوقوع باقی مانده بودند؟ یا اینها فقط ظلم هایی هستند که کسی سالها پیش در مورد آنها کامنت داده و زحمت تمیز کردنش را نکشیده است.
+
+زمانی در دهه شصت بود که ممکن است کد کامنت شده مفید باشد. اما مدت زمان زیادی است که سیستم های کنترل کد منبع خوبی داریم. آن سیستم ها کد را برای ما به خاطر می آورند. دیگر لازم نیست درباره آن توضیح دهیم. فقط کد را حذف کنید. ما آن را از دست نخواهیم داد. قول می‌دهم.
+
+</div>
 
 ## HTML کامنت های
 
