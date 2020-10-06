@@ -769,11 +769,11 @@ return this.pngBytes;
 
 زمانی در دهه شصت بود که ممکن است کد کامنت شده مفید باشد. اما مدت زمان زیادی است که سیستم های کنترل کد منبع خوبی داریم. آن سیستم ها کد را برای ما به خاطر می آورند. دیگر لازم نیست درباره آن توضیح دهیم. فقط کد را حذف کنید. ما آن را از دست نخواهیم داد. قول می‌دهم.
 
-</div>
-
 ## HTML کامنت های
 
-HTML in source code comments is an abomination, as you can tell by reading the code below. It makes the comments hard to read in the one place where they should be easy to read—the editor/IDE. If comments are going to be extracted by some tool (like Javadoc) to appear in a Web page, then it should be the responsibility of that tool, and not the programmer, to adorn the comments with appropriate HTML.
+همانطور که می توانید با خواندن کد زیر متوجه شوید HTML در کامنت‌های کد منبع مکروه است. خواندن کامنت‌ها در مکانی که خواندن آنها آسان است - ادیتور / IDE - را دشوار می کند. اگر قرار است کامنت‌ها توسط برخی از ابزارها (مانند Javadoc) برای نمایش در یک صفحه وب استخراج شود ، تزیین کامنت‌ها با HTML مناسب باید به عهده آن ابزار باشد و نه برنامه نویس.
+
+</div>
 
 ```java
 /**
