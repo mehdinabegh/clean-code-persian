@@ -656,17 +656,23 @@ if (moduleDependees.contains(ourSubSystem))
 
 نویسنده کد اصلی ممکن است ابتدا کامنت را نوشته باشد (بعید است) و سپس کد را برای تحقق کامنت نوشته باشد. با این حال ، نویسنده باید همانند من کدها را مجدداً ویرایش می کرد تا بتواند کامنت را حذف کند.
 
-</div>
-
 ## نشانگرهای موقعیت
 
-Sometimes programmers like to mark a particular position in a source file. For example, I recently found this in a program I was looking through:
+گاهی اوقات برنامه نویسان دوست دارند موقعیت خاصی را در یک فایل منبع علامت گذاری کنند. به عنوان مثال ، من اخیراً این را در برنامه ای یافتم که در جستجوی آن بودم:
+
+</div>
 
 ```java
 // Actions //////////////////////////////////
 ```
-There are rare times when it makes sense to gather certain functions together beneath a banner like this. But in general they are clutter that should be eliminated—especially the noisy train of slashes at the end.
-Think of it this way. A banner is startling and obvious if you don’t see banners very often. So use them very sparingly, and only when the benefit is significant. If you overuse banners, they’ll fall into the background noise and be ignored.
+
+<div dir="rtl">
+
+موارد نادری وجود دارد که جمع آوری برخی کارها در زیر یک بنر مانند این منطقی باشد. اما به طور کلی، بی نظمی هستند که باید از بین بروند - به ویژه قطار پر سر و صدا اسلش در انتها.
+
+اینجوری فکر کن اگر شما اغلب بنرها را مشاهده نکنید ، یک بنر حیرت انگیز و واضح است. بنابراین خیلی کم و فقط در صورت سودمند بودن از آنها استفاده کنید. اگر بیش از اندازه از بنرها استفاده نکنید ، در سر و صدای پس زمینه قرار می گیرند و نادیده گرفته می شوند.
+
+</div>
 
 ## کامنت های بستن آکولاد
 
