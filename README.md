@@ -6,8 +6,9 @@
 </p>
  
 این پروژه یک کار گروهی برای ترجمه آزاد یکی از بهترین کتاب های برنامه نویسیه.
+
 <details>
-  <summary><span style="font-size: 20px">درباره کتاب</span></summary>
+  <summary><h2>درباره کتاب</h2></summary>
     <p align="center">
          <img src="https://techbeacon.com/sites/default/files/styles/social/public/robert-uncle-bob-martin-agile-manifesto-interview.jpg?itok=PYXMi5Zl"/>
     </p>
