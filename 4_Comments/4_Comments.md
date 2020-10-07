@@ -1025,6 +1025,6 @@ public class PrimeGenerator
 }
 ```
 
-It is easy to argue that the first comment is redundant because it reads very much like the generatePrimes function itself. Still, I think the comment serves to ease the reader into the algorithm, so I’m inclined to leave it.
-The second argument is almost certainly necessary. It explains the rationale behind the use of the square root as the loop limit. I could find no simple variable name, nor any different coding structure that made this point clear. On the other hand, the use of the square root might be a conceit. Am I really saving that much time by limiting the iteration to the square root? Could the calculation of the square root take more time than I’m saving?
-It’s worth thinking about. Using the square root as the iteration limit satisfies the old C and assembly language hacker in me, but I’m not convinced it’s worth the time and effort that everyone else will expend to understand it.
+فهمیدنش راحت است که کامنت اول بیخودی انجا نوشته شده، چرا که خود اسم generatePrimes را توضیح داده. این اسم به اندازه کافی کاربرد تابع را بیان میکند. من فکر میکنم کامنت ها برای راحت تر کردن کار خواننده نوشته میشوند، پس ترجیح میدهم این کامنت اضافی را آنجا قرار ندهم.
+بحث دوم قطعا ضروری است. این منطق پشت استفاده از ریشه دوم به عنوان حد حلقه را توضیح میدهد.البته استفاده از ریشه دوم عدد ممکن است فقط از نظر تئوری جالب به نظر برسد، آیا واقعا با محاسبه ریشه دوم و محدود کردن حلقه به آن، زمان بیشتری ذخیره میکنیم؟
+ارزش فکر کردن را دارد. استفاده از ریشه دوم برای محدود کردن تکرار حلقه، هکر قدیمی c و اسمبلی نویس درونم را راضی میکند، ولی فکر نمیکنم ارزش وقت و تلاشی که بقیه برای فهمیدن آن صرف میکنند را داشته باشد.
