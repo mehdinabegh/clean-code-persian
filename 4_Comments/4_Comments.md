@@ -865,12 +865,12 @@ this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
 
 ## اسناد java در کد غیرعمومی
 
-As useful as javadocs are for public APIs, they are anathema to code that is not intended for public consumption. Generating javadoc pages for the classes and functions inside a system is not generally useful, and the extra formality of the javadoc comments amounts to little more than cruft and distraction.
+همانقدر که jovadoc ها برای api های عمومی مناسب هستند، برای کد هایی که عمومی نیستند غیر مفیدند. تولید کردن javadoc برای کلاس ها و تابع ها در یک سیستم آنقدر ها هم مفید نیست، و زیاد بودن javadoc ها هم چیزی جز حواس پرتی به ارمغان نمیاورد.
 
 ## مثال
 
-I wrote the module in Listing 4-7 for the first XP Immersion. It was intended to be an example of bad coding and commenting style. Kent Beck then refactored this code into a much more pleasant form in front of several dozen enthusiastic students. Later I adapted the example for my book Agile Software Development, Principles, Patterns, and Practices and the first of my Craftsman articles published in Software Development magazine.
-What I find fascinating about this module is that there was a time when many of us would have considered it “well documented.” Now we see it as a small mess. See how many different comment problems you can find.
+من ماژولی که در Listing 4-7 هست را نوشته ام برای اولین تجربه شما. قصد این ماژول، بودن مثالی برای کدنویسی بد و سبک کامنت نویسی است. سپس Kent Beck این کد را جلوی چندین دانشجوی مشتاق به شکل بسیار پسندیده تری ریفکتور کرده. بعدتر من از این مثال برای کتاب خودم یعنی Agile Software Development, Principles, Patterns, and Practices استفاده کردم.
+چیزی که درمورد این کد جالب است این است که ما در ابتدا آن را کاملا مستند فرض میکردیم، در حالی که الان آن را یک آشفتگی کوچک میدانیم. ببینید چند مشکل مختلف در کامنت گذاری این کد میتوانید پیدا کنید.
 
 Listing 4-7
 GeneratePrimes.java
@@ -945,7 +945,7 @@ public class GeneratePrimes
 }
 ```
 
-In Listing 4-8 you can see a refactored version of the same module. Note that the use of comments is significantly restrained. There are just two comments in the whole module. Both comments are explanatory in nature.
+در Listing 4-8 میتوانید یک نسخه بازنویسی شده از همان ماژول قبلی را ببینید. دقت کنید که استفاده از کامنت به طور قابل توجهی مهار شده و فقط دو کامنت در این کد دیده میشود. هر دو کامنت ماهیت توضیح دادن دارند.
 
 Listing 4-8
 PrimeGenerator.java (refactored)
