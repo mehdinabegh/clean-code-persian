@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/4_Comments/img-4.1.png"/>
-</p>
+![](img-4.1.png)
 
 # کامنت ها ۴
 <div dir="rtl">
@@ -36,8 +34,7 @@ private Locale saveLocale;
 <div dir="rtl">
 بقیه ی متغیر های نمونه احتمالا بعدا بین ثابت HTTP_DATE_REGEXP وکامنت توضیحی آن اضافه شده اند.
 
-می توان این نکته را بیان کرد که برنامه نویسان باید به اندازه کافی نظم و انضباط داشته
-باشند که کامنت را به روز،مرتبط و دقیق نگه دارند.
+می توان این نکته را بیان کرد که برنامه نویسان باید به اندازه کافی نظم و انضباط داشته باشند که کامنت را به روز،مرتبط و دقیق نگه دارند.
 
 من موافق این کار هستم اما ترجیح میدهم آنها این انرژی را صرف واضح کردن کد کنند که در وهله ی اول نیاز به کامنت نداشته باشد.
 کامنت های نادرست به مراتب بدتر از نبود هیچ کامنتی هستند. آنها خواننده را گمراه میکنند. آنها انتظاراتی به وجود می اورند که هیچ وقت براورده نمیکنند و قوانینی را مشخص میکنند که لازم نیست یا نباید بعد از این دنبال شوند.
@@ -106,13 +103,12 @@ Pattern timeMatcher = Pattern.compile(
 <div dir="rtl">
 در این مورد کامنت به ما اجازه میدهد بدانیم که این عبارت منظم برای مطابقت زمان و تاریخ در نظر گرفته شده است که با SimpleDateFormat.format  قالب بندی(فرمت) شده است.
 تابعی که از فرمت استرینگ معینی استفاده میکند.باز هم میتوانست بهتر باشد ، و واضح تر،اگر این کد به کلاس خاصی که فرمت های تاریخ و زمان را تغییر می دهدمنتقل شده بود ،سپس کامنت احتمالا زیادی میشد.
-</div>
 
 ## شرح نیت
-Sometimes a comment goes beyond just useful information about the implementation and
-provides the intent behind a decision. In the following case we see an interesting decision
-documented by a comment. When comparing two objects, the author decided that he
-wanted to sort objects of his class higher than objects of any other.
+
+بعضی اوقات یک کامنت فقط از دادن اطلاعات مفید در مورد اجرا فراتر می رود و هدف تصمیم گیری را فراهم می کند. در مورد زیر ، یک تصمیم جالب را می بینیم که توسط یک کامنت مستند شده است. هنگام مقایسه دو شی، ، نویسنده به این نتیجه رسید که می خواهد اشیا کلاس خود را بالاتر از اشیا دیگر مرتب کند.
+
+</div>
 
 ```java
 public int compareTo(Object o)
@@ -128,8 +124,11 @@ public int compareTo(Object o)
 }
 ```
 
-Here’s an even better example. You might not agree with the programmer’s solution to
-the problem, but at least you know what he was trying to do.
+<div dir="rtl">
+
+در اینجا یک مثال حتی بهتر است. شما ممکن است با راه حل برنامه نویس برای مشکل موافق نباشید ، اما حداقل می دانید که او می خواست چه کاری انجام دهد.
+
+</div>
 
 ```java
 public void testConcurrentAddWidgets() throws Exception {
@@ -152,11 +151,13 @@ public void testConcurrentAddWidgets() throws Exception {
 }
 ```
 
+<div dir="rtl">
+
 ## شفاف سازی
-Sometimes it is just helpful to translate the meaning of some obscure argument or return
-value into something that’s readable. In general it is better to find a way to make that argu-
-ment or return value clear in its own right; but when its part of the standard library, or in
-code that you cannot alter, then a helpful clarifying comment can be useful.
+
+گاهی اوقات فقط ترجمه معنای برخی از آرگومان‌های مبهم یا بازگردان مقدار به چیزی که قابل فهمیدن بوده، مفید است. به طور کلی ، بهتر است راهی پیدا کنید که آن آرگومان یا مقدار بازگشتی را به خودی خود روشن کند. اما اگر بخشی از آن در کتابخانه استاندارد باشد یا در کدی باشد که نمی توانید تغییر دهید ، یک توضیح روشن و خوب می تواند مفید باشد.
+
+</div>
 
 ```java
 public void testCompareTo() throws Exception
@@ -178,21 +179,22 @@ public void testCompareTo() throws Exception
 	assertTrue(bb.compareTo(ba) == 1);     // bb > ba
 }
 ```
-There is a substantial risk, of course, that a clarifying comment is incorrect. Go
-through the previous example and see how difficult it is to verify that they are correct. This
-explains both why the clarification is necessary and why it’s risky. So before writing com-
-ments like this, take care that there is no better way, and then take even more care that they
-are accurate.
 
-<p align="center">
-  <img src="https://github.com/Noah1001000/clean-code-persian/blob/master/4_Comments/img-4.2.png"/>
-</p>
+<div dir="rtl">
+
+البته یک خطر اساسی وجود دارد که یک کامنت روشن نادرست باشد. مثال قبلی را مرور کنید و ببینید تایید صحت آنها چقدر دشوار است. هم شفاف‌سازی لازم است و هم اینکه چرا خطرناک است. بنابراین قبل از نوشتن کامنت‌هایی از این دست ، مراقب باشید که راهی بهتر وجود نداشته باشد و حتی بیشتر دقت کنید که درست باشند.
+
+</div>
+
+![](img-4.2.png)
+
+<div dir="rtl">
 
 ## هشدار پیامدها
-Sometimes it is useful to warn other pro-
-grammers about certain consequences. For
-example, here is a comment that explains
-why a particular test case is turned off:
+
+گاهی اوقات مفید است که به سایر برنامه نویسان در مورد عواقب خاص هشدار دهید. به عنوان مثال ، در اینجا یک کامنت وجود دارد که توضیح می دهد چرا یک مورد آزمایشی خاص خاموش است:
+
+</div>
 
 ```java
 // Don't run unless you
@@ -207,12 +209,11 @@ public void _testWithReallyBigFile()
 	assertTrue(bytesSent > 1000000000);
 }
 ```
+<div dir="rtl">
 
-Nowadays, of course, we’d turn off the test case by using the @Ignore attribute with an
-appropriate explanatory string. @Ignore("Takes too long to run") . But back in the days
-before JUnit 4, putting an underscore in front of the method name was a common conven-
-tion. The comment, while flippant, makes the point pretty well.
-Here’s another, more poignant example:
+البته امروزه ، ما می توانیم با استفاده از ویژگی @Ignore با یک رشته توضیحی مناسب ، مورد آزمایشی را خاموش کنیم. @Ignore ("برای اجرای خیلی طولانی می شود"). اما در روزهای قبل از JUnit4 ، قرار دادن underscore در مقابل نام متد یک امر عادی بود. این کامنت هر چند گنگ است ، اما نکته را به خوبی بیان می کند.در اینجا مثال مهیج تر دیگری وجود دارد:
+
+</div>
 
 ```java
 public static SimpleDateFormat makeStandardHttpDateFormat()
@@ -224,13 +225,16 @@ public static SimpleDateFormat makeStandardHttpDateFormat()
 	return df;
 }
 ```
-You might complain that there are better ways to solve this problem. I might agree with
-you. But the comment, as given here, is perfectly reasonable. It will prevent some overly
-eager programmer from using a static initializer in the name of efficiency.
+
+<div dir="rtl">
+
+ممکن است شکایت کنید که روش های بهتری برای حل این مشکل وجود دارد. ممکن است با شما موافق باشم اما کامنت ، همانطور که در اینجا ارائه شد ، کاملاً منطقی است. این باعث می شود که برخی از برنامه نویسان بیش از حد مشتاق از یک مقداردهنده اولیه ثابت برای کارایی استفاده نکنند.
+
 ## TODO کامنت های
-It is sometimes reasonable to leave “To do” notes in the form of //TODO comments. In the
-following case, the TODO comment explains why the function has a degenerate implementa-
-tion and what that function’s future should be.
+
+گاهی اوقات منطقی است که یادداشت های "TODO" را در قالب کامنت‌های TODO // انجام دهید. در مورد زیر ، کامنت‌های TODO توضیح می دهد که چرا این تابع یک اجرای منحط دارد و آینده آن تابع چگونه است.
+
+</div>
 
 ```java
 //TODO-MdM these are not needed
@@ -241,20 +245,17 @@ protected VersionInfo makeVersion() throws Exception
 }
 ```
 
-TODO s are jobs that the programmer thinks should be done, but for some reason
-can’t do at the moment. It might be a reminder to delete a deprecated feature or a
-plea for someone else to look at a problem. It might be a request for someone else to
-think of a better name or a reminder to make a change that is dependent on a
-planned event. Whatever else a TODO might be, it is not an excuse to leave bad code in
-the system.
-Nowadays, most good IDEs provide special gestures and features to locate all the
-TODO comments, so it’s not likely that they will get lost. Still, you don’t want your code
-to be littered with TODO s. So scan through them regularly and eliminate the ones you
-can.
+<div dir="rtl">
+
+TODO کارهایی است که به نظر برنامه نویس باید انجام شود ، اما به دلایلی فعلاً نمی تواند انجام دهد. این ممکن است یک یادآوری برای حذف یک ویژگی منسوخ شده یا یک درخواست برای شخص دیگری برای بررسی یک مشکل باشد. این ممکن است درخواستی باشد که شخص دیگری به نام بهتر فکر کند یا یادآوری باشد برای ایجاد تغییری وابسته به یک برنامه ریزی. TODO هرچه باشد ، بهانه ای برای گذاشتن کد بد در سیستم نیست.
+
+امروزه ، اکثر IDE های خوب ویژگی های خاصی را برای یافتن همه کامنت‌های TODO ارائه می دهند ، بنابراین احتمالاً گم نمی شوند. اگر هم نمی خواهید کد شما با TODO پر شود، مرتباً از طریق آنها اسکن کرده و مواردی را که می توانید حذف کنید.
 
 ## تقویت
-A comment may be used to amplify the importance of something that may otherwise seem
-inconsequential.
+
+ممکن است کامنت برای تقویت اهمیت چیزی استفاده شود که در غیر این صورت بی اهمیت به نظر می رسد.
+
+</div>
 
 ```java
 String listItemContent = match.group(3).trim();
@@ -265,25 +266,25 @@ new ListItemWidget(this, listItemContent, this.level + 1);
 return buildList(text.substring(match.end()));
 ```
 
+<div dir="rtl">
+
 ## اسناد java در API های عمومی
-There is nothing quite so helpful and satisfying as a well-described public API. The java-
-docs for the standard Java library are a case in point. It would be difficult, at best, to write
-Java programs without them.
-If you are writing a public API, then you should certainly write good javadocs for it.
-But keep in mind the rest of the advice in this chapter. Javadocs can be just as misleading,
-nonlocal, and dishonest as any other kind of comment.
+
+هیچ چیز به اندازه یک API عمومی خوش‌توضیح، مفید و رضایت بخش وجود ندارد. javadocs برای کتابخانه استاندارد جاوا نمونه ای از این موارد است. در بهترین حالت نوشتن برنامه های جاوا بدون آنها دشوار خواهد بود.
+
+اگر در حال نوشتن یک API عمومی هستید ، مطمئناً باید javadocs خوبی برای آن بنویسید. اما بقیه توصیه های این فصل را به خاطر بسپارید. Javadocs می تواند مانند هر نوع نظر دیگر گمراه کننده ، غیرمحلی و غیر صادق باشد.
 
 # کامنت های بد
-Most comments fall into this category. Usually they are crutches or excuses for poor code
-or justifications for insufficient decisions, amounting to little more than the programmer
-talking to himself.
+
+بیشتر کامنت‌ها در این گروه قرار می گیرند. معمولاً آنها بهانه‌ای برای کد ضعیف یا توجیهی برای تصمیمات ناکافی هستند، کمی بیشتر از صحبت های برنامه نویس با خودش.
+
 ## غرزدن
-Plopping in a comment just because you feel you should or because the process requires it,
-is a hack. If you decide to write a comment, then spend the time necessary to make sure it
-is the best comment you can write.
-Here, for example, is a case I found in FitNesse, where a comment might indeed have
-been useful. But the author was in a hurry or just not paying much attention. His mum-
-bling left behind an enigma:
+
+یهویی کامنتی نوشتن فقط به این دلیل که احساس می کنید باید این کار را انجام دهید یا این که روند کار به آن نیاز دارد، جالب نیست. اگر تصمیم دارید یک کامنت بنویسید ، وقت لازم را صرف کنید تا مطمئن شوید بهترین کامنتی است که می توانید بنویسید.
+
+به عنوان مثال ، این مورد موردی است که من در FitNesse پیدا کردم ، جایی که یک کامنت واقعاً مفید بوده است. اما نویسنده عجله داشت یا فقط توجه زیادی نمی کرد. غر زدن او یک معما را پشت سر گذاشت:
+
+</div>
 
 ```java
 public void loadProperties()
@@ -293,32 +294,29 @@ public void loadProperties()
 		String propertiesPath = propertiesLocation + "/" + PROPERTIES_FILE;
 		FileInputStream propertiesStream = new FileInputStream(propertiesPath);
 		loadedProperties.load(propertiesStream);
-		}
-		catch(IOException e)
-		{
+	}
+	catch(IOException e)
+	{
 		// No properties files means all defaults are loaded
 	}
 }
 ```
 
-What does that comment in the catch block mean? Clearly it meant something to the
-author, but the meaning does not come through all that well. Apparently, if we get an
-IOException , it means that there was no properties file; and in that case all the defaults are
-loaded. But who loads all the defaults? Were they loaded before the call to
-loadProperties.load ? Or did loadProperties.load catch the exception, load the defaults,
-and then pass the exception on for us to ignore? Or did loadProperties.load load all the
-defaults before attempting to load the file? Was the author trying to comfort himself about
-the fact that he was leaving the catch block empty? Or—and this is the scary possibility—
-was the author trying to tell himself to come back here later and write the code that would
-load the defaults?
-Our only recourse is to examine the code in other parts of the system to find out what’s
-going on. Any comment that forces you to look in another module for the meaning of that
-comment has failed to communicate to you and is not worth the bits it consumes.
+<div dir="rtl">
+
+این کامنت در بلوک catch به چه معناست؟ واضح است که این برای نویسنده معنی داشته است ، اما معنی آن واضح نیست. ظاهراً ، اگر IOException دریافت کنیم ، به این معنی است که هیچ فایلی وجود نداشته است. و در این حالت تمام پیش فرض ها بارگیری می شوند. اما چه کسی تمام پیش فرض ها را بارگیری می کند؟ آیا آنها قبل از صدازدن loadProperties.load بارگیری شده اند؟ یا آیا loadProperties.load استثنا را گرفت ، پیش فرض ها را بارگذاری کرد و سپس استثنا را به ما منتقل کرد تا نادیده بگیریم؟ یا آیا loadProperties.load قبل از بارگیری فایل ، همه پیش فرض ها را بارگیری کرده است؟ آیا نویسنده سعی در دلجویی از این واقعیت داشت که بلوک catch را خالی می گذارد؟ یا - و این احتمال ترسناک است - آیا نویسنده سعی داشته به خودش بگوید بعداً به اینجا برگردد و کدی را بنویسد که پیش فرض ها را بارگیری کند؟
+
+تنها راه حل ما این است که کد را در قسمت های دیگر سیستم بررسی کنیم تا بفهمیم چه خبر است. هر کامنتی که شما را مجبور کند به دنبال معنای آن کامنت در یک ماژول دیگر بگردید ، در برقراری ارتباط با شما ناموفق بوده و ارزش بیت های مصرفی آن را ندارد.
+
 ## کامنت های اضافی
-Listing 4-1 shows a simple function with a header comment that is completely redundant.
-The comment probably takes longer to read than the code itself.
+
+لیست 4-1 تابع ساده ای را با یک عنوان هدر کاملاً زائد نشان می دهد.
+خواندن این کامنت احتمالاً طولانی تر از خود کد است.
+
+</div>
 
 Listing 4-1
+
 waitForClose
 ```java
 // Utility method that returns when this.closed is true. Throws an exception
@@ -334,19 +332,17 @@ throws Exception
 	}
 }
 ```
-What purpose does this comment serve? It’s certainly not more informative than the
-code. It does not justify the code, or provide intent or rationale. It is not easier to read than
-the code. Indeed, it is less precise than the code and entices the reader to accept that lack of
-precision in lieu of true understanding. It is rather like a gladhanding used-car salesman
-assuring you that you don’t need to look under the hood.
-Now consider the legion of useless and redundant javadocs in Listing 4-2 taken from
-Tomcat. These comments serve only to clutter and obscure the code. They serve no docu-
-mentary purpose at all. To make matters worse, I only showed you the first few. There are
-many more in this module.
+<div dir="rtl">
+
+این کامنت چه هدفی را دنبال می کند؟ مطمئناً از کد بیشتر آموزنده نیست. این کد را توجیه نمی کند ، یا قصد یا منطقی را ارائه نمی دهد. خواندن آن از کد آسان نیست. در حقیقت ، دقت آن کمتر از کد است و خواننده را فریب می دهد که به جای درک درست ، عدم دقت را بپذیرد. این کار دقیقاً مانند این است که یک فروشنده ماشین دست دوم خوشحال به شما اطمینان دهد که نیازی به دیدن زیر کاپوت نیست.
+
+اکنون javadocs بی فایده و زائد را در لیست 4-2 برگرفته از تامکت در نظر بگیرید. این کامنت ها فقط برای بهم ریختن و پنهان کردن کد کار می کنند. اصلاً هدف مستندی ندارند. برای بدتر کردن ، من فقط چند مورد اول را به شما نشان دادم. تعداد بیشتری در این ماژول وجود دارد.
+
+</div>
 
 Listing 4-2
-ContainerBase.java (Tomcat)
 
+ContainerBase.java (Tomcat)
 ```java
 public abstract class ContainerBase
 	implements Container, Lifecycle, Pipeline,
@@ -416,25 +412,24 @@ public abstract class ContainerBase
 	protected DirContext resources = null;
 }
 ```
-## کامنت های گمراه کننده
-Sometimes, with all the best intentions, a programmer makes a statement in his comments
-that isn’t precise enough to be accurate. Consider for another moment the badly redundant
-but also subtly misleading comment we saw in Listing 4-1.
-Did you discover how the comment was misleading? The method does not return
-when this.closed becomes true . It returns if this.closed is true ; otherwise, it waits for a
-blind time-out and then throws an exception if this.closed is still not true .
-This subtle bit of misinformation, couched in a comment that is harder to read than
-the body of the code, could cause another programmer to blithely call this function in the
-expectation that it will return as soon as this.closed becomes true . That poor programmer
-would then find himself in a debugging session trying to figure out why his code executed
-so slowly.
+
+<div dir="rtl">
+
+## کامنت‌های گمراه کننده
+
+گاهی اوقات ، با بهترین آرزوها ، یک برنامه نویس بیانیه ای را در کامنت‌های خود ارائه می دهد که دقیق نیست. لیست ۴-۲ را درنظر بگیرید.
+
+آیا کشف کردید که چگونه این کامنت گمراه کننده است؟ وقتی this.closed درست است، این متد چیزی برنمی گرداند. اگر this.closed درست باشد ، بر می گردد. در غیر این صورت ، منتظر تایم اوت است و اگر this.closed همچنان درست نباشد، exception پرتاب می‌شود.
+
+این اطلاعات نادرست ، که در کامنتی ارائه می شود که خواندن آن دشوارتر از متن کد است ، می تواند باعث شود تا برنامه نویس دیگری با خیال راحت این تابع را  صدا زند. آن برنامه نویس ضعیف سپس خود را درحال رفع اشکال پیدا می کند و می خواهد بفهمد چرا کد او به این کندی اجرا شده است.
+
 ## کامنت های مجاز
-It is just plain silly to have a rule that says that every function must have a javadoc, or
-every variable must have a comment. Comments like this just clutter up the code, propa-
-gate lies, and lend to general confusion and disorganization.
-For example, required javadocs for every function lead to abominations such as List-
-ing 4-3. This clutter adds nothing and serves only to obfuscate the code and create the
-potential for lies and misdirection.
+
+این یک قانون احمقانه‌ای است که هر تابع باید یک javadoc، یا هر متغیر باید یک کامنت داشته باشد. کامنت‌هایی از این دست فقط کد را بهم می ریزند ، دروغ ها را تبلیغ می کنند ، و باعث سردرگمی و بی نظمی می شوند.
+
+به عنوان مثال ، javadocs مورد نیاز برای هر تابع منجر به مکروهاتی مانند لیست 4-3 می شود. این بی نظمی چیزی اضافه نمی کند و فقط باعث کدرشدن کد و ایجاد پتانسیل دروغ وسوتفاهم می‌شود.
+
+</div>
 
 Listing 4-3
 ```java
@@ -455,12 +450,17 @@ public void addCD(String title, String author,
 	cdList.add(cd);
 }
 ```
-## کامنت های گزارشی
-Sometimes people add a comment to the start of a module every time they edit it. These
-comments accumulate as a kind of journal, or log, of every change that has ever been
-made. I have seen some modules with dozens of pages of these run-on journal entries.
 
-تغیرات (از 11-Oct-2001)
+<div dir="rtl">
+
+## کامنت های گزارشی
+
+گاهی اوقات افراد هر بار که ویرایش می کنند یک کامنت به شروع ماژول اضافه می کنند. این کامنت‌ها به عنوان نوعی ژورنال ، یا گزارش ، از هر تغییری که ایجاد شده است جمع می شود. من چند ماژول با ده ها صفحه از این ورودی های ژورنال دیده ام.
+
+</div>
+
+```
+Changes (from 11-Oct-2001)
 --------------------------
 * 11-Oct-2001 : Re-organised the class and moved it to new package
 * com.jrefinery.date (DG);
@@ -479,14 +479,18 @@ made. I have seen some modules with dozens of pages of these run-on journal entr
 * 29-May-2003 : Fixed bug in addMonths method (DG);
 * 04-Sep-2003 : Implemented Comparable. Updated the isInRange javadocs (DG);
 * 05-Jan-2005 : Fixed bug in addYears() method (1096282) (DG);
+```
 
-Long ago there was a good reason to create and maintain these log entries at the start
-of every module. We didn’t have source code control systems that did it for us. Nowadays,
-however, these long journals are just more clutter to obfuscate the module. They should be
-completely removed.
+<div dir="rtl">
+
+مدت ها پیش دلیل خوبی برای ایجاد و نگهداری این ورودی های log در ابتدای هر ماژول وجود داشت. ما سیستم های کنترل کد منبع نداشتیم که این کار را برای ما انجام دهند. امروزه ، این ژورنال‌های طولانی فقط به ماژول آشفتگی اضافه می‌کنند. باید کاملاً برداشته شوند.
+
 ## کامنت های شلوغ
-Sometimes you see comments that are nothing but noise. They restate the obvious and
-provide no new information.
+
+بعضی اوقات کامنت‌هایی را می بینید که چیزی جز سر و صدا نیست. موارد واضحی را بیان می کنند و هیچ اطلاعات جدیدی ارائه نمی دهند.
+
+</div>
+
 ```java
 	/**
 	* Default constructor.
@@ -495,12 +499,24 @@ provide no new information.
 	}
 ```
 
-No, really? Or how about this:
+<div dir="rtl">
+
+نه، واقعا؟ یا چگونه در مورد این:
+
+</div>
 
 ```java
 	/** The day of the month. */
 	private int dayOfMonth;
-	And then there’s this paragon of redundancy:
+```
+
+<div dir="rtl">
+
+و سپس این مثال اضافی وجود دارد:
+
+</div>
+
+```java
 	/**
 	* Returns the day of the month.
 	*
@@ -510,14 +526,17 @@ No, really? Or how about this:
 		return dayOfMonth;
 	}
 ```
-These comments are so noisy that we learn to ignore them. As we read through code, our
-eyes simply skip over them. Eventually the comments begin to lie as the code around them
-changes.
-The first comment in Listing 4-4 seems appropriate. 2 It explains why the catch block
-is being ignored. But the second comment is pure noise. Apparently the programmer was
-just so frustrated with writing try / catch blocks in this function that he needed to vent.	
+
+<div dir="rtl">
+
+این کامنت‌ها آنقدر پر سر و صدا هستند که یاد می گیریم آنها را نادیده بگیریم. وقتی کد را می خوانیم ، چشمانمان به راحتی از روی آنها عبور می کنند. سرانجام با تغییر کد پیرامون ، کامنت‌ها شروع به دروغ گفتن می کنند.
+
+اولین کامنت در لیست 4-4 مناسب به نظر می رسد. دلیل نادیده گرفته شدن بلوک catch را توضیح می دهد. اما کامنت دوم کاملا سر و صدا است. ظاهراً برنامه نویس از نوشتن بلوک های try / catch در این تابع آنقدر ناامید شده بود که نیاز به تخلیه داشت.
+
+</div>
 
 Listing 4-4
+
 startSending
 
 ```java
@@ -546,10 +565,11 @@ private void startSending()
 }
 ```
 
-Rather than venting in a worthless and noisy comment, the programmer should have
-recognized that his frustration could be resolved by improving the structure of his code.
-He should have redirected his energy to extracting that last try / catch block into a separate
-function, as shown in Listing 4-5.
+<div dir="rtl">
+
+به جای تخلیه کامنت‌های بی ارزش و پر سر و صدا ، برنامه نویس باید تشخیص می داد که با بهبود ساختار کد خود می تواند ناامیدی او را برطرف کند. باید انرژی خود را به استخراج آخرین بلوک try / catch به یک تابع جداگانه هدایت کند ، همانطور که در لیست 4-5 نشان داده شده است.
+
+</div>
 
 Listing 4-5
 ```java
@@ -581,12 +601,16 @@ private void addExceptionAndCloseResponse(Exception e)
 	}
 }
 ```
-Replace the temptation to create noise with the determination to clean your code. You’ll
-find it makes you a better and happier programmer.
+
+<div dir="rtl">
+
+وسوسه ایجاد نویز را با تصمیم برای پاک کردن کد خود جایگزین کنید. خواهید فهمید که این باعث می شود شما یک برنامه نویس بهتر و شاد باشید.
+
 ## شلوغی هولناک
-Javadocs can also be noisy. What purpose do the following Javadocs (from a well-known
-open-source library) serve? Answer: nothing. They are just redundant noisy comments
-written out of some misplaced desire to provide documentation.
+
+Javadocs همچنین می تواند پر سر و صدا باشد. Javadocs زیر (از یک کتابخانه منبع باز مشهور) چه هدفی را دنبال می کند؟ جواب: هیچی. فقط کامنت های پر سر و صداي زائدي هستند كه به دليل تمايل بي جا به ارائه مستندات نوشته شده اند.
+
+</div>
 
 ```java
 /** The name. */
@@ -599,47 +623,63 @@ private String licenceName;
 
 private String info;
 ```
-Read these comments again more carefully. Do you see the cut-paste error? If authors
-aren’t paying attention when comments are written (or pasted), why should readers be
-expected to profit from them?
+
+<div dir="rtl">
+
+این کامنت‌ها را با دقت بیشتری دوباره بخوانید. خطای cut-paste را مشاهده می کنید؟ اگر نویسندگان هنگام نوشتن کامنت‌ها (یا چسباندن) توجه نمی کنند ، چرا از خوانندگان انتظار می رود که از آنها سود ببرند؟
 
 ## زمانی که میتوانید از یک تابع یا متغییر استفاده کنید از کامنت ها استفاده نکنید
-Consider the following stretch of code:
+
+بخش زیر کد را در نظر بگیرید:
+
+</div>
+
 ```java
 // does the module from the global list <mod> depend on the
 // subsystem we are part of?
 if (smodule.getDependSubsystems().contains(subSysMod.getSubSystem()))
 ```
-This could be rephrased without the comment as
+
+<div dir="rtl">
+
+بدون تفسیر می توان این را دوباره بیان کرد
+
+</div>
+
 ```java
 ArrayList moduleDependees = smodule.getDependSubsystems();
 String ourSubSystem = subSysMod.getSubSystem();
 if (moduleDependees.contains(ourSubSystem))
 ```
-The author of the original code may have written the comment first (unlikely) and then
-written the code to fulfill the comment. However, the author should then have refactored
-the code, as I did, so that the comment could be removed.
+
+<div dir="rtl">
+
+نویسنده کد اصلی ممکن است ابتدا کامنت را نوشته باشد (بعید است) و سپس کد را برای تحقق کامنت نوشته باشد. با این حال ، نویسنده باید همانند من کدها را مجدداً ویرایش می کرد تا بتواند کامنت را حذف کند.
 
 ## نشانگرهای موقعیت
-Sometimes programmers like to mark a particular position in a source file. For example, I
-recently found this in a program I was looking through:
+
+گاهی اوقات برنامه نویسان دوست دارند موقعیت خاصی را در یک فایل منبع علامت گذاری کنند. به عنوان مثال ، من اخیراً این را در برنامه ای یافتم که در جستجوی آن بودم:
+
+</div>
+
 ```java
 // Actions //////////////////////////////////
 ```
-There are rare times when it makes sense to gather certain functions together beneath a
-banner like this. But in general they are clutter that should be eliminated—especially the
-noisy train of slashes at the end.
-Think of it this way. A banner is startling and obvious if you don’t see banners very
-often. So use them very sparingly, and only when the benefit is significant. If you overuse
-banners, they’ll fall into the background noise and be ignored.
+
+<div dir="rtl">
+
+موارد نادری وجود دارد که جمع آوری برخی کارها در زیر یک بنر مانند این منطقی باشد. اما به طور کلی، بی نظمی هستند که باید از بین بروند - به ویژه قطار پر سر و صدا اسلش در انتها.
+
+اینجوری فکر کن اگر شما اغلب بنرها را مشاهده نکنید ، یک بنر حیرت انگیز و واضح است. بنابراین خیلی کم و فقط در صورت سودمند بودن از آنها استفاده کنید. اگر بیش از اندازه از بنرها استفاده نکنید ، در سر و صدای پس زمینه قرار می گیرند و نادیده گرفته می شوند.
 
 ## کامنت های بستن آکولاد
-Sometimes programmers will put special comments on closing braces, as in Listing 4-6.
-Although this might make sense for long functions with deeply nested structures, it serves
-only to clutter the kind of small and encapsulated functions that we prefer. So if you find
-yourself wanting to mark your closing braces, try to shorten your functions instead.
+
+بعضی اوقات ، برنامه نویسان نظیر لیست 4-6 ، کامنت‌های ویژه ای در مورد آکولاد‌های بسته می‌نهند. اگرچه این ممکن است برای توابع طولانی با ساختارهای کاملاً تو در تو منطقی باشد ، اما در انواع توابع کوچک و محصور شده فقط منجر به  بهم ریختن می‌شود. بنابراین اگر متوجه شدید که می خواهید آکولادهای بسته خود را مشخص کنید ، سعی کنید در عوض توابع خود را کوتاه کنید.
+
+</div>
 
 Listing 4-6
+
 wc.java
 
 ```java
@@ -652,10 +692,10 @@ public class wc {
 		int wordCount = 0;
 		try {
 			while ((line = in.readLine()) != null) {
-			lineCount++;
-			charCount += line.length();
-			String words[] = line.split("\\W");
-			wordCount += words.length;
+				lineCount++;
+				charCount += line.length();
+				String words[] = line.split("\\W");
+				wordCount += words.length;
 			} //while
 			System.out.println("wordCount = " + wordCount);
 			System.out.println("lineCount = " + lineCount);
@@ -666,19 +706,30 @@ public class wc {
 		} //catch
 	} //main
 }
+```
 
-## ttributions and Bylines
+<div dir="rtl">
 
+## خصیصه‌ها و خطوط معرف نویسنده کد
+
+</div>
+
+
+```java
 /* Added by Rick */
 ```
-Source code control systems are very good at remembering who added what, when.
-There is no need to pollute the code with little bylines. You might think that such com-
-ments would be useful in order to help others know who to talk to about the code. But the
-reality is that they tend to stay around for years and years, getting less and less accurate
-and relevant.
-Again, the source code control system is a better place for this kind of information.
+
+<div dir="rtl">
+
+سیستم های کنترل کد منبع در به خاطر سپردن اینکه چه کسی چه چیزی را اضافه کرده است ، بسیار خوب است. نیازی به آلوده سازی کد با کمترین bylines نیست. ممکن است فکر کنید چنین کامنت‌هایی برای کمک به دیگران در دانستن اینکه با چه کسی در مورد کد صحبت می کنند مفید باشد. اما واقعیت این است که سالها و سالها در اطراف بمانند ، هرچه دقیق تر و کم اهمیت تر می شوند.
+
+باز هم ، سیستم کنترل کد منبع مکان بهتری برای این نوع اطلاعات است.
+
 ## کامنت کردن کد
-Few practices are as odious as commenting-out code. Don’t do this!
+
+تعداد کمی از اعمال به اندازه کد توضیح دادن کراهت دارند. این کار را نکنید!
+
+</div>
 
 ```java
 // InputStreamResponse response = new InputStreamResponse();
@@ -688,10 +739,13 @@ Few practices are as odious as commenting-out code. Don’t do this!
 // response.setContent(reader.read(formatter.getByteCount()));
 ```
 
-Others who see that commented-out code won’t have the courage to delete it. They’ll think
-it is there for a reason and is too important to delete. So commented-out code gathers like
-dregs at the bottom of a bad bottle of wine.
-Consider this from apache commons:
+<div dir="rtl">
+
+دیگران که این کد کامنت شده را می بینند ، جرات حذف آن را ندارند. آنها فکر می کنند آنجا به دلایلی وجود دارد و حذف آنها بسیار خطرناک است. بنابراین کد کامنت شده مانند خاکه ته یک بطری بد شراب جمع می شود.
+
+این را از apache commons در نظر بگیرید:
+
+</div>
 
 ```java
 this.bytePos = writeBytes(pngIdBytes, 0);
@@ -708,19 +762,18 @@ else {
 }
 return this.pngBytes;
 ```
-Why are those two lines of code commented? Are they important? Were they left as
-reminders for some imminent change? Or are they just cruft that someone commented-out
-years ago and has simply not bothered to clean up.
-There was a time, back in the sixties, when commenting-out code might have been
-useful. But we’ve had good source code control systems for a very long time now. Those
-systems will remember the code for us. We don’t have to comment it out any more. Just
-delete the code. We won’t lose it. Promise.
+
+<div dir="rtl">
+
+چرا آن دو خط کد کامنت داده شده است؟ آیا آنها مهم هستند؟ آیا آنها به عنوان یادآوری برای برخی تغییرات قریب الوقوع باقی مانده بودند؟ یا اینها فقط ظلم هایی هستند که کسی سالها پیش در مورد آنها کامنت داده و زحمت تمیز کردنش را نکشیده است.
+
+زمانی در دهه شصت بود که ممکن است کد کامنت شده مفید باشد. اما مدت زمان زیادی است که سیستم های کنترل کد منبع خوبی داریم. آن سیستم ها کد را برای ما به خاطر می آورند. دیگر لازم نیست درباره آن توضیح دهیم. فقط کد را حذف کنید. ما آن را از دست نخواهیم داد. قول می‌دهم.
+
 ## HTML کامنت های
-HTML in source code comments is an abomination, as you can tell by reading the code
-below. It makes the comments hard to read in the one place where they should be easy to
-read—the editor/IDE. If comments are going to be extracted by some tool (like Javadoc) to
-appear in a Web page, then it should be the responsibility of that tool, and not the program-
-mer, to adorn the comments with appropriate HTML.
+
+همانطور که می توانید با خواندن کد زیر متوجه شوید HTML در کامنت‌های کد منبع مکروه است. خواندن کامنت‌ها در مکانی که خواندن آنها آسان است - ادیتور / IDE - را دشوار می کند. اگر قرار است کامنت‌ها توسط برخی از ابزارها (مانند Javadoc) برای نمایش در یک صفحه وب استخراج شود ، تزیین کامنت‌ها با HTML مناسب باید به عهده آن ابزار باشد و نه برنامه نویس.
+
+</div>
 
 ```java
 /**
@@ -753,14 +806,10 @@ classpathref=&quot;classpath&quot; /&gt;
 * </pre>
 */
 ```
+
 ## اطلاعات غیرمحلی
-If you must write a comment, then make sure it describes the code it appears near. Don’t
-offer systemwide information in the context of a local comment. Consider, for example,
-the javadoc comment below. Aside from the fact that it is horribly redundant, it also offers
-information about the default port. And yet the function has absolutely no control over
-what that default is. The comment is not describing the function, but some other, far dis-
-tant part of the system. Of course there is no guarantee that this comment will be changed
-when the code containing the default is changed.
+
+If you must write a comment, then make sure it describes the code it appears near. Don’t offer systemwide information in the context of a local comment. Consider, for example, the javadoc comment below. Aside from the fact that it is horribly redundant, it also offers information about the default port. And yet the function has absolutely no control over what that default is. The comment is not describing the function, but some other, far distant part of the system. Of course there is no guarantee that this comment will be changed when the code containing the default is changed.
 
 ```java
 /**
@@ -773,11 +822,11 @@ public void setFitnessePort(int fitnessePort)
 	this.fitnessePort = fitnessePort;
 }
 ```
+
 ## اطلاعات بیش از اندازه
-Don’t put interesting historical discussions or irrelevant descriptions of details into your
-comments. The comment below was extracted from a module designed to test that a func-
-tion could encode and decode base64. Other than the RFC number, someone reading this
-code has no need for the arcane information contained in the comment.
+
+Don’t put interesting historical discussions or irrelevant descriptions of details into your comments. The comment below was extracted from a module designed to test that a function could encode and decode base64. Other than the RFC number, someone reading this code has no need for the arcane information contained in the comment.
+
 ```java
 /*
 	RFC 2045 - Multipurpose Internet Mail Extensions (MIME)
@@ -795,10 +844,10 @@ code has no need for the arcane information contained in the comment.
 	the first 8-bit byte, and so on.
 */
 ```
+
 ## ارتباط نامشخص
-The connection between a comment and the code it describes should be obvious. If you are
-going to the trouble to write a comment, then at least you’d like the reader to be able to
-look at the comment and the code and understand what the comment is talking about.
+
+The connection between a comment and the code it describes should be obvious. If you are going to the trouble to write a comment, then at least you’d like the reader to be able to look at the comment and the code and understand what the comment is talking about.
 
 Consider, for example, this comment drawn from apache commons:
 
@@ -809,27 +858,20 @@ Consider, for example, this comment drawn from apache commons:
 */
 this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
 ```
-What is a filter byte? Does it relate to the +1? Or to the *3? Both? Is a pixel a byte? Why
-200? The purpose of a comment is to explain code that does not explain itself. It is a pity
-when a comment needs its own explanation.
+What is a filter byte? Does it relate to the +1? Or to the *3? Both? Is a pixel a byte? Why 200? The purpose of a comment is to explain code that does not explain itself. It is a pity when a comment needs its own explanation.
+
 ## عناوین تابع
-Short functions don’t need much description. A well-chosen name for a small function that
-does one thing is usually better than a comment header.
+
+Short functions don’t need much description. A well-chosen name for a small function that does one thing is usually better than a comment header.
 
 ## اسناد java در کد غیرعمومی
-As useful as javadocs are for public APIs, they are anathema to code that is not intended
-for public consumption. Generating javadoc pages for the classes and functions inside a
-system is not generally useful, and the extra formality of the javadoc comments amounts
-to little more than cruft and distraction.
+
+As useful as javadocs are for public APIs, they are anathema to code that is not intended for public consumption. Generating javadoc pages for the classes and functions inside a system is not generally useful, and the extra formality of the javadoc comments amounts to little more than cruft and distraction.
+
 ## مثال
-I wrote the module in Listing 4-7 for the first XP Immersion. It was intended to be an
-example of bad coding and commenting style. Kent Beck then refactored this code into a
-much more pleasant form in front of several dozen enthusiastic students. Later I adapted
-the example for my book Agile Software Development, Principles, Patterns, and Practices
-and the first of my Craftsman articles published in Software Development magazine.
-What I find fascinating about this module is that there was a time when many of us
-would have considered it “well documented.” Now we see it as a small mess. See how
-many different comment problems you can find.
+
+I wrote the module in Listing 4-7 for the first XP Immersion. It was intended to be an example of bad coding and commenting style. Kent Beck then refactored this code into a much more pleasant form in front of several dozen enthusiastic students. Later I adapted the example for my book Agile Software Development, Principles, Patterns, and Practices and the first of my Craftsman articles published in Software Development magazine.
+What I find fascinating about this module is that there was a time when many of us would have considered it “well documented.” Now we see it as a small mess. See how many different comment problems you can find.
 
 Listing 4-7
 GeneratePrimes.java
@@ -903,9 +945,8 @@ public class GeneratePrimes
 	}
 }
 ```
-In Listing 4-8 you can see a refactored version of the same module. Note that the use
-of comments is significantly restrained. There are just two comments in the whole module.
-Both comments are explanatory in nature.
+
+In Listing 4-8 you can see a refactored version of the same module. Note that the use of comments is significantly restrained. There are just two comments in the whole module. Both comments are explanatory in nature.
 
 Listing 4-8
 PrimeGenerator.java (refactored)
@@ -984,14 +1025,7 @@ public class PrimeGenerator
 	}
 }
 ```
-It is easy to argue that the first comment is redundant because it reads very much like
-the generatePrimes function itself. Still, I think the comment serves to ease the reader into
-the algorithm, so I’m inclined to leave it.
-The second argument is almost certainly necessary. It explains the rationale behind
-the use of the square root as the loop limit. I could find no simple variable name, nor any
-different coding structure that made this point clear. On the other hand, the use of the
-square root might be a conceit. Am I really saving that much time by limiting the iteration
-to the square root? Could the calculation of the square root take more time than I’m saving?
-It’s worth thinking about. Using the square root as the iteration limit satisfies the old C
-and assembly language hacker in me, but I’m not convinced it’s worth the time and effort
-that everyone else will expend to understand it.
+
+It is easy to argue that the first comment is redundant because it reads very much like the generatePrimes function itself. Still, I think the comment serves to ease the reader into the algorithm, so I’m inclined to leave it.
+The second argument is almost certainly necessary. It explains the rationale behind the use of the square root as the loop limit. I could find no simple variable name, nor any different coding structure that made this point clear. On the other hand, the use of the square root might be a conceit. Am I really saving that much time by limiting the iteration to the square root? Could the calculation of the square root take more time than I’m saving?
+It’s worth thinking about. Using the square root as the iteration limit satisfies the old C and assembly language hacker in me, but I’m not convinced it’s worth the time and effort that everyone else will expend to understand it.
