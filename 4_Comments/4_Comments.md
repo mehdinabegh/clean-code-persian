@@ -809,7 +809,7 @@ classpathref=&quot;classpath&quot; /&gt;
 
 ## اطلاعات غیرمحلی
 
-If you must write a comment, then make sure it describes the code it appears near. Don’t offer systemwide information in the context of a local comment. Consider, for example, the javadoc comment below. Aside from the fact that it is horribly redundant, it also offers information about the default port. And yet the function has absolutely no control over what that default is. The comment is not describing the function, but some other, far distant part of the system. Of course there is no guarantee that this comment will be changed when the code containing the default is changed.
+شما ابتدا باید یک کامنت بنویسید، سپس بررسی کنید که کامنت شما کدی که در اطرافش در حال کار کردن است را توضیح میدهد یا خیر. در یک کامنت محلی نیازی نیست اطلاعات بین المللی به خواننده بدهید، همانقدر که آن قسمت از کد را توضیح دهید کفایت میکند. فرضا این کامنت در مثال جاوایی زیر را درنظر بگیرید. با اینکه به طور ترسناکی زائد به نظر میرسد، اما اطلاعات خوبی درباره پورت پیشفرض برنامه به استفاده کننده میدهد. تابع مطلقا کنترلی روی اینکه پیشفرضش چه باشد ندارد. این کامنت ، تابع را توضیح نمیدهد و در حقیقت چیزی که این کامنت توضیح میدهد در نقطه ای دورتر از این قسمت قرار دارد. مطمئنا هیچ تضمینی نیست که اگر پورت پیشفرض برنامه عوض شد، این کامنت هم تغییر کند.
 
 ```java
 /**
@@ -825,7 +825,7 @@ public void setFitnessePort(int fitnessePort)
 
 ## اطلاعات بیش از اندازه
 
-Don’t put interesting historical discussions or irrelevant descriptions of details into your comments. The comment below was extracted from a module designed to test that a function could encode and decode base64. Other than the RFC number, someone reading this code has no need for the arcane information contained in the comment.
+بحث های جذاب تاریخی و توصیف های بی ربطتان را در جایی غیر از کامنت هایتان قرار دهید. کامنت زیر را در یک ماژول پیدا کردیم که طراحی شده بود برای تست یک تابع که کارش انکد و دیکد کردن base64 است. به جز کد RFC، بقیه نوشته ها اضافی هستند و کسی که این کد را میخواند نیازی به داشتن این اطلاعات مسخره ندارد.
 
 ```java
 /*
@@ -847,9 +847,8 @@ Don’t put interesting historical discussions or irrelevant descriptions of det
 
 ## ارتباط نامشخص
 
-The connection between a comment and the code it describes should be obvious. If you are going to the trouble to write a comment, then at least you’d like the reader to be able to look at the comment and the code and understand what the comment is talking about.
-
-Consider, for example, this comment drawn from apache commons:
+ارتباط بین کامنت و کدی که در حال توضیح آن است باید واضح باشد. اگر قصد کامنت نوشتن دارید به این نکته توجه کنید که خواننده کد باید بتواند با نگاه کردن به کد بفهمد که شما دقیقا دارید درباره کدام قسمت توضیح میدهید.
+مثلا این کامنت از apache commons بیرون کشیده شده:
 
 ```java
 /*
@@ -858,11 +857,11 @@ Consider, for example, this comment drawn from apache commons:
 */
 this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
 ```
-What is a filter byte? Does it relate to the +1? Or to the *3? Both? Is a pixel a byte? Why 200? The purpose of a comment is to explain code that does not explain itself. It is a pity when a comment needs its own explanation.
+اینجا filter byte چیست؟ آیا مربوط میشود به +1 یا به *3؟ یا اصلا به هر دو؟ آیا هر پیکسل یک بایت است؟ چرا 200؟ کامنت برای کدی استفاده میشود که خودش، خودش را توضیح نمیدهد، اینجا باید کامنت دیگری بنویسیم که این کامنت را توضیح دهد!
 
 ## عناوین تابع
 
-Short functions don’t need much description. A well-chosen name for a small function that does one thing is usually better than a comment header.
+توابع کوچک نیاز به توضیحات زیادی ندارند. یک اسم که خوب اتخاب شود برای یک تابع کوچک بسیار مفید تر از یک کامنت طولانی است.
 
 ## اسناد java در کد غیرعمومی
 
