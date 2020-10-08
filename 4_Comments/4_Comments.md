@@ -809,7 +809,7 @@ classpathref=&quot;classpath&quot; /&gt;
 
 ## اطلاعات غیرمحلی
 
-If you must write a comment, then make sure it describes the code it appears near. Don’t offer systemwide information in the context of a local comment. Consider, for example, the javadoc comment below. Aside from the fact that it is horribly redundant, it also offers information about the default port. And yet the function has absolutely no control over what that default is. The comment is not describing the function, but some other, far distant part of the system. Of course there is no guarantee that this comment will be changed when the code containing the default is changed.
+اگر لازم است یک کامنت بنویسید، پس مطمئن شوید که کامنت شما کد اطراف خودش را توضیح میدهد. در یک کامنت محلی نیازی نیست اطلاعات بین المللی به خواننده بدهید، همانقدر که آن قسمت از کد را توضیح دهید کفایت میکند. فرضا این کامنت در مثال جاوایی زیر را درنظر بگیرید. با اینکه به طور ترسناکی زائد به نظر میرسد، اما اطلاعات خوبی درباره پورت پیشفرض برنامه به استفاده کننده میدهد. تابع مطلقا کنترلی روی اینکه پیشفرضش چه باشد ندارد. این کامنت ، تابع را توضیح نمیدهد و در حقیقت چیزی که این کامنت توضیح میدهد در نقطه ای دورتر از این قسمت قرار دارد. مطمئنا هیچ تضمینی نیست که اگر پورت پیشفرض برنامه عوض شد، این کامنت هم تغییر کند.
 
 ```java
 /**
@@ -825,7 +825,7 @@ public void setFitnessePort(int fitnessePort)
 
 ## اطلاعات بیش از اندازه
 
-Don’t put interesting historical discussions or irrelevant descriptions of details into your comments. The comment below was extracted from a module designed to test that a function could encode and decode base64. Other than the RFC number, someone reading this code has no need for the arcane information contained in the comment.
+بحث های جذاب تاریخی و توصیف های بی ربطتان را در جایی غیر از کامنت هایتان قرار دهید. کامنت زیر را در یک ماژول پیدا کردیم که طراحی شده بود برای تست یک تابع که کارش انکد و دیکد کردن base64 است. به جز کد RFC، بقیه نوشته ها اضافی هستند و کسی که این کد را میخواند نیازی به داشتن این اطلاعات مسخره ندارد.
 
 ```java
 /*
@@ -847,9 +847,8 @@ Don’t put interesting historical discussions or irrelevant descriptions of det
 
 ## ارتباط نامشخص
 
-The connection between a comment and the code it describes should be obvious. If you are going to the trouble to write a comment, then at least you’d like the reader to be able to look at the comment and the code and understand what the comment is talking about.
-
-Consider, for example, this comment drawn from apache commons:
+ارتباط بین کامنت و کدی که در حال توضیح آن است باید واضح باشد. اگر قصد کامنت نوشتن دارید به این نکته توجه کنید که خواننده کد باید بتواند با نگاه کردن به کد بفهمد که شما دقیقا دارید درباره کدام قسمت توضیح میدهید.
+مثلا این کامنت از apache commons بیرون کشیده شده:
 
 ```java
 /*
@@ -858,20 +857,20 @@ Consider, for example, this comment drawn from apache commons:
 */
 this.pngBytes = new byte[((this.width + 1) * this.height * 3) + 200];
 ```
-What is a filter byte? Does it relate to the +1? Or to the *3? Both? Is a pixel a byte? Why 200? The purpose of a comment is to explain code that does not explain itself. It is a pity when a comment needs its own explanation.
+اینجا filter byte چیست؟ آیا مربوط میشود به +1 یا به *3؟ یا اصلا به هر دو؟ آیا هر پیکسل یک بایت است؟ چرا 200؟ کامنت برای کدی استفاده میشود که خودش، خودش را توضیح نمیدهد، اینجا باید کامنت دیگری بنویسیم که این کامنت را توضیح دهد!
 
 ## عناوین تابع
 
-Short functions don’t need much description. A well-chosen name for a small function that does one thing is usually better than a comment header.
+توابع کوچک نیاز به توضیحات زیادی ندارند. یک اسم که خوب اتخاب شود برای یک تابع کوچک بسیار مفید تر از یک کامنت طولانی است.
 
 ## اسناد java در کد غیرعمومی
 
-As useful as javadocs are for public APIs, they are anathema to code that is not intended for public consumption. Generating javadoc pages for the classes and functions inside a system is not generally useful, and the extra formality of the javadoc comments amounts to little more than cruft and distraction.
+همانقدر که jovadoc ها برای api های عمومی مناسب هستند، برای کد هایی که عمومی نیستند غیر مفیدند. تولید کردن javadoc برای کلاس ها و تابع ها در یک سیستم آنقدر ها هم مفید نیست، و زیاد بودن javadoc ها هم چیزی جز حواس پرتی به ارمغان نمیاورد.
 
 ## مثال
 
-I wrote the module in Listing 4-7 for the first XP Immersion. It was intended to be an example of bad coding and commenting style. Kent Beck then refactored this code into a much more pleasant form in front of several dozen enthusiastic students. Later I adapted the example for my book Agile Software Development, Principles, Patterns, and Practices and the first of my Craftsman articles published in Software Development magazine.
-What I find fascinating about this module is that there was a time when many of us would have considered it “well documented.” Now we see it as a small mess. See how many different comment problems you can find.
+من ماژولی که در Listing 4-7 هست را نوشته ام برای اولین تجربه شما. قصد این ماژول، بودن مثالی برای کدنویسی بد و سبک کامنت نویسی است. سپس Kent Beck این کد را جلوی چندین دانشجوی مشتاق به شکل بسیار پسندیده تری ریفکتور کرده. بعدتر من از این مثال برای کتاب خودم یعنی Agile Software Development, Principles, Patterns, and Practices استفاده کردم.
+چیزی که درمورد این کد جالب است این است که ما در ابتدا آن را کاملا مستند فرض میکردیم، در حالی که الان آن را یک آشفتگی کوچک میدانیم. ببینید چند مشکل مختلف در کامنت گذاری این کد میتوانید پیدا کنید.
 
 Listing 4-7
 GeneratePrimes.java
@@ -946,7 +945,7 @@ public class GeneratePrimes
 }
 ```
 
-In Listing 4-8 you can see a refactored version of the same module. Note that the use of comments is significantly restrained. There are just two comments in the whole module. Both comments are explanatory in nature.
+در Listing 4-8 میتوانید یک نسخه بازنویسی شده از همان ماژول قبلی را ببینید. دقت کنید که استفاده از کامنت به طور قابل توجهی مهار شده و فقط دو کامنت در این کد دیده میشود. هر دو کامنت ماهیت توضیح دادن دارند.
 
 Listing 4-8
 PrimeGenerator.java (refactored)
@@ -1026,6 +1025,6 @@ public class PrimeGenerator
 }
 ```
 
-It is easy to argue that the first comment is redundant because it reads very much like the generatePrimes function itself. Still, I think the comment serves to ease the reader into the algorithm, so I’m inclined to leave it.
-The second argument is almost certainly necessary. It explains the rationale behind the use of the square root as the loop limit. I could find no simple variable name, nor any different coding structure that made this point clear. On the other hand, the use of the square root might be a conceit. Am I really saving that much time by limiting the iteration to the square root? Could the calculation of the square root take more time than I’m saving?
-It’s worth thinking about. Using the square root as the iteration limit satisfies the old C and assembly language hacker in me, but I’m not convinced it’s worth the time and effort that everyone else will expend to understand it.
+فهمیدنش راحت است که کامنت اول بیخودی انجا نوشته شده، چرا که خود اسم generatePrimes را توضیح داده. این اسم به اندازه کافی کاربرد تابع را بیان میکند. من فکر میکنم کامنت ها برای راحت تر کردن کار خواننده نوشته میشوند، پس ترجیح میدهم این کامنت اضافی را آنجا قرار ندهم.
+بحث دوم قطعا ضروری است. این منطق پشت استفاده از ریشه دوم به عنوان حد حلقه را توضیح میدهد.البته استفاده از ریشه دوم عدد ممکن است فقط از نظر تئوری جالب به نظر برسد، آیا واقعا با محاسبه ریشه دوم و محدود کردن حلقه به آن، زمان بیشتری ذخیره میکنیم؟
+ارزش فکر کردن را دارد. استفاده از ریشه دوم برای محدود کردن تکرار حلقه، هکر قدیمی c و اسمبلی نویس درونم را راضی میکند، ولی فکر نمیکنم ارزش وقت و تلاشی که بقیه برای فهمیدن آن صرف میکنند را داشته باشد.
