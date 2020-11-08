@@ -64,16 +64,16 @@
   
   * [از رمزگذاری خودداری کنید](2_meaningful-names(completed)/meaningful-names.md#%D8%A7%D8%B2-%D8%B1%D9%85%D8%B2%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D8%AE%D9%88%D8%AF%D8%AF%D8%A7%D8%B1%DB%8C-%DA%A9%D9%86%DB%8C%D8%AF)
   
-  * [نمادگذاری مجارستانی](2_meaningful-names(completed)/meaningful-names.md#%D9%86%D9%85%D8%A7%D8%AF%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D9%85%D8%AC%D8%A7%D8%B1%D8%B3%D8%AA%D8%A7%D9%86%DB%8C)
-  * [پیشوندهای متغیر](2_meaningful-names(completed)/meaningful-names.md#%D9%BE%DB%8C%D8%B4%D9%88%D9%86%D8%AF%D9%87%D8%A7%DB%8C-%D9%85%D8%AA%D8%BA%DB%8C%D8%B1)
+    * [نمادگذاری مجارستانی](2_meaningful-names(completed)/meaningful-names.md#%D9%86%D9%85%D8%A7%D8%AF%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D9%85%D8%AC%D8%A7%D8%B1%D8%B3%D8%AA%D8%A7%D9%86%DB%8C)
+    * [پیشوندهای متغیر](2_meaningful-names(completed)/meaningful-names.md#%D9%BE%DB%8C%D8%B4%D9%88%D9%86%D8%AF%D9%87%D8%A7%DB%8C-%D9%85%D8%AA%D8%BA%DB%8C%D8%B1)
   
-  * [واسط‌ها (interface) و پیاده‌سازی‌ها](2_meaningful-names(completed)/meaningful-names.md#%D9%88%D8%A7%D8%B3%D8%B7%D9%87%D8%A7-interface-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87%D8%B3%D8%A7%D8%B2%DB%8C%D9%87%D8%A7)
+    * [واسط‌ها (interface) و پیاده‌سازی‌ها](2_meaningful-names(completed)/meaningful-names.md#%D9%88%D8%A7%D8%B3%D8%B7%D9%87%D8%A7-interface-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87%D8%B3%D8%A7%D8%B2%DB%8C%D9%87%D8%A7)
   
   * [از نگاشت ذهنی خودداری کنید](2_meaningful-names(completed)/meaningful-names.md#%D8%A7%D8%B2-%D9%86%DA%AF%D8%A7%D8%B4%D8%AA-%D8%B0%D9%87%D9%86%DB%8C-%D8%AE%D9%88%D8%AF%D8%AF%D8%A7%D8%B1%DB%8C-%DA%A9%D9%86%DB%8C%D8%AF)
   
   * [نام کلاس‌ها](2_meaningful-names(completed)/meaningful-names.md#%D9%86%D8%A7%D9%85-%DA%A9%D9%84%D8%A7%D8%B3%D9%87%D8%A7)
   
-  * [نام متدها](2_meaningful-names(completed)/meaningful-names.md#%D9%86%D8%A7%D9%85-%D9%85%D8%AA%D8%AF%D9%87%D8%A7)
+    * [نام متدها](2_meaningful-names(completed)/meaningful-names.md#%D9%86%D8%A7%D9%85-%D9%85%D8%AA%D8%AF%D9%87%D8%A7)
   
   * [بانمک نباشید](2_meaningful-names(completed)/meaningful-names.md#%D8%A8%D8%A7%D9%86%D9%85%DA%A9-%D9%86%D8%A8%D8%A7%D8%B4%DB%8C%D8%AF)
   
