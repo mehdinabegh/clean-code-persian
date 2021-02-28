@@ -20,6 +20,9 @@
     
 </details>
 
+# این کتاب را میتوانید از سایت زیر بخوانید
+https://codetamiz.vercel.app/
+
 ## راهنمای مشارکت
 بخش هایی از کتاب که به زبان انگلیسی هستند و ترجمه نشده. کافیه اون قسمت ها رو با ترجمه جایگزین کنید و یه ریکوئست بفرستید. منم سر وقت اون رو باز بینی میکنم و اگه خوب بود به ترجمه اضافه میشه.
 
@@ -27,7 +30,13 @@
 
 <a dir="ltr" href="mailto:noahopentranslate@gmail.com">noahopentranslate@gmail.com</a>
  
- ## بخش های ترجمه شده
+## بخش های ترجمه شده
+
+ممکنه لینک ها خراب باشند و ...
+بهتره کتاب رو از سایت زیر بخونید:
+
+https://codetamiz.vercel.app/
+
 
 * [0_مقدمه](0_introduction(completed)/introduction.md)
   * [0_مقدمه](0_introduction(completed)/introduction.md)
