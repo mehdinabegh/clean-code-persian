@@ -184,7 +184,7 @@ friendly)داشته باشید. یکبار دیگر مقایسه کنید.
  با
 
 ```java
- int realDaysPerIdealDay = 3;
+ int realDaysPerIdealDay = 4;
  const int WORK_DAYS_PER_WEEK = 5;
  int sum = 0;
  for (int j=0; j<NUMBER_OF_TASKS; j++) {
